@@ -12,11 +12,22 @@ single source of truth to stay in step with.
         │                                  │                          │
         ▼                                  ▼                          ▼
   WAITING_FOR_USER                AWAITING_APPROVAL             (COMPLETED)
-        │                                  │
-        ▼                                  ▼
-   REOBSERVING ─▶ ANALYZING          COMPLETED
+        │                                  │                          │
+        ▼                                  ▼                          │
+   REOBSERVING ─▶ ANALYZING          COMPLETED ◀──────────────────────┘
+                                            │
+                                            └─▶ REASONING (re-opened)
 
-``FAILED`` and ``CANCELLED`` are reachable from any active state.
+Three edges point back to ``REASONING``. ``DIAGNOSING ─▶ REASONING`` and
+``ACTION_PROPOSED ─▶ REASONING`` exist because a recorded diagnosis is not
+necessarily the end of the investigation: an abnormal measurement still has to
+become an incident and an approval request. ``COMPLETED ─▶ REASONING`` re-opens
+a finished inspection when the user reports the problem is still present,
+because "it is still not working" is new evidence rather than a new case.
+
+``FAILED`` is reachable from any active state and is itself recoverable
+(``FAILED ─▶ OBSERVING``), so it is a *faulted* state rather than a terminal
+one; only ``COMPLETED`` and ``CANCELLED`` end an inspection.
 """
 
 from __future__ import annotations
@@ -36,7 +47,9 @@ ACTIVE_STATES = {
     S.AWAITING_APPROVAL,
 }
 
-TERMINAL_STATES = {S.COMPLETED, S.FAILED, S.CANCELLED}
+#: States an inspection cannot leave. ``FAILED`` is deliberately excluded: it
+#: records that a run faulted, and the loop can retry it from ``OBSERVING``.
+TERMINAL_STATES = {S.COMPLETED, S.CANCELLED}
 
 #: state -> states reachable from it.
 TRANSITIONS: dict[S, set[S]] = {
@@ -64,7 +77,9 @@ TRANSITIONS: dict[S, set[S]] = {
     S.DIAGNOSING: {S.REASONING, S.COMPLETED, S.ACTION_PROPOSED, S.FAILED, S.CANCELLED},
     S.ACTION_PROPOSED: {S.REASONING, S.AWAITING_APPROVAL, S.COMPLETED, S.FAILED, S.CANCELLED},
     S.AWAITING_APPROVAL: {S.COMPLETED, S.FAILED, S.CANCELLED},
-    S.COMPLETED: set(),
+    # Re-opened: the user reports the problem is still present after a completed
+    # investigation, which warrants another look rather than a new session.
+    S.COMPLETED: {S.REASONING},
     S.FAILED: {S.OBSERVING},
     S.CANCELLED: set(),
 }

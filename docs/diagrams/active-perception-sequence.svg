@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1100" viewBox="0 0 1200 1100" role="img" aria-label="A sequence diagram over the user, SightOps UI, FastAPI and agent layer, OpenCV vision engine and Nebius model, covering two observations, a reinspection request, diagnosis, incident creation and the human approval gate." font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif">
+<title>SightOps active perception sequence</title>
+<desc>A sequence diagram over the user, SightOps UI, FastAPI and agent layer, OpenCV vision engine and Nebius model, covering two observations, a reinspection request, diagnosis, incident creation and the human approval gate.</desc>
+<defs>
+<marker id="a-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#075CA7"/></marker>
+<marker id="a-navy" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#053B6E"/></marker>
+<marker id="a-slate" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#3E4D5C"/></marker>
+<marker id="a-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#FF7A1A"/></marker>
+<marker id="a-good" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#2E9E5B"/></marker>
+<marker id="a-bad" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#D13B3B"/></marker>
+<marker id="a-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#8A98A6"/></marker>
+</defs>
+<rect x="0" y="0" width="1200" height="1100" rx="0" fill="#F7F9FB"/>
+<rect x="32" y="26" width="6" height="46" rx="3" fill="#075CA7"/>
+<text x="54" y="50" font-size="24" fill="#051D35" font-weight="700" text-anchor="start">Active Perception Sequence</text>
+<text x="54" y="72" font-size="13.5" fill="#3E4D5C" font-weight="400" text-anchor="start">How SightOps recognises that it cannot yet answer, obtains a better observation, and lets the new evidence change the decision.</text>
+<rect x="46" y="104" width="200" height="54" rx="9" fill="#FFFFFF" stroke="#3E4D5C" stroke-width="1.6"/>
+<text x="146" y="134.38" font-size="13" fill="#051D35" font-weight="700" text-anchor="middle">User</text>
+<line x1="146" y1="158" x2="146" y2="978" stroke="#D4DADF" stroke-width="1.4" stroke-dasharray="5 5"/>
+<rect x="273" y="104" width="200" height="54" rx="9" fill="#F2F6FA" stroke="#075CA7" stroke-width="1.6"/>
+<text x="373" y="134.38" font-size="13" fill="#051D35" font-weight="700" text-anchor="middle">SightOps UI</text>
+<line x1="373" y1="158" x2="373" y2="978" stroke="#D4DADF" stroke-width="1.4" stroke-dasharray="5 5"/>
+<rect x="500" y="104" width="200" height="54" rx="9" fill="#F2F6FA" stroke="#075CA7" stroke-width="1.6"/>
+<text x="600" y="134.38" font-size="13" fill="#051D35" font-weight="700" text-anchor="middle">FastAPI + Agent</text>
+<line x1="600" y1="158" x2="600" y2="978" stroke="#D4DADF" stroke-width="1.4" stroke-dasharray="5 5"/>
+<rect x="727" y="104" width="200" height="54" rx="9" fill="#F2F6FA" stroke="#051D35" stroke-width="1.6"/>
+<text x="827" y="134.38" font-size="13" fill="#051D35" font-weight="700" text-anchor="middle">OpenCV 5 vision</text>
+<line x1="827" y1="158" x2="827" y2="978" stroke="#D4DADF" stroke-width="1.4" stroke-dasharray="5 5"/>
+<rect x="954" y="104" width="200" height="54" rx="9" fill="#FFFDF8" stroke="#FF7A1A" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="1054" y="134.38" font-size="13" fill="#051D35" font-weight="700" text-anchor="middle">Nebius model</text>
+<line x1="1054" y1="158" x2="1054" y2="978" stroke="#D4DADF" stroke-width="1.4" stroke-dasharray="5 5"/>
+<text x="1054" y="174" font-size="10.5" fill="#B45309" font-weight="700" text-anchor="middle">demo mode:</text>
+<text x="1054" y="188" font-size="10.5" fill="#B45309" font-weight="400" text-anchor="middle">the deterministic policy replaces it</text>
+<line x1="146" y1="200" x2="373" y2="200" stroke="#075CA7" stroke-width="1.8" marker-end="url(#a-blue)"/>
+<text x="152" y="193" font-size="12" fill="#0B1626" font-weight="400" text-anchor="start">uploads photo 1 of the panel</text>
+<line x1="373" y1="238" x2="600" y2="238" stroke="#075CA7" stroke-width="1.8" marker-end="url(#a-blue)"/>
+<text x="379" y="231" font-size="12" fill="#0B1626" font-weight="400" text-anchor="start">POST /inspections/{id}/images</text>
+<line x1="600" y1="276" x2="827" y2="276" stroke="#075CA7" stroke-width="1.8" marker-end="url(#a-blue)"/>
+<text x="606" y="269" font-size="12" fill="#0B1626" font-weight="400" text-anchor="start">inspect_panel(image 1)</text>
+<path d="M 827 307 H 871 V 321 H 829" fill="none" stroke="#053B6E" stroke-width="1.6" stroke-dasharray="5 3" marker-end="url(#a-navy)"/>
+<text x="881" y="318" font-size="12" fill="#053B6E" font-weight="600" text-anchor="start">measure quality + every region</text>
+<line x1="827" y1="352" x2="600" y2="352" stroke="#3B8FD4" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#a-muted)"/>
+<text x="606" y="345" font-size="12" fill="#3E4D5C" font-weight="400" text-anchor="start">warning LED RED 0.97 · gauge UNKNOWN</text>
+<path d="M 600 383 H 644 V 397 H 602" fill="none" stroke="#053B6E" stroke-width="1.6" stroke-dasharray="5 3" marker-end="url(#a-navy)"/>
+<text x="654" y="394" font-size="12" fill="#053B6E" font-weight="600" text-anchor="start">evidence insufficient to conclude</text>
+<line x1="600" y1="428" x2="373" y2="428" stroke="#3B8FD4" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#a-muted)"/>
+<text x="379" y="421" font-size="12" fill="#3E4D5C" font-weight="400" text-anchor="start">request_new_view(pressure_gauge_01)</text>
+<line x1="373" y1="466" x2="146" y2="466" stroke="#3B8FD4" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#a-muted)"/>
+<text x="152" y="459" font-size="12" fill="#3E4D5C" font-weight="400" text-anchor="start">state WAITING_FOR_USER · re-image square-on</text>
+<line x1="146" y1="504" x2="373" y2="504" stroke="#075CA7" stroke-width="1.8" marker-end="url(#a-blue)"/>
+<text x="152" y="497" font-size="12" fill="#0B1626" font-weight="400" text-anchor="start">uploads photo 2</text>
+<line x1="373" y1="542" x2="600" y2="542" stroke="#075CA7" stroke-width="1.8" marker-end="url(#a-blue)"/>
+<text x="379" y="535" font-size="12" fill="#0B1626" font-weight="400" text-anchor="start">POST .../images (run_agent=true)</text>
+<line x1="600" y1="580" x2="827" y2="580" stroke="#075CA7" stroke-width="1.8" marker-end="url(#a-blue)"/>
+<text x="606" y="573" font-size="12" fill="#0B1626" font-weight="400" text-anchor="start">inspect_panel(image 2)</text>
+<line x1="827" y1="618" x2="600" y2="618" stroke="#3B8FD4" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#a-muted)"/>
+<text x="606" y="611" font-size="12" fill="#3E4D5C" font-weight="400" text-anchor="start">gauge 87.16 PSI HIGH 0.96</text>
+<line x1="600" y1="656" x2="1054" y2="656" stroke="#3B8FD4" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#a-muted)"/>
+<text x="606" y="649" font-size="12" fill="#3E4D5C" font-weight="400" text-anchor="start">compare_observations + diagnose</text>
+<line x1="1054" y1="694" x2="600" y2="694" stroke="#3B8FD4" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#a-muted)"/>
+<text x="606" y="687" font-size="12" fill="#3E4D5C" font-weight="400" text-anchor="start">abnormal condition confirmed</text>
+<path d="M 600 725 H 644 V 739 H 602" fill="none" stroke="#053B6E" stroke-width="1.6" stroke-dasharray="5 3" marker-end="url(#a-navy)"/>
+<text x="654" y="736" font-size="12" fill="#053B6E" font-weight="600" text-anchor="start">create_incident + request_human_approval</text>
+<line x1="600" y1="770" x2="373" y2="770" stroke="#3B8FD4" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#a-muted)"/>
+<text x="379" y="763" font-size="12" fill="#3E4D5C" font-weight="400" text-anchor="start">state AWAITING_APPROVAL</text>
+<line x1="373" y1="808" x2="146" y2="808" stroke="#3B8FD4" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#a-muted)"/>
+<text x="152" y="801" font-size="12" fill="#3E4D5C" font-weight="400" text-anchor="start">approve the simulated action?</text>
+<line x1="146" y1="846" x2="373" y2="846" stroke="#075CA7" stroke-width="1.8" marker-end="url(#a-blue)"/>
+<text x="152" y="839" font-size="12" fill="#0B1626" font-weight="400" text-anchor="start">approves</text>
+<line x1="373" y1="884" x2="600" y2="884" stroke="#075CA7" stroke-width="1.8" marker-end="url(#a-blue)"/>
+<text x="379" y="877" font-size="12" fill="#0B1626" font-weight="400" text-anchor="start">POST /approve</text>
+<path d="M 600 915 H 644 V 929 H 602" fill="none" stroke="#053B6E" stroke-width="1.6" stroke-dasharray="5 3" marker-end="url(#a-navy)"/>
+<text x="654" y="926" font-size="12" fill="#053B6E" font-weight="600" text-anchor="start">simulated remediation · COMPLETED</text>
+<rect x="32" y="992" width="1136" height="96" rx="10" fill="#FDF3F3" stroke="#D13B3B" stroke-width="1.5"/>
+<text x="48" y="1027.67" font-size="13.5" fill="#D13B3B" font-weight="700" text-anchor="start">All remediation in this sequence is SIMULATED.</text>
+<text x="48" y="1044.11" font-size="12" fill="#3E4D5C" font-weight="400" text-anchor="start">SightOps is decision support. It never controls real machinery, and the industrial panel is a mock with no connection to plant equipment.</text>
+<text x="48" y="1059.95" font-size="12" fill="#3E4D5C" font-weight="400" text-anchor="start">The approval at the end is a real human decision recorded in the audit trail: it authorises a record, not a command.</text>
+</svg>

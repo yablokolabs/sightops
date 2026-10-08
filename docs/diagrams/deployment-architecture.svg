@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="830" viewBox="0 0 1200 830" role="img" aria-label="A single existing Azure virtual machine running the FastAPI backend, OpenCV 5, the React bundle, SQLite and a local evidence directory, with outbound HTTPS to Nebius and ElevenLabs, and AWS clearly marked as not deployed." font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif">
+<title>SightOps deployment architecture</title>
+<desc>A single existing Azure virtual machine running the FastAPI backend, OpenCV 5, the React bundle, SQLite and a local evidence directory, with outbound HTTPS to Nebius and ElevenLabs, and AWS clearly marked as not deployed.</desc>
+<defs>
+<marker id="a-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#075CA7"/></marker>
+<marker id="a-navy" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#053B6E"/></marker>
+<marker id="a-slate" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#3E4D5C"/></marker>
+<marker id="a-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#FF7A1A"/></marker>
+<marker id="a-good" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#2E9E5B"/></marker>
+<marker id="a-bad" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#D13B3B"/></marker>
+<marker id="a-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#8A98A6"/></marker>
+</defs>
+<rect x="0" y="0" width="1200" height="830" rx="0" fill="#F7F9FB"/>
+<rect x="32" y="26" width="6" height="46" rx="3" fill="#075CA7"/>
+<text x="54" y="50" font-size="24" fill="#051D35" font-weight="700" text-anchor="start">Deployment Architecture</text>
+<text x="54" y="72" font-size="13.5" fill="#3E4D5C" font-weight="400" text-anchor="start">One existing Azure virtual machine, CPU only. AWS is documented as a portability path and is not deployed.</text>
+<rect x="32" y="120" width="700" height="520" rx="14" fill="#FFFFFF" stroke="#051D35" stroke-width="2"/>
+<text x="52" y="154" font-size="16" fill="#051D35" font-weight="700" text-anchor="start">Azure VM — existing host, CPU only, no GPU</text>
+<text x="52" y="176" font-size="11.5" fill="#3E4D5C" font-weight="400" text-anchor="start">Ubuntu · Python 3.12.3 · Node 22 · Docker 29.8.1 · ffmpeg 6.1.1</text>
+<rect x="52" y="194" width="660" height="84" rx="9" fill="#075CA7" stroke="#053B6E" stroke-width="1.2"/>
+<text x="65" y="224.46" font-size="14" fill="#FFFFFF" font-weight="700" text-anchor="start">FastAPI process — port 8000</text>
+<text x="65" y="240.64" font-size="11.5" fill="#D7E6F4" font-weight="400" text-anchor="start">uvicorn · /health · /api/docs · request-id middleware</text>
+<text x="65" y="255.82" font-size="11.5" fill="#D7E6F4" font-weight="400" text-anchor="start">agent loop, tool registry, provider clients</text>
+<rect x="52" y="290" width="660" height="74" rx="9" fill="#051D35" stroke="#053B6E" stroke-width="1.2"/>
+<text x="65" y="323.05" font-size="14" fill="#FFFFFF" font-weight="700" text-anchor="start">OpenCV 5.0.0 — in process, CPU</text>
+<text x="65" y="339.23" font-size="11.5" fill="#D7E6F4" font-weight="400" text-anchor="start">opencv-python==5.0.0.93 · NumPy 2.5.3 · no GPU code paths</text>
+<rect x="52" y="376" width="660" height="74" rx="9" fill="#053B6E" stroke="#051D35" stroke-width="1.2"/>
+<text x="65" y="408.92" font-size="13.5" fill="#FFFFFF" font-weight="700" text-anchor="start">React static bundle — port 5173 (dev)</text>
+<text x="65" y="424.9" font-size="11.5" fill="#D7E6F4" font-weight="400" text-anchor="start">Vite build · Tailwind · calls /api on the same origin</text>
+<rect x="52" y="462" width="322" height="76" rx="9" fill="#F2F6FA" stroke="#D4DADF" stroke-width="1.2"/>
+<text x="64" y="489.39" font-size="12.5" fill="#051D35" font-weight="700" text-anchor="start">SQLite file</text>
+<text x="64" y="504.05" font-size="10.5" fill="#3E4D5C" font-weight="400" text-anchor="start">data/sightops.db</text>
+<text x="64" y="517.91" font-size="10.5" fill="#3E4D5C" font-weight="400" text-anchor="start">inspection + incident state</text>
+<rect x="390" y="462" width="322" height="76" rx="9" fill="#F2F6FA" stroke="#D4DADF" stroke-width="1.2"/>
+<text x="402" y="489.39" font-size="12.5" fill="#051D35" font-weight="700" text-anchor="start">Evidence directory</text>
+<text x="402" y="504.05" font-size="10.5" fill="#3E4D5C" font-weight="400" text-anchor="start">data/evidence/</text>
+<text x="402" y="517.91" font-size="10.5" fill="#3E4D5C" font-weight="400" text-anchor="start">originals + annotations</text>
+<rect x="52" y="550" width="660" height="72" rx="9" fill="#F2F6FA" stroke="#D4DADF" stroke-width="1.2"/>
+<text x="64" y="582.32" font-size="12.5" fill="#051D35" font-weight="700" text-anchor="start">Docker Compose — docker compose up --build</text>
+<text x="64" y="596.98" font-size="10.5" fill="#3E4D5C" font-weight="400" text-anchor="start">backend and frontend services, project-local volumes and ports</text>
+<rect x="772" y="120" width="396" height="236" rx="14" fill="#FFFDF8" stroke="#FF7A1A" stroke-width="1.8" stroke-dasharray="7 5"/>
+<text x="790" y="152" font-size="14" fill="#051D35" font-weight="700" text-anchor="start">Boundary — outbound HTTPS only</text>
+<text x="790" y="172" font-size="10.5" fill="#3E4D5C" font-weight="400" text-anchor="start">Credentials are read server-side from ~/.hermes/.env</text>
+<rect x="790" y="186" width="360" height="74" rx="8" fill="#FFFFFF" stroke="#FF7A1A" stroke-width="1.2"/>
+<text x="801" y="212.39" font-size="12.5" fill="#051D35" font-weight="700" text-anchor="start">Nebius AI Studio</text>
+<text x="801" y="227.05" font-size="10.5" fill="#3E4D5C" font-weight="400" text-anchor="start">Qwen/Qwen3.5-397B-A17B reasoning</text>
+<text x="801" y="240.91" font-size="10.5" fill="#3E4D5C" font-weight="400" text-anchor="start">openbmb/MiniCPM-V-4_5 vision</text>
+<rect x="790" y="270" width="360" height="70" rx="8" fill="#FFFFFF" stroke="#FF7A1A" stroke-width="1.2"/>
+<text x="801" y="294.39" font-size="12.5" fill="#051D35" font-weight="700" text-anchor="start">ElevenLabs</text>
+<text x="801" y="309.05" font-size="10.5" fill="#3E4D5C" font-weight="400" text-anchor="start">text-to-speech, British female</text>
+<text x="801" y="322.91" font-size="10.5" fill="#3E4D5C" font-weight="400" text-anchor="start">optional — text works without it</text>
+<line x1="732" y1="220" x2="772" y2="220" stroke="#FF7A1A" stroke-width="2" marker-end="url(#a-amber)"/>
+<text x="752" y="212" font-size="10" fill="#B45309" font-weight="600" text-anchor="middle">egress</text>
+<rect x="772" y="386" width="396" height="254" rx="14" fill="#F4F5F6" stroke="#8A98A6" stroke-width="1.8" stroke-dasharray="9 6"/>
+<text x="790" y="418" font-size="14" fill="#D13B3B" font-weight="700" text-anchor="start">AWS — NOT DEPLOYED</text>
+<text x="790" y="438" font-size="10" fill="#D13B3B" font-weight="600" text-anchor="start">NOT PROVISIONED · NOT BENCHMARKED</text>
+<text x="790" y="464" font-size="10.5" fill="#3E4D5C" font-weight="400" text-anchor="start">The compute grant was not awarded, so there</text>
+<text x="790" y="482" font-size="10.5" fill="#3E4D5C" font-weight="400" text-anchor="start">is no AWS account and no spend. These are</text>
+<text x="790" y="500" font-size="10.5" fill="#3E4D5C" font-weight="400" text-anchor="start">interface and documentation targets only:</text>
+<text x="798" y="528" font-size="10.5" fill="#8A98A6" font-weight="400" text-anchor="start">·  AWS Graviton + COOL</text>
+<text x="798" y="546" font-size="10.5" fill="#8A98A6" font-weight="400" text-anchor="start">·  Amazon Bedrock</text>
+<text x="798" y="564" font-size="10.5" fill="#8A98A6" font-weight="400" text-anchor="start">·  Amazon S3</text>
+<text x="798" y="582" font-size="10.5" fill="#8A98A6" font-weight="400" text-anchor="start">·  Amazon DynamoDB</text>
+<text x="798" y="600" font-size="10.5" fill="#8A98A6" font-weight="400" text-anchor="start">·  AWS Lambda</text>
+<text x="798" y="618" font-size="10.5" fill="#8A98A6" font-weight="400" text-anchor="start">·  CloudWatch</text>
+<rect x="32" y="670" width="1136" height="128" rx="10" fill="#FFFFFF" stroke="#075CA7" stroke-width="1.5"/>
+<text x="48" y="714.74" font-size="13.5" fill="#051D35" font-weight="700" text-anchor="start">Development-environment notes</text>
+<text x="48" y="730.72" font-size="11.5" fill="#3E4D5C" font-weight="400" text-anchor="start">Hindsight memory service on port 8888 is a development aid and is not part of the product runtime.</text>
+<text x="48" y="745.9" font-size="11.5" fill="#3E4D5C" font-weight="400" text-anchor="start">Ports 8000 and 5173 are free for SightOps; 8888 is already in use by Hindsight, so nothing is started there.</text>
+<text x="48" y="761.08" font-size="11.5" fill="#3E4D5C" font-weight="400" text-anchor="start">No unrelated service on this host is modified, and remediation actions are simulated rather than executed.</text>
+</svg>

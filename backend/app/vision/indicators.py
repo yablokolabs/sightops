@@ -77,6 +77,22 @@ _STATE_BY_WINNER: dict[str, IndicatorState] = {
 }
 
 
+def _peak_stats(hsv: np.ndarray) -> tuple[float, float]:
+    """Brightest level in the window and the saturation *of those pixels*.
+
+    Taking the saturation percentile over the whole region is wrong: a white
+    lamp sitting on a dark bezel reports the bezel's saturation, because dark
+    pixels with a small channel spread still have a high HSV saturation. Only
+    the pixels near the peak brightness say anything about the lamp's colour.
+    """
+    value = hsv[:, :, 2]
+    peak_value = float(np.percentile(value, 99.5))
+    bright = value >= max(peak_value * 0.85, 1.0)
+    if not np.any(bright):
+        return peak_value, float(np.percentile(hsv[:, :, 1], 99.5))
+    return peak_value, float(np.percentile(hsv[:, :, 1][bright], 99.0))
+
+
 def _lamp_blob(region_bgr: np.ndarray) -> tuple[np.ndarray | None, float]:
     """Segment the lamp and return ``(mask, area_ratio)`` for the largest blob."""
     hsv = cv2.cvtColor(region_bgr, cv2.COLOR_BGR2HSV)
@@ -139,6 +155,30 @@ def detect_indicator(
     if mask is None or area_ratio < MIN_BLOB_AREA_RATIO:
         # No distinct lamp: this is a genuinely unlit indicator *if* the crop is
         # dark and unsaturated, otherwise we simply cannot tell.
+        # A bright but unsaturated lamp is a WHITE lamp, not an unlit one. Without
+        # this branch the OFF test below fires on its low saturation alone and
+        # reports a clearly lit white indicator as OFF — found by a test that
+        # rendered one.
+        peak_value, peak_saturation = _peak_stats(hsv)
+        if peak_value >= LIT_MIN_VALUE and peak_saturation < 60.0:
+            brightness = float(np.clip((peak_value - LIT_MIN_VALUE) / (255.0 - LIT_MIN_VALUE), 0.0, 1.0))
+            whiteness = float(np.clip((60.0 - peak_saturation) / 60.0, 0.0, 1.0))
+            confidence = float(np.clip(0.6 * brightness + 0.4 * whiteness, 0.0, 1.0))
+            return Measurement(
+                component_id=component_id,
+                component_type="indicator",
+                state=IndicatorState.WHITE.value,
+                confidence=round(confidence, 4),
+                method="opencv_hsv_roi",
+                requires_reinspection=confidence < 0.55,
+                notes=["the lamp is bright with almost no hue, which reads as white"],
+                details={
+                    "peak_value": round(peak_value, 2),
+                    "peak_saturation": round(peak_saturation, 2),
+                    "criteria": {"brightness": round(brightness, 4), "whiteness": round(whiteness, 4)},
+                },
+            )
+
         if mean_value < OFF_VALUE or mean_saturation < OFF_SATURATION:
             # An unlit lamp is evidenced by the region having *no lamp-like
             # pixels at all*, which is a different question from the one the
@@ -147,8 +187,6 @@ def detect_indicator(
             # lamp would produce. Reusing the lit-lamp formula here reported a
             # confident OFF as unsure merely because a uniform dark crop has
             # little detail for the blur metric to measure.
-            peak_value = float(np.percentile(hsv[:, :, 2], 99.5))
-            peak_saturation = float(np.percentile(hsv[:, :, 1], 99.5))
             brightness_gap = float(np.clip((LIT_MIN_VALUE - peak_value) / LIT_MIN_VALUE, 0.0, 1.0))
             saturation_gap = float(
                 np.clip((LIT_MIN_SATURATION - peak_saturation) / LIT_MIN_SATURATION, 0.0, 1.0)

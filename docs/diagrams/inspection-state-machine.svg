@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="880" viewBox="0 0 1200 880" role="img" aria-label="The thirteen inspection states with their forward, return, failure and recovery transitions, including the human approval gate." font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif">
+<title>SightOps inspection state machine</title>
+<desc>The thirteen inspection states with their forward, return, failure and recovery transitions, including the human approval gate.</desc>
+<defs>
+<marker id="a-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#075CA7"/></marker>
+<marker id="a-navy" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#053B6E"/></marker>
+<marker id="a-slate" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#3E4D5C"/></marker>
+<marker id="a-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#FF7A1A"/></marker>
+<marker id="a-good" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#2E9E5B"/></marker>
+<marker id="a-bad" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#D13B3B"/></marker>
+<marker id="a-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#8A98A6"/></marker>
+</defs>
+<rect x="0" y="0" width="1200" height="880" rx="0" fill="#F7F9FB"/>
+<rect x="32" y="26" width="6" height="46" rx="3" fill="#075CA7"/>
+<text x="54" y="50" font-size="24" fill="#051D35" font-weight="700" text-anchor="start">Inspection State Machine</text>
+<text x="54" y="72" font-size="12.8" fill="#3E4D5C" font-weight="400" text-anchor="start">Generated from app/agent/state.py, the single transition table the agent loop validates against. Every state below appears in a real inspection trace.</text>
+<rect x="70" y="180" width="150" height="50" rx="9" fill="#FFFFFF" stroke="#075CA7" stroke-width="1.6"/>
+<text x="145" y="208.12" font-size="12" fill="#051D35" font-weight="700" text-anchor="middle">CREATED</text>
+<rect x="70" y="255" width="150" height="50" rx="9" fill="#FFFFFF" stroke="#075CA7" stroke-width="1.6"/>
+<text x="145" y="283.12" font-size="12" fill="#051D35" font-weight="700" text-anchor="middle">OBSERVING</text>
+<rect x="70" y="330" width="150" height="50" rx="9" fill="#FFFFFF" stroke="#075CA7" stroke-width="1.6"/>
+<text x="145" y="358.12" font-size="12" fill="#051D35" font-weight="700" text-anchor="middle">ANALYZING</text>
+<rect x="70" y="455" width="150" height="58" rx="9" fill="#051D35" stroke="#FF7A1A" stroke-width="2.6"/>
+<text x="145" y="487.12" font-size="12" fill="#FFFFFF" font-weight="700" text-anchor="middle">REASONING</text>
+<rect x="320" y="150" width="180" height="50" rx="9" fill="#FFFFFF" stroke="#075CA7" stroke-width="1.6"/>
+<text x="410" y="178.12" font-size="12" fill="#051D35" font-weight="700" text-anchor="middle">DIAGNOSING</text>
+<rect x="320" y="235" width="180" height="50" rx="9" fill="#FFFFFF" stroke="#075CA7" stroke-width="1.6"/>
+<text x="410" y="263.12" font-size="12" fill="#051D35" font-weight="700" text-anchor="middle">ACTION_PROPOSED</text>
+<rect x="320" y="360" width="220" height="50" rx="9" fill="#FFFFFF" stroke="#075CA7" stroke-width="1.6"/>
+<text x="430" y="388.12" font-size="12" fill="#051D35" font-weight="700" text-anchor="middle">NEEDS_MORE_EVIDENCE</text>
+<rect x="320" y="435" width="220" height="50" rx="9" fill="#FFFFFF" stroke="#075CA7" stroke-width="1.6"/>
+<text x="430" y="463.12" font-size="12" fill="#051D35" font-weight="700" text-anchor="middle">WAITING_FOR_USER</text>
+<rect x="320" y="510" width="220" height="50" rx="9" fill="#FFFFFF" stroke="#075CA7" stroke-width="1.6"/>
+<text x="430" y="538.12" font-size="12" fill="#051D35" font-weight="700" text-anchor="middle">REOBSERVING</text>
+<rect x="660" y="150" width="180" height="50" rx="9" fill="#EEF8F1" stroke="#2E9E5B" stroke-width="2"/>
+<text x="750" y="178.12" font-size="12" fill="#051D35" font-weight="700" text-anchor="middle">COMPLETED</text>
+<rect x="660" y="235" width="210" height="50" rx="9" fill="#FFF6EC" stroke="#FF7A1A" stroke-width="2.6"/>
+<text x="765" y="263.12" font-size="12" fill="#051D35" font-weight="700" text-anchor="middle">AWAITING_APPROVAL</text>
+<rect x="900" y="300" width="160" height="50" rx="9" fill="#FDF3F3" stroke="#D13B3B" stroke-width="1.8"/>
+<text x="980" y="328.12" font-size="12" fill="#D13B3B" font-weight="700" text-anchor="middle">FAILED</text>
+<rect x="900" y="390" width="160" height="50" rx="9" fill="#FDF3F3" stroke="#D13B3B" stroke-width="1.8"/>
+<text x="980" y="418.12" font-size="12" fill="#D13B3B" font-weight="700" text-anchor="middle">CANCELLED</text>
+<path d="M 145 230 V 255" fill="none" stroke="#075CA7" stroke-width="1.7" marker-end="url(#a-blue)"/>
+<path d="M 145 305 V 330" fill="none" stroke="#075CA7" stroke-width="1.7" marker-end="url(#a-blue)"/>
+<path d="M 145 380 V 455" fill="none" stroke="#075CA7" stroke-width="1.7" marker-end="url(#a-blue)"/>
+<path d="M 220 468 H 262 V 175 H 320" fill="none" stroke="#075CA7" stroke-width="1.7" marker-end="url(#a-blue)"/>
+<path d="M 220 484 H 288 V 260 H 320" fill="none" stroke="#075CA7" stroke-width="1.7" marker-end="url(#a-blue)"/>
+<path d="M 175 513 V 535 H 300 V 385 H 320" fill="none" stroke="#053B6E" stroke-width="1.7" marker-end="url(#a-navy)"/>
+<path d="M 500 175 H 660" fill="none" stroke="#075CA7" stroke-width="1.7" marker-end="url(#a-blue)"/>
+<path d="M 500 260 H 660" fill="none" stroke="#075CA7" stroke-width="1.7" marker-end="url(#a-blue)"/>
+<path d="M 430 410 V 435" fill="none" stroke="#075CA7" stroke-width="1.7" marker-end="url(#a-blue)"/>
+<path d="M 430 485 V 510" fill="none" stroke="#075CA7" stroke-width="1.7" marker-end="url(#a-blue)"/>
+<path d="M 430 560 V 585 H 56 V 355 H 70" fill="none" stroke="#053B6E" stroke-width="1.7" marker-end="url(#a-navy)"/>
+<path d="M 320 165 V 112 H 240 V 430 H 190 V 455" fill="none" stroke="#3B8FD4" stroke-width="1.7" stroke-dasharray="7 5" marker-end="url(#a-muted)"/>
+<path d="M 320 255 H 296 V 505 H 220" fill="none" stroke="#3B8FD4" stroke-width="1.7" stroke-dasharray="7 5" marker-end="url(#a-muted)"/>
+<path d="M 145 513 V 660 H 855 V 325 H 900" fill="none" stroke="#D13B3B" stroke-width="1.7" stroke-dasharray="6 4" marker-end="url(#a-bad)"/>
+<path d="M 765 285 V 340 H 900" fill="none" stroke="#D13B3B" stroke-width="1.7" stroke-dasharray="6 4" marker-end="url(#a-bad)"/>
+<path d="M 150 513 V 680 H 880 V 415 H 900" fill="none" stroke="#D13B3B" stroke-width="1.7" stroke-dasharray="6 4" marker-end="url(#a-bad)"/>
+<path d="M 1060 325 H 1120 V 700 H 40 V 280 H 70" fill="none" stroke="#2E9E5B" stroke-width="1.7" stroke-dasharray="6 4" marker-end="url(#a-good)"/>
+<rect x="32" y="730" width="1136" height="122" rx="10" fill="#FFFFFF" stroke="#3E4D5C" stroke-width="1.4"/>
+<text x="48" y="756.965" font-size="13" fill="#051D35" font-weight="700" text-anchor="start">Legend</text>
+<text x="48" y="772.745" font-size="11.5" fill="#3E4D5C" font-weight="400" text-anchor="start">Solid blue forward · dashed blue return and re-entry · red dashed failure · green dashed recovery (FAILED → OBSERVING).</text>
+<text x="48" y="787.925" font-size="11.5" fill="#3E4D5C" font-weight="400" text-anchor="start">AWAITING_APPROVAL is the human gate: no simulated remediation is recorded as approved without it, and nothing is executed on real machinery.</text>
+<text x="48" y="802.359" font-size="10.69" fill="#3E4D5C" font-weight="400" text-anchor="start">The two dashed blue edges are the return paths: DIAGNOSING → REASONING and ACTION_PROPOSED → REASONING. A recorded diagnosis can still become an incident and an approval request.</text>
+<text x="48" y="817.215" font-size="11.5" fill="#3E4D5C" font-weight="400" text-anchor="start">FAILED and CANCELLED are reachable from every active state. The table also permits WAITING_FOR_USER → REASONING and WAITING_FOR_USER → DIAGNOSING.</text>
+<text x="48" y="832.395" font-size="11.5" fill="#3E4D5C" font-weight="400" text-anchor="start">FAILED → OBSERVING (green) recovers a faulted run. COMPLETED → REASONING re-opens a finished inspection when the user reports the problem is still present.</text>
+</svg>

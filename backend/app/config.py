@@ -107,6 +107,18 @@ class Settings(BaseSettings):
     indicator_confidence_floor: float = 0.55
     gauge_confidence_floor: float = 0.60
 
+    # -- HTTP ---------------------------------------------------------------
+    #: Browser origins allowed to call the API. Defaults cover the Vite dev
+    #: server and the compiled frontend served from the same host.
+    cors_origins: list[str] = [
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "http://localhost:4173",
+        "http://127.0.0.1:4173",
+        "http://localhost:8080",
+        "http://127.0.0.1:8080",
+    ]
+
     # -- Demo ---------------------------------------------------------------
     demo_mode: bool = False
 

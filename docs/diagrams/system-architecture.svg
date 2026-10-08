@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-label="React SPA, FastAPI backend, OpenCV 5 vision engine, agent orchestration, local persistence and external Nebius and ElevenLabs services, with AWS marked as planned and not deployed." font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif">
+<title>SightOps system architecture</title>
+<desc>React SPA, FastAPI backend, OpenCV 5 vision engine, agent orchestration, local persistence and external Nebius and ElevenLabs services, with AWS marked as planned and not deployed.</desc>
+<defs>
+<marker id="a-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#075CA7"/></marker>
+<marker id="a-navy" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#053B6E"/></marker>
+<marker id="a-slate" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#3E4D5C"/></marker>
+<marker id="a-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#FF7A1A"/></marker>
+<marker id="a-good" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#2E9E5B"/></marker>
+<marker id="a-bad" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#D13B3B"/></marker>
+<marker id="a-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#8A98A6"/></marker>
+</defs>
+<rect x="0" y="0" width="1200" height="800" rx="0" fill="#F7F9FB"/>
+<rect x="32" y="26" width="6" height="46" rx="3" fill="#075CA7"/>
+<text x="54" y="50" font-size="24" fill="#051D35" font-weight="700" text-anchor="start">SightOps — System Architecture</text>
+<text x="54" y="72" font-size="13.5" fill="#3E4D5C" font-weight="400" text-anchor="start">An Agentic Visual Reliability Engineer · React + FastAPI + OpenCV 5 · as implemented and verified 2026-10-08</text>
+<rect x="32" y="86" width="1136" height="33" rx="8" fill="#FFF6EC" stroke="#FF7A1A" stroke-width="1.4"/>
+<rect x="32" y="86" width="5" height="33" rx="2.5" fill="#FF7A1A"/>
+<text x="48" y="112" font-size="12.5" fill="#6B3B08" font-weight="400" text-anchor="start">All external AI calls originate from the backend. API keys are loaded server-side and never reach the browser.</text>
+<rect x="32" y="136" width="186" height="424" rx="14" fill="#FFFFFF" stroke="#D4DADF" stroke-width="1.6"/>
+<rect x="274" y="136" width="436" height="424" rx="14" fill="#FFFFFF" stroke="#075CA7" stroke-width="2"/>
+<rect x="766" y="136" width="164" height="424" rx="14" fill="#FFFFFF" stroke="#D4DADF" stroke-width="1.6"/>
+<rect x="986" y="136" width="182" height="424" rx="14" fill="#FFFDF8" stroke="#FF7A1A" stroke-width="1.8" stroke-dasharray="7 5"/>
+<text x="44" y="162" font-size="13" fill="#3E4D5C" font-weight="700" text-anchor="start">Client</text>
+<line x1="44" y1="168" x2="206" y2="168" stroke="#D4DADF" stroke-width="1.2"/>
+<text x="286" y="162" font-size="13" fill="#3E4D5C" font-weight="700" text-anchor="start">Backend — Azure VM, CPU only</text>
+<line x1="286" y1="168" x2="698" y2="168" stroke="#D4DADF" stroke-width="1.2"/>
+<text x="778" y="162" font-size="13" fill="#3E4D5C" font-weight="700" text-anchor="start">Local storage</text>
+<line x1="778" y1="168" x2="918" y2="168" stroke="#D4DADF" stroke-width="1.2"/>
+<text x="1000" y="162" font-size="13" fill="#3E4D5C" font-weight="700" text-anchor="start">External services</text>
+<line x1="1000" y1="168" x2="1156" y2="168" stroke="#D4DADF" stroke-width="1.2"/>
+<rect x="44" y="180" width="162" height="56" rx="8" fill="#F2F6FA" stroke="#D4DADF" stroke-width="1.2"/>
+<text x="54" y="204.102" font-size="11.66" fill="#051D35" font-weight="600" text-anchor="start">React 18 + TypeScript</text>
+<text x="54" y="218.426" font-size="10.5" fill="#3E4D5C" font-weight="400" text-anchor="start">strict SPA, Vite build</text>
+<rect x="44" y="250" width="162" height="56" rx="8" fill="#F2F6FA" stroke="#D4DADF" stroke-width="1.2"/>
+<text x="54" y="273.964" font-size="11.13" fill="#051D35" font-weight="600" text-anchor="start">Tailwind design system</text>
+<text x="54" y="288.076" font-size="10.5" fill="#3E4D5C" font-weight="400" text-anchor="start">palette from the logo</text>
+<rect x="44" y="320" width="162" height="56" rx="8" fill="#F2F6FA" stroke="#D4DADF" stroke-width="1.2"/>
+<text x="54" y="344.32" font-size="12.5" fill="#051D35" font-weight="600" text-anchor="start">Evidence viewer</text>
+<text x="54" y="358.98" font-size="10.5" fill="#3E4D5C" font-weight="400" text-anchor="start">annotated + original</text>
+<rect x="44" y="390" width="162" height="56" rx="8" fill="#F2F6FA" stroke="#D4DADF" stroke-width="1.2"/>
+<text x="54" y="414.32" font-size="12.5" fill="#051D35" font-weight="600" text-anchor="start">Agent timeline</text>
+<text x="54" y="428.98" font-size="10.5" fill="#3E4D5C" font-weight="400" text-anchor="start">decisions, tool calls</text>
+<rect x="44" y="460" width="162" height="56" rx="8" fill="#F2F6FA" stroke="#D4DADF" stroke-width="1.2"/>
+<text x="54" y="484.32" font-size="12.5" fill="#051D35" font-weight="600" text-anchor="start">Voice playback</text>
+<text x="54" y="498.98" font-size="10.5" fill="#3E4D5C" font-weight="400" text-anchor="start">play, pause, mute</text>
+<rect x="286" y="180" width="412" height="66" rx="9" fill="#075CA7" stroke="#053B6E" stroke-width="1.2"/>
+<text x="298" y="209.779" font-size="15" fill="#FFFFFF" font-weight="700" text-anchor="start">FastAPI HTTP API</text>
+<text x="298" y="225.705" font-size="10.79" fill="#D7E6F4" font-weight="400" text-anchor="start">Pydantic contracts · X-Request-ID middleware · structured logs</text>
+<rect x="286" y="258" width="412" height="172" rx="9" fill="#051D35" stroke="#053B6E" stroke-width="1.2"/>
+<text x="298" y="302.36" font-size="15" fill="#FFFFFF" font-weight="700" text-anchor="start">OpenCV 5.0.0 vision engine</text>
+<text x="298" y="318.94" font-size="11.5" fill="#D7E6F4" font-weight="400" text-anchor="start">Preprocessing · rescale, bilateral denoise, CLAHE</text>
+<text x="298" y="334.12" font-size="11.5" fill="#D7E6F4" font-weight="400" text-anchor="start">Regions · profile regions + contour panel detection</text>
+<text x="298" y="349.3" font-size="11.5" fill="#D7E6F4" font-weight="400" text-anchor="start">Indicators · HSV segmentation + hue bands</text>
+<text x="298" y="364.48" font-size="11.5" fill="#D7E6F4" font-weight="400" text-anchor="start">Gauge · Hough dial + radial needle scan</text>
+<text x="298" y="379.66" font-size="11.5" fill="#D7E6F4" font-weight="400" text-anchor="start">Quality · normalised Laplacian blur, exposure</text>
+<text x="298" y="394.84" font-size="11.5" fill="#D7E6F4" font-weight="400" text-anchor="start">Measurements carry method, confidence, criteria</text>
+<rect x="286" y="442" width="412" height="106" rx="9" fill="#053B6E" stroke="#051D35" stroke-width="1.2"/>
+<text x="298" y="476.13" font-size="15" fill="#FFFFFF" font-weight="700" text-anchor="start">Agent orchestration</text>
+<text x="298" y="492.71" font-size="11.5" fill="#D7E6F4" font-weight="400" text-anchor="start">Typed tool registry · inspection state machine</text>
+<text x="298" y="507.89" font-size="11.5" fill="#D7E6F4" font-weight="400" text-anchor="start">Bounded loop · 8 steps, 12 tool calls, 2 reinspections</text>
+<text x="298" y="523.07" font-size="11.5" fill="#D7E6F4" font-weight="400" text-anchor="start">Human approval gate before any action is recorded</text>
+<rect x="778" y="180" width="140" height="118" rx="8" fill="#F2F6FA" stroke="#D4DADF" stroke-width="1.3"/>
+<text x="788" y="222.679" font-size="13" fill="#051D35" font-weight="700" text-anchor="start">SQLite</text>
+<text x="788" y="237.539" font-size="10.5" fill="#3E4D5C" font-weight="400" text-anchor="start">inspection state</text>
+<text x="788" y="250.479" font-size="9.5" fill="#3E4D5C" font-weight="400" text-anchor="start">observations, timeline</text>
+<text x="788" y="263.341" font-size="9.85" fill="#3E4D5C" font-weight="400" text-anchor="start">tool calls, incidents</text>
+<rect x="778" y="310" width="140" height="118" rx="8" fill="#F2F6FA" stroke="#D4DADF" stroke-width="1.3"/>
+<text x="788" y="352.019" font-size="13" fill="#051D35" font-weight="700" text-anchor="start">Evidence store</text>
+<text x="788" y="366.879" font-size="10.5" fill="#3E4D5C" font-weight="400" text-anchor="start">original uploads</text>
+<text x="788" y="380.141" font-size="9.85" fill="#3E4D5C" font-weight="400" text-anchor="start">annotated derivatives</text>
+<text x="788" y="393.741" font-size="10.5" fill="#3E4D5C" font-weight="400" text-anchor="start">on local disk</text>
+<rect x="778" y="440" width="140" height="118" rx="8" fill="#F4F5F6" stroke="#8A98A6" stroke-width="1.3" stroke-dasharray="6 4"/>
+<text x="788" y="481.46" font-size="12.5" fill="#8A98A6" font-weight="700" text-anchor="start">S3 / DynamoDB</text>
+<text x="788" y="496.12" font-size="10.5" fill="#8A98A6" font-weight="400" text-anchor="start">adapters exist as</text>
+<text x="788" y="509.98" font-size="10.5" fill="#8A98A6" font-weight="400" text-anchor="start">interfaces only —</text>
+<text x="788" y="523.84" font-size="10.5" fill="#D13B3B" font-weight="700" text-anchor="start">NOT IMPLEMENTED</text>
+<rect x="1000" y="180" width="154" height="172" rx="8" fill="#FFFFFF" stroke="#FF7A1A" stroke-width="1.3"/>
+<text x="1010" y="235.824" font-size="13.5" fill="#051D35" font-weight="700" text-anchor="start">Nebius AI Studio</text>
+<text x="1010" y="250.884" font-size="10.5" fill="#3E4D5C" font-weight="400" text-anchor="start">Qwen/Qwen3.5-397B-A17B</text>
+<text x="1010" y="263.824" font-size="9.5" fill="#3E4D5C" font-weight="400" text-anchor="start">reasoning, tool selection</text>
+<text x="1010" y="277.284" font-size="10.5" fill="#3E4D5C" font-weight="400" text-anchor="start">openbmb/MiniCPM-V-4_5</text>
+<text x="1010" y="291.144" font-size="10.5" fill="#3E4D5C" font-weight="400" text-anchor="start">multimodal reading</text>
+<text x="1010" y="304.58" font-size="10.04" fill="#B45309" font-weight="600" text-anchor="start">HTTPS · key server-side</text>
+<rect x="1000" y="364" width="154" height="184" rx="8" fill="#FFFFFF" stroke="#FF7A1A" stroke-width="1.3"/>
+<text x="1010" y="418.234" font-size="13.5" fill="#051D35" font-weight="700" text-anchor="start">ElevenLabs</text>
+<text x="1010" y="433.294" font-size="10.5" fill="#3E4D5C" font-weight="400" text-anchor="start">text-to-speech</text>
+<text x="1010" y="447.154" font-size="10.5" fill="#3E4D5C" font-weight="400" text-anchor="start">voice zH7TN9vEZAs…</text>
+<text x="1010" y="461.014" font-size="10.5" fill="#3E4D5C" font-weight="400" text-anchor="start">British female · young</text>
+<text x="1010" y="474.874" font-size="10.5" fill="#3E4D5C" font-weight="400" text-anchor="start">Written guidance works</text>
+<text x="1010" y="488.734" font-size="10.5" fill="#3E4D5C" font-weight="400" text-anchor="start">when voice is off</text>
+<text x="1010" y="502.17" font-size="10.04" fill="#B45309" font-weight="600" text-anchor="start">HTTPS · key server-side</text>
+<path d="M 218 348 H 274" fill="none" stroke="#075CA7" stroke-width="1.8" marker-end="url(#a-blue)"/>
+<text x="246" y="340" font-size="10.5" fill="#075CA7" font-weight="600" text-anchor="middle">JSON</text>
+<path d="M 218 392 H 274" fill="none" stroke="#3B8FD4" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#a-blue)"/>
+<text x="246" y="384" font-size="10.5" fill="#3B8FD4" font-weight="600" text-anchor="middle">images</text>
+<path d="M 710 348 H 766" fill="none" stroke="#053B6E" stroke-width="1.8" marker-end="url(#a-navy)"/>
+<text x="738" y="340" font-size="10.5" fill="#053B6E" font-weight="600" text-anchor="middle">SQL</text>
+<path d="M 766 392 H 710" fill="none" stroke="#053B6E" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#a-navy)"/>
+<text x="738" y="384" font-size="10.5" fill="#053B6E" font-weight="600" text-anchor="middle">records</text>
+<path d="M 710 440 H 986" fill="none" stroke="#FF7A1A" stroke-width="1.8" marker-end="url(#a-amber)"/>
+<text x="980" y="432" font-size="10.5" fill="#FF7A1A" font-weight="600" text-anchor="end">HTTPS</text>
+<path d="M 986 484 H 710" fill="none" stroke="#FF7A1A" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#a-amber)"/>
+<text x="980" y="476" font-size="10.5" fill="#FF7A1A" font-weight="600" text-anchor="end">results</text>
+<rect x="32" y="596" width="1136" height="176" rx="12" fill="#F4F5F6" stroke="#8A98A6" stroke-width="1.8" stroke-dasharray="9 6"/>
+<text x="54" y="630" font-size="16" fill="#D13B3B" font-weight="700" text-anchor="start">AWS — PLANNED, NOT DEPLOYED</text>
+<text x="54" y="660" font-size="13" fill="#3E4D5C" font-weight="400" text-anchor="start">AWS Graviton EC2 · Cloud-Optimized OpenCV Library (COOL) · Amazon Bedrock</text>
+<text x="54" y="684" font-size="13" fill="#3E4D5C" font-weight="400" text-anchor="start">Amazon S3 · Amazon DynamoDB · AWS Lambda · Amazon CloudWatch</text>
+<text x="54" y="716" font-size="12.5" fill="#D13B3B" font-weight="600" text-anchor="start">No AWS account is used, no resource has been provisioned, and no AWS component has been benchmarked.</text>
+<text x="54" y="740" font-size="12.5" fill="#3E4D5C" font-weight="400" text-anchor="start">SightOps runs entirely on the existing Azure virtual machine, on CPU, with no GPU.</text>
+</svg>

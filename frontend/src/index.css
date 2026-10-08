@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-mist/30 text-ink;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  /* A single, consistent focus treatment everywhere. */
+  :focus-visible {
+    outline: 2px solid theme("colors.brand.light");
+    outline-offset: 2px;
+  }
+
+  /* Home mode is read by people who may not be technical and may not see well. */
+  .a11y-large {
+    font-size: 1.125rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+/* Slim scrollbars inside the timeline so the column does not jump. */
+@layer components {
+  .scroll-slim::-webkit-scrollbar {
+    width: 8px;
+  }
+  .scroll-slim::-webkit-scrollbar-thumb {
+    background-color: theme("colors.mist");
+    border-radius: 9999px;
+  }
+}

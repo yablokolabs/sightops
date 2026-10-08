@@ -4,25 +4,29 @@ version = "0.1.0"
 description = "SightOps — Agentic Visual Reliability Engineer (backend)"
 requires-python = ">=3.12"
 
+# Versions are the exact ones the verified test run used. `opencv-python` is
+# pinned to the 5.x line deliberately: the measurements and the README claims
+# depend on this being OpenCV 5, and `app.vision.engine` reports a warning if a
+# different major version is running.
 dependencies = [
-    "fastapi==0.121.4",
+    "fastapi==0.143.0",
     "uvicorn[standard]==0.54.0",
-    "pydantic==2.12.10",
-    "pydantic-settings==2.13.1",
-    "python-multipart==0.0.22",
-    "httpx==0.29.2",
+    "pydantic==2.14.0",
+    "pydantic-settings==2.15.0",
+    "python-multipart==0.0.32",
+    "httpx==0.28.1",
     "aiosqlite==0.22.1",
     "numpy==2.5.3",
     "opencv-python==5.0.0.93",
-    "pillow==12.1.0",
+    "pillow==12.3.0",
     "scipy==1.18.1",
-    "python-dotenv==1.2.1",
+    "python-dotenv==1.2.4",
 ]
 
 [project.optional-dependencies]
 dev = [
-    "pytest==8.4.2",
-    "pytest-asyncio==1.3.0",
+    "pytest==9.1.1",
+    "pytest-asyncio==1.4.0",
 ]
 
 [tool.pytest.ini_options]

@@ -1,0 +1,39 @@
+# Secrets — never commit credentials
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+
+# Node / frontend
+node_modules/
+frontend/dist/
+frontend/.vite/
+*.tsbuildinfo
+
+# Runtime data: generated evidence, databases and fixtures
+data/
+backend/data/
+!.gitkeep
+
+# Video render intermediates (the final MP4 is committed separately, see demo/README.md)
+demo/videos/*.tmp.mp4
+demo/renders/
+
+# Editors / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp

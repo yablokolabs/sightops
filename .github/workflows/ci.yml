@@ -154,6 +154,50 @@ jobs:
           path: frontend/playwright-report
           if-no-files-found: ignore
 
+  demo:
+    name: demonstration video scenes
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: demo/videowright/package-lock.json
+
+      - name: Install the video project
+        run: cd demo/videowright && npm ci
+
+      - name: Type check the scenes
+        run: cd demo/videowright && npm run typecheck
+
+      - name: Install the browser
+        run: cd demo/videowright && npx playwright install --with-deps chromium
+
+      # A render takes about half an hour and is the only other way to see a panel
+      # that overflows the frame or lies across another block, so the layout is
+      # measured against the dev server instead of the finished video. The check
+      # used to compare elements with the frame edges only, which let six scenes
+      # overlap inside the frame unnoticed; it now also fails when a stage's
+      # content is taller than its row and when two blocks cover the same pixels.
+      - name: Every scene fits the 1920x1080 frame and nothing overlaps
+        run: |
+          cd demo/videowright
+          npx videowright dev --port 5199 > /tmp/videowright-dev.log 2>&1 &
+          ready=''
+          for _ in $(seq 1 60); do
+            if curl --silent --fail --output /dev/null http://127.0.0.1:5199/; then ready=yes; break; fi
+            sleep 1
+          done
+          if [ -z "$ready" ]; then
+            echo '--- the dev server never answered on 127.0.0.1:5199 ---'
+            cat /tmp/videowright-dev.log
+            exit 1
+          fi
+          node scripts/check_scene_layout.mjs
+
   docker:
     name: container build and smoke test
     runs-on: ubuntu-latest

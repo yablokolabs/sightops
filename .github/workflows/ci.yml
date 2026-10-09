@@ -131,6 +131,21 @@ jobs:
       - name: Browser end-to-end tests
         run: cd frontend && npm run test:e2e
 
+      # A webServer timeout says only that something never became reachable. This
+      # turns that into a diagnosis: which sockets are listening, and what each URL
+      # answers. Without it, a start-up failure reads as a 120-second silence.
+      - name: Diagnose the servers if the tests could not start them
+        if: failure()
+        run: |
+          echo '--- listening sockets ---'
+          ss -ltnp || true
+          echo '--- http://127.0.0.1:8000/health ---'
+          curl --silent --show-error --max-time 10 http://127.0.0.1:8000/health || true
+          echo
+          echo '--- http://127.0.0.1:4173/ ---'
+          curl --silent --show-error --max-time 10 http://127.0.0.1:4173/ || true
+          echo
+
       - name: Keep the Playwright report
         if: always()
         uses: actions/upload-artifact@v4

@@ -19,6 +19,12 @@ export default defineConfig({
     }
   },
   preview: {
+    // Bound to the loopback address explicitly. Vite's default is `localhost`,
+    // which Node resolves to whichever family the host's resolver returns first —
+    // on a machine whose /etc/hosts lists `::1 localhost`, that is IPv6, and a
+    // caller that asks for 127.0.0.1 then waits for a timeout that looks like a
+    // hung server. The end-to-end tests probe 127.0.0.1, so the server binds it.
+    host: "127.0.0.1",
     port: 4173,
     strictPort: true,
     proxy: {

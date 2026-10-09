@@ -10,10 +10,16 @@ still missing.
 
 ## Current Phase
 
-**Phase 9 (publication) — the product is complete and verified; documenting and
-publishing remain.** Backend, vision engine, agent loop, HTTP API, frontend, Docker
-deployment, evaluation harness and the demo video are all built and verified. The
-repository still has **no remote configured**.
+**Phase 9 (publication) — the product is complete, verified and published.**
+Backend, vision engine, agent loop, HTTP API, frontend, Docker deployment, evaluation
+harness and the demo video are all built and verified, and the repository is public at
+**https://github.com/yablokolabs/sightops** (`origin`, branch `main`).
+
+A note on the owner, because the brief asks for `Yabloko-Labs`: no such account or
+organisation exists on GitHub. The authenticated account `yablokolabs` is an **admin**
+of the organisation `YablokoLabs-Ltd`, which holds only its `.github` profile
+repository, so the competition repository was created under the authenticated personal
+account rather than under a name that does not resolve.
 
 ---
 
@@ -80,24 +86,31 @@ truth** because the fixture drew the values.
 audio toolchain: `generate.sh` (ElevenLabs), `sync_audio.py` (loudness normalise, word
 timing, segment advances), `resplice_voiceover.py` (budget-limited repair),
 `build_subtitles.py`, and `capture_app_screens.mjs` (Playwright capture of the real
-app). Output: `demo/videos/sightops-demo.mp4`, 1920×1080, 60 fps, **4:33**, plus
-SRT and WebVTT subtitles.
+app). Output: `demo/videos/sightops-demo.mp4`, 1920×1080, 60 fps, **4:41**, plus
+SRT and WebVTT subtitles. Verified with `ffprobe`: H.264 High, 16,885 frames,
+AAC 44.1 kHz mono, 281.42 s, and a clean full-decode under `ffmpeg -f null`.
 
 ---
 
 ## In Progress
 
-- Root `README.md` and `demo/README.md` written; a final read-through against the
-  rendered video is still to do.
-- `docs/PROGRESS.md` (this file) and Hindsight sync.
+- **Continuous integration and delivery** (`AGENTS.md` §14–15 asks for a tested,
+  published repository). Being added as `.github/workflows/` on top of the harnesses
+  that already run locally.
 
 ---
 
 ## Next Actions
 
-1. Verify the rendered MP4 (duration, resolution, audio track, playable) and commit it.
-2. Configure the `Yabloko-Labs/sightops` remote and push clean conventional commits.
-3. Confirm the committed README renders (diagram and screenshot links resolve on GitHub).
+1. Confirm the CI workflow is green on GitHub after the first push, and keep the local
+   harness commands and the workflow steps identical so a green run means the same thing
+   in both places.
+2. Read the published `README.md` and `demo/README.md` once more on GitHub, where the
+   relative links are what a judge clicks.
+3. If the competition wants the brief's exact voice, a paid ElevenLabs plan makes Beth
+   available: `SIGHTOPS_ELEVENLABS_VOICE_ID=zH7TN9vEZAsEway9xWev`. The provider already
+   answers a refused voice by substituting rather than failing, so this is a one-line
+   change on the plan, not a code change.
 
 ---
 
@@ -105,9 +118,11 @@ SRT and WebVTT subtitles.
 
 None functional. Two constraints are carried as known limitations:
 
-- **ElevenLabs free tier: 9,975 of 10,000 characters consumed** (25 remaining,
-  reset 2026-10-24). The narration is complete, so nothing is blocked; a re-recording
-  at full quality needs a paid plan or the next reset.
+- **ElevenLabs free tier, and the character budget is nearly spent.** The first key
+  stands at 9,975 of 10,000 characters (25 remaining, reset 2026-10-24). The second key
+  supplied mid-session stands at **8,485 of 10,000** (reset 2026-11-08). The narration is
+  final and needs nothing further, so nothing is blocked, but a re-recording needs a
+  paid plan or the next reset.
 - **No AWS authorisation**, handled by design: the AWS-shaped seams exist and nothing
   AWS-specific is claimed as built.
 
@@ -117,7 +132,8 @@ None functional. Two constraints are carried as known limitations:
 
 Latest verified runs (2026-10-09):
 
-- **Backend tests** — `cd backend && ../.venv/bin/python -m pytest -q` → 165 passed.
+- **Backend tests** — `cd backend && ../.venv/bin/python -m pytest -q` → **180 passed**
+  (165 before the voice provider tests were added).
 - **Vision demo scenarios** — `scripts/verify_demo_scenarios.py` → **17/17 PASS**.
 - **Providers** — `scripts/check_providers.py` → **9/9 PASS** (OpenCV 5.0.0, 25 Nebius
   models, a live tool call returning `read_gauge`, 24 ElevenLabs voices).
@@ -134,8 +150,11 @@ Latest verified runs (2026-10-09):
   `:8080`: the SPA and its client-side routes return 200, `/health` proxies to the
   backend, `/api/system/status` reports `opencv_version: "5.0.0"` from inside the
   container, and a full industrial demo flow run through the proxy advanced
-  `WAITING_FOR_USER` → `AWAITING_APPROVAL` with two observations. Provider keys are
-  correctly absent in the container, and the app still runs.
+  `WAITING_FOR_USER` → `AWAITING_APPROVAL` with two observations. With the host keys
+  exported, `/api/voice/synthesize` through the proxy returns **200 audio/mpeg** for
+  both the default voice and an explicitly requested library voice (the latter with
+  `X-SightOps-Voice-Substituted: true`). With no keys exported the container correctly
+  reports `configured: false` and answers 503, and the app still runs.
 - **Frontend** — `npm run build` exit 0; `tsc --noEmit` clean.
 - **Evaluation** — full detail in `docs/evaluation/results.md`: gauge MAE 0.4724 PSI
   (median 0.185, p95 1.54, max 3.32), **112 published / 24 refused**, **wrong-value
@@ -143,8 +162,13 @@ Latest verified runs (2026-10-09):
   lit/blank 79.4%, switch 100%, ROI 100%, agent tasks 4/4, active-perception
   precision/recall 1.0/1.0, vision latency 9.67 ms mean (23.27 ms max) per 1280×720
   frame.
-- **Demo video** — `sync_audio.py` word check passes; video length 4:33 (16,405
-  frames); 61 subtitle cues ending at 04:33.119.
+- **Demo video** — `sync_audio.py` word check passes; video length **4:41** (16,885
+  frames at 60 fps, 281.42 s); 61 subtitle cues ending at 04:41.076; full decode clean;
+  audio measured at -17.0 dB mean and -1.0 dB peak, so nothing clips. The layout checker
+  reports all ten segments `1920x1080 ok`.
+- **Live voice check** — on the running application, the default voice returns 200
+  `audio/mpeg` (65,663 bytes, 4.08 s) with no substitution, and requesting the library
+  voice returns 200 with the same audio and `X-SightOps-Voice-Substituted: true`.
 
 ### A correction to an earlier claim in this file
 
@@ -183,11 +207,19 @@ video and `demo/docs/narration.md` state the corrected version.
    pixels near peak brightness.
 6. **Agent state machine gaps** — added the missing `→ REASONING` edges and removed
    `FAILED` from the terminal set, because it has a recovery edge.
-7. **Demo narration splice (this session)** — the repair tool calculated block offsets
-   from the edited script instead of the recording and cut 22 words out of the
-   diagnosis narration. Repaired with `--drop-words`, and the consequence (the
-   diagnosis block opens at its second sentence) is documented in
-   `demo/docs/narration.md` rather than hidden.
+7. **Demo narration splice** — the repair tool calculated block offsets from the edited
+   script instead of the recording and cut 22 words out of the diagnosis narration.
+   Repaired with `--drop-words`, and the consequence (the diagnosis block opens at its
+   second sentence) is documented in `demo/docs/narration.md` rather than hidden.
+8. **Voice guidance was non-functional on the shipped configuration (this session).**
+   The default voice was the brief's Beth, a *library* voice the ElevenLabs API refuses
+   on a free plan with `HTTP 402 paid_plan_required`, so every `/api/voice/synthesize`
+   call returned 502 while `/api/voice/status` still said "Voice guidance is available."
+   The Listen button in the interface could not work. Fixed by defaulting to the premade
+   British female voice Alice, and by having the provider retry once with a premade voice
+   when a plan refuses the one asked for, reporting the substitution in
+   `X-SightOps-Voice-*` headers instead of silently discarding it. Verified live on the
+   dev server and through the container.
 
 ---
 
@@ -203,6 +235,7 @@ video and `demo/docs/narration.md` state the corrected version.
 | 6 | Unknown is a first-class result. | Below the reporting floor the value is withheld and the reason recorded. |
 | 7 | The video's reveals are cued by the provider's word alignment. | Nothing is hand-timed, so a narration edit moves the reveals automatically. |
 | 8 | The demo video commits its own repair tooling. | The free-tier character budget is a real constraint; making the repair reproducible beats a one-off edit. |
+| 9 | A voice the plan refuses is substituted and reported, not failed. | The person holding the phone is in front of a broken machine; an error about a subscription is the least useful answer available. Reporting the substitution in the response headers keeps it honest. |
 
 ---
 
@@ -217,19 +250,33 @@ video and `demo/docs/narration.md` state the corrected version.
 - **Regions are calibrated per profile**, not discovered generically.
 - **Fixtures are synthetic** with exact ground truth; they are not photographs.
 - **Tool-failure recovery is unmeasured** — no scenario forces a tool to fail.
-- **ElevenLabs voice substitution** — Alice rather than Beth, and the free tier's
-  character budget has forced the diagnosis narration to open at its second sentence.
+- **ElevenLabs voice substitution** — the interface and the narration both speak with
+  Alice (premade, British, female, middle-aged) rather than the brief's Beth (library,
+  young adult), because the account is on a free plan. The substitution is reported in
+  the response headers rather than hidden. The free tier's character budget also forced
+  the diagnosis narration to open at its second sentence.
 - The competition skill set named in the brief is not installed in this workspace.
 
 ---
 
 ## Git Commit / Repository Status
 
-- Repository at `/home/azureuser/sightops`, branch `main`, **no remote configured**.
-- Two commits exist: `00c6f3e` (vision engine and agent loop) and `5b800b7` (HTTP
-  surface, web client, diagrams, tests).
-- Uncommitted at the time of writing: the vision fixes, `backend/scripts/`,
-  `docs/{architecture,benchmarks,competition,evaluation}/`, `demo/`, the Docker files
-  and `README.md`. These are being folded into conventional commits.
+- Repository at `/home/azureuser/sightops`, branch `main`, remote `origin` =
+  `https://github.com/yablokolabs/sightops.git` (**public**), pushed.
+- Nine commits, no AI attribution footers on any of them: `00c6f3e` (vision engine and
+  agent loop), `5b800b7` (HTTP surface, web client, diagrams, tests), `8fb46d6` (needle
+  shape validation), `b13d63e` (evaluation, calibration and benchmark harnesses),
+  `acbd545` (Docker), `539bbf9` (architecture, evaluation, benchmark and submission
+  docs), `c30cf0d` (demo video and its project), `1df9664` (voice fix), `d645556`
+  (screenshot-to-asset sync).
+- The voice fix made `demo/screenshots/12-system-status.png` stale (it shows the voice
+  id), so the screenshots were re-captured, the video assets re-synced with
+  `npm run assets`, and the video re-rendered: the committed screenshots, the assets and
+  the MP4 now come from the same run. The re-rendered MP4 was verified with `ffprobe`
+  (H.264 1920×1080 60 fps, 16,885 frames, AAC 44.1 kHz mono, 281.42 s, 17.8 MB) and with
+  a clean full decode.
+- Every asset the README references was confirmed to resolve on GitHub after the push:
+  the four diagram assets, the screenshots, the MP4, the subtitles and the evaluation
+  report all return 200 from `raw.githubusercontent.com`.
 - `.gitignore` excludes secrets, `data/`, virtualenvs, `node_modules/` and
   `frontend/dist/`. No AWS resource has been provisioned at any point.

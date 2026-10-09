@@ -41,8 +41,8 @@ and `ELEVENLABS_API_KEY` in the environment for the narration step.
 # 1. capture the application screenshots (needs backend :8000 and client :4173)
 cd demo/videowright && npm install && npm run screens
 
-# 1b. copy the refreshed captures into the video project's assets
-cd demo/videowright && npm run assets
+# 1b. rename the refreshed captures to the names the scenes import
+npm run assets
 
 # 2. narration -> timing
 cd videos/sightops-demo/audio/originals/voiceovers/v1

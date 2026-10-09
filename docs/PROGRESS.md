@@ -89,14 +89,22 @@ through GitHub's raw proxy, and repository topics set for discoverability.
 
 ### Phase 10 — CI/CD (built this session)
 
-`.github/workflows/ci.yml` runs on every push and pull request, in four jobs:
+`.github/workflows/ci.yml` runs on every push and pull request, in five jobs:
 
 | Job | What it gates |
 |---|---|
 | `secrets` | `scripts/scan_secrets.py` over every tracked file |
 | `backend` | venv install, an OpenCV 5 assertion, `pytest`, the demonstration scenarios, the quality calibration, a fresh `evaluate.py` run, and `scripts/check_evaluation_metrics.py` |
 | `frontend` | `npm ci`, `tsc --noEmit`, `vite build`, `playwright install --with-deps chromium`, and the three browser journeys |
+| `demo` | `npm ci` and `tsc --noEmit` in `demo/videowright`, then `scripts/check_scene_layout.mjs` against the dev server |
 | `docker` | `docker compose build`, `docker compose up -d --wait`, `scripts/smoke_docker.sh`, then logs and `down -v` |
+
+The `demo` job was added after the scene-overlap defect. It is the one check that could
+have caught that class of fault automatically and it was the only significant local
+check the pipeline did not run, which is exactly the gap that let six scenes overlap
+unnoticed until a render is watched. The step starts the dev server itself, waits for
+`/` to answer on `127.0.0.1:5199` and prints the server log if it never does, so a
+start-up failure is a diagnosis rather than a silent pass.
 
 `.github/workflows/release.yml` runs on a `v*` tag: it builds both images, pushes them
 to GHCR under the tag and `latest`, and opens a GitHub release with the demonstration
@@ -123,9 +131,9 @@ AAC 44.1 kHz mono, 281.42 s, and a clean full-decode under `ffmpeg -f null`.
 ## In Progress
 
 - **Continuous integration is green on GitHub.** `.github/workflows/ci.yml` runs on
-  every push in four jobs and the current `main` passes all four: `secret scan` 7 s,
-  `backend, vision and agent` 48 s, `frontend and browser journeys` 1 m 8 s,
-  `container build and smoke test` 59 s.
+  every push in five jobs and the current `main` passes all five: `secret scan` 4 s,
+  `backend, vision and agent` 57 s, `frontend and browser journeys` 1 m 4 s,
+  `demonstration video scenes` 1 m 0 s, `container build and smoke test` 55 s.
 - **Continuous delivery is written but not exercised.** `.github/workflows/release.yml`
   publishes both images to GHCR and opens a release on a `v*` tag, and no tag has been
   pushed, so nothing in it has ever run. It should be exercised deliberately the first
@@ -189,6 +197,16 @@ Latest verified runs (2026-10-09):
   **22 checks passed**, including the full industrial demonstration through nginx
   (`WAITING_FOR_USER` → `AWAITING_APPROVAL` → approve → `COMPLETED`), the annotated
   evidence served as `image/png`, and the tool trace inside its documented bound.
+- **Scene layout on CI, run 37896419311** → the `demo` job **success** in 1 m 0 s. The
+  runner reported the address the dev server actually answered on,
+  `http://[::1]:5199`, and then all ten segments `ok` with
+  *"OK: every segment fits the 1920x1080 frame and nothing overlaps"*. The job exists
+  because this check was the only significant local check the pipeline did not run,
+  and it is the one that would have caught the overlapping blocks months of renders
+  earlier. Before it was pushed it was dry-run locally: `npm ci` (0 vulnerabilities),
+  `tsc --noEmit` and the check itself all exit 0, the readiness probe was verified to
+  fail with exit 1 and a printed log when nothing answers, and the step's shell was
+  syntax-checked with `bash -n` after being extracted from the workflow.
 - **GitHub Actions, run 37882519600 on `main`** → **success**. The runner reported
   `OpenCV 5.0.0`, `183 passed`, `17/17 checks passed`, `2/2 checks passed`, a full
   `evaluate.py` run whose twelve metric gates held, `3 passed` for the browser
@@ -324,7 +342,7 @@ video and `demo/docs/narration.md` state the corrected version.
     the preview server to `127.0.0.1`, and made diagnosable by printing the listening
     sockets on failure.
 11. **Scene blocks overlapped inside the frame in six of the ten scenes (fixed on
-    `fix-demo-video-overlap`, merged as PR #1).** Several scenes held more content than
+    `fix-demo-video-overlap`, rebased from PR #1).** Several scenes held more content than
     1080 lines can show, so a centred stage grid that still fitted the frame lay across
     the headline above it and the alert below it — up to **185 px** of real overlap. The
     layout checker missed it because it only compared elements with the frame edges. The
@@ -332,6 +350,16 @@ video and `demo/docs/narration.md` state the corrected version.
     blocks cover the same pixels, and the scenes were reduced until all ten pass. The
     overlap was measured on the old sources as **26 faults across 6 segments**, so this
     is a genuine defect the old check could not see, not a cosmetic tidy-up.
+12. **The first run of the new `demo` CI job failed on the runner while passing
+    locally.** The job's server reported itself running, and 127.0.0.1 never answered
+    for sixty seconds. `videowright` calls Vite with no `host`, so the server binds
+    `localhost`, and the runner's resolver returns `::1` first while a development
+    machine returns `127.0.0.1` — the same IPv4/IPv6 difference that broke the preview
+    server earlier in this document, in a second place. `curl` uses the first address
+    it is given instead of trying the other, so the job now probes both families and
+    navigates to whichever one answers, printing the listening sockets only if neither
+    does. The next run reported `the dev server answered on http://[::1]:5199`, which
+    is the failure reproduced as a diagnosis rather than as a silence.
 
 ---
 
@@ -388,7 +416,13 @@ video and `demo/docs/narration.md` state the corrected version.
 
 - Repository at `/home/azureuser/sightops`, branch `main`, remote `origin` =
   `https://github.com/yablokolabs/sightops.git` (**public**), pushed.
-- Seventeen commits on `main`, no AI attribution footers on any of them: `00c6f3e`
+- **History is linear.** No merge commit exists on `main` at any point: the pull
+  request was rebased onto `main` rather than merged, and the resulting tree was
+  verified byte-identical to the merged tree (`git diff` against a backup branch was
+  empty) before the branch was force-pushed, so the rebase changed history only and not
+  a single file. The redundant inner merge in the branch — which merged a commit that
+  was already an ancestor — was dropped at the same time.
+- Eighteen commits on `main`, no AI attribution footers on any of them: `00c6f3e`
   (vision engine and agent loop), `5b800b7` (HTTP surface, web client, diagrams, tests),
   `8fb46d6` (needle shape validation), `b13d63e` (evaluation, calibration and benchmark
   harnesses), `acbd545` (Docker), `539bbf9` (architecture, evaluation, benchmark and
@@ -396,8 +430,9 @@ video and `demo/docs/narration.md` state the corrected version.
   `d645556` (screenshot-to-asset sync), `14cb062` (refreshed captures and re-rendered
   video), `b2ece08` (approval decision from the route), `aa4a892` (CI gate and tagged
   release), `dc85b00` (preview server bound to the address the tests probe), `16ac0e6`
-  (this document's CI/CD record), plus the two commits of PR #1 and its merge `ae3174c`
-  (the scene-overlap fix, `fix-demo-video-overlap`).
+  (this document's CI/CD record), `fbe4067` (the scene-overlap fix, rebased from PR #1),
+  `65e00b5` (the record of that fix and its verification), `abad6e7` (the `demo` CI job)
+  and `1e91cb3` (that job's address-family fix).
 - The voice fix made `demo/screenshots/12-system-status.png` stale (it shows the voice
   id), so the screenshots were re-captured, the video assets re-synced with
   `npm run assets`, and the video re-rendered: the committed screenshots, the assets and

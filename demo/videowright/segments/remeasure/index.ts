@@ -10,16 +10,27 @@ export default defineScene({
 		<div class="so-scene">
 			<div>
 				<div class="kicker">A better view</div>
-				<div class="headline wrap">The second look is what produces the measurement.</div>
+				<div class="headline small">The second look is what produces the measurement.</div>
 			</div>
 
 			<div class="stage split">
-				${shot(
-					observation2Url,
-					"The SightOps workspace showing the second industrial observation: the same pump-station panel re-imaged square-on with diffuse light, and a measured gauge reading of 87.2 PSI at 0.96 confidence.",
-					0,
-					"capped",
-				)}
+				<div class="column">
+					${shot(
+						observation2Url,
+						"The SightOps workspace showing the second industrial observation: the same pump-station panel re-imaged square-on with diffuse light, and a measured gauge reading of 87.2 PSI at 0.96 confidence.",
+						0,
+						"capped",
+					)}
+
+					<div class="panel" data-beat="1">
+						<div class="panel-title">compare_observations</div>
+						<ul class="list">
+							<li>The frame no longer needs a better view</li>
+							<li>Gauge confidence rose from 0.57 to 0.96</li>
+							<li>Measured pressure 83.7 to 87.2 PSI</li>
+						</ul>
+					</div>
+				</div>
 
 				<div class="column">
 					<div class="panel good" data-beat="0">
@@ -34,20 +45,10 @@ export default defineScene({
 						</div>
 					</div>
 
-					<div class="panel" data-beat="1">
-						<div class="panel-title">compare_observations</div>
-						<ul class="list">
-							<li>The frame no longer needs a better view</li>
-							<li>Gauge confidence rose from 0.57 to 0.96</li>
-							<li>Measured pressure 83.7 to 87.2 PSI</li>
-						</ul>
-						<div class="caption">Read from the two measurement sets, not described by a model.</div>
+					<div class="alert good" data-beat="2">
+						The earlier uncertainty is replaced by a measurement.
 					</div>
 				</div>
-			</div>
-
-			<div class="alert good" data-beat="2">
-				Observation 1: 83.7 PSI at 0.57 confidence, needing a better view. Observation 2: 87.2 PSI at 0.96.
 			</div>
 		</div>
 	`,

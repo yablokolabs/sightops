@@ -219,7 +219,9 @@ Latest verified runs (2026-10-09):
 - **Demo video** — `sync_audio.py` word check passes; video length **4:41** (16,885
   frames at 60 fps, 281.42 s); 61 subtitle cues ending at 04:41.076; full decode clean;
   audio measured at -17.0 dB mean and -1.0 dB peak, so nothing clips. The layout checker
-  reports all ten segments `1920x1080 ok`.
+  reports all ten segments `1920x1080 ok`. That check only looked at the frame edges, and
+  five scenes had blocks that overlapped inside the frame; the checker now tests overlap
+  too, and the scenes were reduced until all ten pass.
 - **Live voice check** — on the running application, the default voice returns 200
   `audio/mpeg` (65,663 bytes, 4.08 s) with no substitution, and requesting the library
   voice returns 200 with the same audio and `X-SightOps-Voice-Substituted: true`.

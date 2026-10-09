@@ -27,10 +27,6 @@ export default defineScene({
 			<div class="promise" data-beat="1">
 				The agent knows what it can observe, what remains uncertain, and what needs inspecting next.
 			</div>
-
-			<div class="caption" data-beat="1">
-				AWS integration is not implemented. No AWS resource is provisioned or benchmarked.
-			</div>
 		</div>
 	`,
 });

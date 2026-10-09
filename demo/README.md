@@ -69,11 +69,12 @@ in the video anyway.
 than falling back to an older image if a capture is missing.
 
 Before a render, run the layout check as well, because it is the only way to see a panel
-that overflows the frame without waiting half an hour for the video:
+that overflows the frame or lies across another block without waiting half an hour for
+the video:
 
 ```bash
 npx videowright dev --port 5199          # in one shell
-npm run layout                           # in another; exits non-zero on overflow
+npm run layout                           # in another; exits non-zero on overflow or overlap
 ```
 
 ## Voice
@@ -108,9 +109,11 @@ still refuses to run if the recording and the written script disagree. The finis
 track did **not** need either: it is one uninterrupted take. See `docs/narration.md`.
 
 `scripts/check_scene_layout.mjs` plays the timeline in the dev server and measures the
-live DOM, reporting any settled element that crosses an edge of the 1920×1080 frame.
-It is worth running before a render, which takes about half an hour and is the only
-other way to see a panel that overflows.
+live DOM with every reveal visible. It reports any element that crosses an edge of the
+1920×1080 frame, any stage whose content is taller than its row, and any two blocks that
+cover the same pixels. The last two matter because a centred grid with too much content
+stays inside the frame and lies across the headline above it instead. It is worth running
+before a render, which takes about half an hour and is the only other way to see either.
 
 ## Screenshots
 

@@ -6,12 +6,17 @@
  * for each segment it navigates straight to it, makes every reveal visible, and
  * measures the live DOM.
  *
- * Two checks per segment:
+ * Four checks per segment:
  *   - the scene's own content must not be taller than the scene box
- *     (`scrollHeight` vs `clientHeight`), which catches a grid whose content is
- *     centred past the top and bottom edges at once;
- *   - every element must sit inside the scene's box, which catches a panel that
- *     overlaps the headline even when the scene itself is not scrolling.
+ *     (`scrollHeight` vs `clientHeight`);
+ *   - every element must sit inside the scene's box;
+ *   - every element in a `.stage` must sit inside that stage's box, because content
+ *     that leaves its row uses up the gap to the blocks above and below it;
+ *   - no two elements may cover the same pixels unless one contains the other. This
+ *     is the check that catches a centred grid with more content than its row: the
+ *     grid stays inside the frame, and its ends lie across the headline above it and
+ *     the alert below it. Two `.loop` bars in one `.loop-stack` are exempt, because
+ *     they share a cell on purpose.
  *
  * Measurements are taken against the scene's own bounding box, not the viewport,
  * because in the dev player the scene sits below a header. That offset does not exist
@@ -20,7 +25,7 @@
  *   npx videowright dev --port 5199
  *   node scripts/check_scene_layout.mjs
  *
- * Exits non-zero if any segment overflows, so it can gate a render.
+ * Exits non-zero if any segment overflows or overlaps, so it can gate a render.
  */
 
 import { chromium } from "playwright";
@@ -89,12 +94,48 @@ for (const segment of SEGMENTS) {
         overflow.push({ element: label(element), past: Math.round(past) });
       }
     }
+    for (const stage of scene.querySelectorAll(".stage")) {
+      const row = stage.getBoundingClientRect();
+      let past = 0;
+      for (const element of stage.querySelectorAll("*")) {
+        const rect = element.getBoundingClientRect();
+        if (rect.width < 2 || rect.height < 2) continue;
+        past = Math.max(past, rect.bottom - row.bottom, row.top - rect.top);
+      }
+      if (past > 1) {
+        overflow.push({ element: "<stage content taller than its row>", past: Math.round(past) });
+      }
+    }
     overflow.sort((a, b) => b.past - a.past);
+
+    const boxes = [...scene.querySelectorAll("*")]
+      .map((element) => ({ element, rect: element.getBoundingClientRect() }))
+      .filter(({ rect }) => rect.width >= 2 && rect.height >= 2);
+    const overlap = [];
+    for (let first = 0; first < boxes.length; first++) {
+      for (let second = first + 1; second < boxes.length; second++) {
+        const a = boxes[first];
+        const b = boxes[second];
+        if (a.element.contains(b.element) || b.element.contains(a.element)) continue;
+        const stack = a.element.closest(".loop-stack");
+        if (stack && stack === b.element.closest(".loop-stack")) continue;
+        const across = Math.min(a.rect.right, b.rect.right) - Math.max(a.rect.left, b.rect.left);
+        const down = Math.min(a.rect.bottom, b.rect.bottom) - Math.max(a.rect.top, b.rect.top);
+        if (across > 1 && down > 1) {
+          overlap.push({
+            element: `${label(a.element)} overlaps ${label(b.element)}`,
+            past: Math.round(Math.min(across, down)),
+          });
+        }
+      }
+    }
+    overlap.sort((a, b) => b.past - a.past);
 
     return {
       sceneOverflow: Math.round(scene.scrollHeight - scene.clientHeight),
       box: [Math.round(box.width), Math.round(box.height)],
       overflow: overflow.slice(0, 4),
+      overlap: overlap.slice(0, 4),
       headline:
         (scene.querySelector(".headline") ?? scene.querySelector(".wordmark"))?.textContent?.trim() ??
         "(none)",
@@ -103,7 +144,7 @@ for (const segment of SEGMENTS) {
 
   const issues = [];
   if (result.sceneOverflow > 1) issues.push({ element: "<scene content taller than the frame>", past: result.sceneOverflow });
-  issues.push(...result.overflow);
+  issues.push(...result.overflow, ...result.overlap);
 
   const status = issues.length === 0 ? "ok  " : "FAIL";
   console.log(`${status} ${segment.padEnd(12)} ${result.box[0]}x${result.box[1]}  ${result.headline}`);
@@ -116,8 +157,8 @@ for (const segment of SEGMENTS) {
 await browser.close();
 
 if (failures.length === 0) {
-  console.log("\nOK: every segment fits the 1920x1080 frame");
+  console.log("\nOK: every segment fits the 1920x1080 frame and nothing overlaps");
   process.exit(0);
 }
-console.log(`\n${failures.length} overflow(s) across ${new Set(failures.map((f) => f.segment)).size} segment(s)`);
+console.log(`\n${failures.length} layout fault(s) across ${new Set(failures.map((f) => f.segment)).size} segment(s)`);
 process.exit(1);

@@ -7,7 +7,7 @@ export default defineScene({
 	voiceover:
 		"Then SightOps stops. Consequential actions require a person, so the agent requests approval and waits for it. In this demonstration the proposed action is simulated, and the interface says so plainly. Nothing is switched, no valve is turned, and no safety interlock is ever bypassed, because a troubleshooting assistant that can reach out and touch machinery is a hazard, not a product. A human decides what happens next.",
 	html: `
-		<div class="so-scene">
+		<div class="so-scene tight">
 			<div>
 				<div class="kicker warn">Human approval</div>
 				<div class="headline small">It stops before it acts.</div>
@@ -18,6 +18,7 @@ export default defineScene({
 					approvalUrl,
 					"The incident and approval panel: the proposed simulated action, an approve button and a reject button",
 					0,
+					"capped",
 				)}
 				<div class="panel warn" data-beat="0">
 					<div class="panel-title">Proposed action</div>
@@ -32,12 +33,12 @@ export default defineScene({
 
 			<div class="panel" data-beat="1">
 				<div class="panel-title">What it will not do</div>
-				<ul class="mono-list">
-					<li>switch a relay</li>
-					<li>turn a valve</li>
-					<li>bypass an interlock</li>
-					<li>start a motor</li>
-				</ul>
+				<div class="row">
+					<span class="chip">switch a relay</span>
+					<span class="chip">turn a valve</span>
+					<span class="chip">bypass an interlock</span>
+					<span class="chip">start a motor</span>
+				</div>
 				<div class="caption">No safety-critical actuation path exists in the system.</div>
 			</div>
 

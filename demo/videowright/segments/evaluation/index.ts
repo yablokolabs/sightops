@@ -6,10 +6,10 @@ export default defineScene({
 	voiceover:
 		"The vision pipeline is measured on a reproducible fixture set with exact ground truth, across perspective, glare, blur, noise and resolution. On the gauge, the mean absolute error is under half a PSI, and fewer than one in a hundred published readings is wrong by more than a few PSI. Indicators are classified at better than 98 percent precision and recall. A frame is analysed in about 22 milliseconds on a CPU, and the agent completes every scripted task inside its bounds.",
 	html: `
-		<div class="so-scene">
+		<div class="so-scene tight">
 			<div>
 				<div class="kicker">Measured, not claimed</div>
-				<div class="headline small wrap">Reproducible evaluation, with the numbers published.</div>
+				<div class="headline small">Reproducible evaluation, with the numbers published.</div>
 			</div>
 
 			<div class="stage">
@@ -32,9 +32,7 @@ export default defineScene({
 						<li><span>Display lit or blank is the weakest class, and it is stated as such</span></li>
 					</ul>
 					<div class="caption">
-						The error, refusal and classification figures come from backend/scripts/evaluate.py
-						(the full table is in docs/evaluation/results.md); the frame latency is what the
-						running application reports per observation.
+						Source: backend/scripts/evaluate.py and docs/evaluation/results.md. Latency: reported by the running app.
 					</div>
 				</div>
 

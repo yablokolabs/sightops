@@ -62,6 +62,10 @@ class Degradation:
     #: while the detail that was never captured is genuinely gone.
     resolution_scale: float = 1.0
     noise_sigma: float = 0.0
+    #: Fraction of the gauge diameter hidden by a dark occluding patch. Used to
+    #: check that a partly hidden dial produces either a withheld reading or a
+    #: low-confidence one, never a confident wrong number.
+    occlusion: float = 0.0
     jpeg_quality: int | None = None
 
 
@@ -277,6 +281,18 @@ def _apply_degredation(image: np.ndarray, degrade: Degradation, rng: np.random.G
         glare = cv2.GaussianBlur(glare, (151, 151), 0) / 255.0
         out = np.clip(out.astype(np.float32) + glare[:, :, None] * 255.0 * degrade.glare, 0, 255).astype(np.uint8)
 
+    if degrade.occlusion > 0:
+        spec = INDUSTRIAL_PANEL.gauge
+        cx, cy, radius = _gauge_geometry(spec)
+        half = radius * degrade.occlusion
+        # An opaque dark patch over the dial, as a hand, cable or bracket would
+        # appear in a real photograph.
+        x0 = int(max(0, cx - half))
+        y0 = int(max(0, cy - half))
+        x1 = int(min(out.shape[1], cx + half))
+        y1 = int(min(out.shape[0], cy + half))
+        cv2.rectangle(out, (x0, y0), (x1, y1), (28, 26, 24), -1)
+
     if degrade.blur_sigma > 0:
         kernel = int(degrade.blur_sigma * 4) | 1
         out = cv2.GaussianBlur(out, (kernel, kernel), degrade.blur_sigma)
@@ -386,6 +402,7 @@ def _degradation_dict(degrade: Degradation | None) -> dict:
         "perspective": degrade.perspective,
         "resolution_scale": degrade.resolution_scale,
         "noise_sigma": degrade.noise_sigma,
+        "occlusion": degrade.occlusion,
         "jpeg_quality": degrade.jpeg_quality,
     }
 

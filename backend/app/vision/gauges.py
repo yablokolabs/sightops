@@ -69,6 +69,16 @@ COVERAGE_FLOOR = 0.60
 WIDTH_GOOD_DEG = 3.0
 WIDTH_BAD_DEG = 14.0
 UNREADABLE_CONFIDENCE = 0.25
+#: How far past the printed scale a reading may sit and still be reported.
+#:
+#: The sub-step refinement resolves a peak to about half an angular step, so a
+#: needle resting on the end stop measures a fraction of a degree *beyond* the
+#: endpoint. Refusing that reading for pedantry produced a false refusal on a
+#: perfectly clean frame at 0 PSI, where the measured -135.4 deg fell 0.4 deg
+#: outside a sweep starting at -135 deg. Within this tolerance the reading is
+#: clamped to the endpoint; beyond it, the needle is genuinely off-scale and the
+#: value is withheld.
+SWEEP_TOLERANCE_DEG = 3.0
 #: Below this confidence the measured value is withheld entirely. A reliability
 #: tool that prints "57 PSI" for a true 87 PSI is worse than one that says it
 #: could not read the gauge, so a number is only published when it is trusted.
@@ -255,7 +265,8 @@ def angle_to_value(angle: float, spec: RegionSpec) -> tuple[float | None, float]
     """Map a clock angle onto the configured scale.
 
     Returns ``(value, position)`` where ``position`` is the normalised ``0..1``
-    position on the sweep, or ``(None, ...)`` when the reading falls outside it.
+    position on the sweep, or ``(None, ...)`` when the reading falls further
+    outside it than :data:`SWEEP_TOLERANCE_DEG`.
     """
     start = spec.start_angle_deg if spec.start_angle_deg is not None else -135.0
     end = spec.end_angle_deg if spec.end_angle_deg is not None else 135.0
@@ -266,10 +277,18 @@ def angle_to_value(angle: float, spec: RegionSpec) -> tuple[float | None, float]
     if sweep <= 0:
         sweep += 360.0
     relative = (angle - start) % 360.0
-    if relative > sweep + 1e-6:
-        return None, relative / 360.0
+    if relative > sweep:
+        # Modulo wraps a needle that sits a fraction of a degree *before* the
+        # start of the sweep round to just under 360, so both ends are tested
+        # before deciding the reading is off-scale.
+        if relative > 360.0 - SWEEP_TOLERANCE_DEG:
+            relative = 0.0
+        elif relative <= sweep + SWEEP_TOLERANCE_DEG:
+            pass
+        else:
+            return None, relative / 360.0
 
-    position = relative / sweep
+    position = min(max(relative / sweep, 0.0), 1.0)
     return scale_min + position * (scale_max - scale_min), position
 
 

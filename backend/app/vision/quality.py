@@ -29,9 +29,11 @@ import numpy as np
 from app.models.schemas import ImageQuality
 
 #: Laplacian-variance ratio at or above which an image scores a full 1.0.
-#: Calibrated in ``scripts/calibrate_quality.py`` against the sharp/blurred
-#: fixture pairs; regenerating the fixtures and re-running that script is the
-#: supported way to change this.
+#: ``python3 scripts/calibrate_quality.py`` re-derives the separation from the
+#: repository's own fixtures and fails if an in-focus fixture no longer clears
+#: the frame threshold, or if a frame whose detail has gone no longer falls below
+#: it. Regenerating the fixtures and re-running that script is the supported way
+#: to change this value.
 BLUR_REFERENCE = 0.0022
 
 #: Below this blur score the frame is treated as too soft to measure.

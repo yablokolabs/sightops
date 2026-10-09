@@ -335,8 +335,17 @@ class MessageCreate(BaseModel):
 
 
 class ApprovalDecision(BaseModel):
-    approved: bool
+    """The human decision on a proposed remediation.
+
+    The decision is the route: ``/approve`` or ``/reject``. ``approved`` is accepted
+    so a client may state the same thing in the body, and it is used for one purpose
+    only -- to check that the client and the route agree. A body that contradicts the
+    path is refused with a 422, because silently resolving it either way would mean an
+    endpoint that approves when its caller asked it to reject.
+    """
+
     note: str = Field(default="", max_length=1000)
+    approved: bool | None = None
 
 
 class VoiceRequest(BaseModel):

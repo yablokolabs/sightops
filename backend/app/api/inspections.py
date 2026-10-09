@@ -253,6 +253,7 @@ async def approve(
     decision: ApprovalDecision,
     context: AppContext = Depends(get_context),
 ) -> Incident:
+    _require_agreement(decision, approved=True)
     return await _decide(context, inspection_id, approved=True, note=decision.note)
 
 
@@ -262,7 +263,28 @@ async def reject(
     decision: ApprovalDecision,
     context: AppContext = Depends(get_context),
 ) -> Incident:
+    _require_agreement(decision, approved=False)
     return await _decide(context, inspection_id, approved=False, note=decision.note)
+
+
+def _require_agreement(decision: ApprovalDecision, *, approved: bool) -> None:
+    """Refuse a body that disagrees with the route about the decision.
+
+    The route is the decision. A caller that sends ``approved: false`` to
+    ``/approve`` is answered with a 422 rather than an approval, because the one thing
+    this endpoint must never do is authorise a consequential action that the person on
+    the other end of the request did not ask for.
+    """
+    if decision.approved is not None and decision.approved != approved:
+        raise HTTPException(
+            status_code=422,
+            detail=(
+                "the request body says approved="
+                f"{str(decision.approved).lower()} but this endpoint is "
+                f"{'approve' if approved else 'reject'}; the route decides and a "
+                "contradiction is refused rather than resolved silently"
+            ),
+        )
 
 
 async def _decide(context: AppContext, inspection_id: str, *, approved: bool, note: str) -> Incident:

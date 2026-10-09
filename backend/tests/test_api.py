@@ -282,6 +282,60 @@ async def test_rejecting_the_incident_is_recorded_as_a_rejection(client):
     assert final["resolved"] is False
 
 
+async def test_a_note_alone_is_enough_to_decide(client):
+    """The route is the decision, so the body does not have to restate it."""
+    started = (await client.http.post("/api/demo/industrial")).json()
+    inspection_id = started["id"]
+    await client.http.post(f"/api/demo/{inspection_id}/next-observation")
+
+    response = await client.http.post(
+        f"/api/inspections/{inspection_id}/approve",
+        json={"note": "Reviewed the annotated evidence."},
+    )
+
+    assert response.status_code == 200, response.text
+    assert response.json()["status"] == "remediation_approved"
+
+
+async def test_a_body_that_contradicts_the_route_never_approves(client):
+    """POST /approve with approved=false must not authorise anything."""
+    started = (await client.http.post("/api/demo/industrial")).json()
+    inspection_id = started["id"]
+    await client.http.post(f"/api/demo/{inspection_id}/next-observation")
+
+    response = await client.http.post(
+        f"/api/inspections/{inspection_id}/approve",
+        json={"approved": False, "note": "Not authorised."},
+    )
+
+    assert response.status_code == 422, response.text
+
+    # The inspection is untouched: still waiting for a human, still unresolved.
+    final = (await client.http.get(f"/api/inspections/{inspection_id}")).json()
+    assert final["state"] == "AWAITING_APPROVAL"
+    assert final["resolved"] is None
+
+    incident = (
+        await client.http.get(f"/api/incidents/{final['incident_id']}")
+    ).json()
+    assert incident["status"] not in {"remediation_approved", "remediation_rejected"}
+
+
+async def test_a_body_that_contradicts_the_route_never_rejects(client):
+    started = (await client.http.post("/api/demo/industrial")).json()
+    inspection_id = started["id"]
+    await client.http.post(f"/api/demo/{inspection_id}/next-observation")
+
+    response = await client.http.post(
+        f"/api/inspections/{inspection_id}/reject",
+        json={"approved": True},
+    )
+
+    assert response.status_code == 422, response.text
+    final = (await client.http.get(f"/api/inspections/{inspection_id}")).json()
+    assert final["state"] == "AWAITING_APPROVAL"
+
+
 async def test_approving_an_inspection_without_an_incident_is_refused(client):
     inspection = await _create(client)
 

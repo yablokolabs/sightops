@@ -1,0 +1,71 @@
+# Continuous delivery, on tags only.
+#
+# Push a version tag and this publishes the two container images to the GitHub
+# Container Registry and opens a GitHub release with the demonstration video attached:
+#
+#   git tag v0.1.0 && git push origin v0.1.0
+#
+# It does not run on every commit on purpose. `ci.yml` already builds and smoke-tests
+# the same images on every push; publishing them is a decision, not a side effect.
+#
+# The images are built by the same Dockerfiles CI smokes, and the tag is put on the
+# images as well as `latest` so a deployment can pin a version rather than track main.
+
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  images:
+    name: publish images
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Log in to the container registry
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" \
+            | docker login ghcr.io --username "${{ github.actor }}" --password-stdin
+
+      - name: Build and push the backend image
+        run: |
+          image="ghcr.io/${{ github.repository }}-backend"
+          docker build --file Dockerfile --tag "${image}:${GITHUB_REF_NAME}" .
+          docker tag "${image}:${GITHUB_REF_NAME}" "${image}:latest"
+          docker push "${image}:${GITHUB_REF_NAME}"
+          docker push "${image}:latest"
+
+      - name: Build and push the web client image
+        run: |
+          image="ghcr.io/${{ github.repository }}-frontend"
+          docker build --file frontend/Dockerfile --tag "${image}:${GITHUB_REF_NAME}" frontend
+          docker tag "${image}:${GITHUB_REF_NAME}" "${image}:latest"
+          docker push "${image}:${GITHUB_REF_NAME}"
+          docker push "${image}:latest"
+
+  release:
+    name: publish the release
+    needs: images
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      # The demonstration video is the artefact most people will actually look at, so
+      # it is attached to the release rather than left to be found in the tree.
+      - name: Create the release with the demonstration video
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "${GITHUB_REF_NAME}" \
+            --title "SightOps ${GITHUB_REF_NAME}" \
+            --generate-notes \
+            "demo/videos/sightops-demo.mp4#SightOps demonstration (4:41)"

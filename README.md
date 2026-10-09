@@ -1,5 +1,7 @@
 # SightOps — An Agentic Visual Reliability Engineer
 
+[![CI](https://github.com/yablokolabs/sightops/actions/workflows/ci.yml/badge.svg)](https://github.com/yablokolabs/sightops/actions/workflows/ci.yml)
+
 **See. Diagnose. Act.**
 
 SightOps is an AI-powered visual troubleshooting assistant for household appliances
@@ -191,7 +193,9 @@ docker compose up --build
 
 Without `NEBIUS_API_KEY` the agent runs the deterministic policy instead of model
 reasoning, and everything else still works. No key is stored in the repository or
-baked into an image.
+baked into an image; [`.env.example`](.env.example) lists the three variables for a
+local run, and `scripts/scan_secrets.py` fails the build if any `.env` file is ever
+tracked.
 
 ### Local development
 
@@ -202,15 +206,39 @@ cd backend && python3 -m venv ../.venv && ../.venv/bin/pip install -e .
 cd frontend && npm install && npm run dev   # http://localhost:5173
 ```
 
-### Tests
+### Checks
+
+Every one of these is a step in [`ci.yml`](.github/workflows/ci.yml), so a green build
+means the same thing here as it does on a developer machine. None of them needs a
+provider key: the test suite and the scripted demonstrations never call out.
 
 ```bash
-cd backend && ../.venv/bin/python -m pytest -q          # 180 tests
-cd frontend && npm run typecheck && npm run build
+# backend: unit, integration, safety and agent-tool-call tests
+cd backend && ../.venv/bin/python -m pytest -q                          # 183 tests
+
+# the vision claims, re-measured
+cd backend && ../.venv/bin/python scripts/verify_demo_scenarios.py      # 17 checks
+cd backend && ../.venv/bin/python scripts/calibrate_quality.py
 cd backend && ../.venv/bin/python scripts/evaluate.py --out ../docs/evaluation
-cd backend && ../.venv/bin/python scripts/verify_demo_scenarios.py
-cd backend && ../.venv/bin/python scripts/check_providers.py
+python3 scripts/check_evaluation_metrics.py docs/evaluation/results.json
+
+# frontend: type check, production build, and browser journeys over the real backend
+cd frontend && npm run typecheck && npm run build
+cd frontend && npx playwright install --with-deps chromium
+cd frontend && npm run test:e2e
+
+# repository and container
+python3 scripts/scan_secrets.py                 # no credential in any tracked file
+docker compose up -d --wait && scripts/smoke_docker.sh
 ```
+
+`scripts/check_providers.py` is the one check that needs the keys and the network. It
+verifies that the configured models and voice exist and that tool calling works, and it
+is run by hand rather than in CI because a CI machine has no credentials.
+
+Pushing a `v*` tag runs [`release.yml`](.github/workflows/release.yml), which publishes
+both images to the GitHub Container Registry and opens a release with the demonstration
+video attached.
 
 ## API surface
 
@@ -234,7 +262,10 @@ cd backend && ../.venv/bin/python scripts/check_providers.py
 SightOps is a decision-support system, not a controller.
 
 - Consequential actions **require explicit human approval**; the state machine has no
-  path that executes one.
+  path that executes one. The decision comes from the route (`/approve`, `/reject`),
+  and a request body that disagrees with the route is refused with a 422 rather than
+  resolved — an endpoint that approves when its caller asked it to reject is a bug,
+  not a convenience. `backend/tests/test_api.py` asserts that.
 - The competition shutdown demonstration is **simulated**, and the interface says so
   on the panel itself.
 - No safety interlock is ever bypassed, and unsafe electrical repair is never
@@ -252,10 +283,14 @@ backend/            FastAPI service, OpenCV 5 vision engine, agent loop, SQLite 
   app/api/          HTTP surface
   scripts/          evaluate.py, verify_demo_scenarios.py, check_providers.py,
                     calibrate_quality.py, bench_cool.py
-  tests/            180 tests
+  tests/            183 tests
 frontend/           React + TypeScript + Tailwind client (Vite)
+  e2e/              Playwright journeys: both demonstrations through the interface
+scripts/            scan_secrets.py, check_evaluation_metrics.py, smoke_docker.sh
 demo/               VideoWright project, captured screenshots, narration, rendered video
 docs/               evaluation, architecture, benchmarks, competition notes, diagrams
+.github/workflows/  CI on every push, tagged release delivery
+.env.example        the three provider variables, with no values
 ```
 
 ## Demo video

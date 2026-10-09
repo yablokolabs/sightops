@@ -32,6 +32,12 @@ backend/data/
 demo/videos/*.tmp.mp4
 demo/renders/
 
+# Browser end-to-end test output (traces, screenshots and the HTML report)
+frontend/test-results/
+frontend/playwright-report/
+frontend/blob-report/
+frontend/.playwright/
+
 # Editors / OS
 .DS_Store
 .idea/

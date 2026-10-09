@@ -41,6 +41,9 @@ and `ELEVENLABS_API_KEY` in the environment for the narration step.
 # 1. capture the application screenshots (needs backend :8000 and client :4173)
 cd demo/videowright && npm install && npm run screens
 
+# 1b. copy the refreshed captures into the video project's assets
+cd demo/videowright && npm run assets
+
 # 2. narration -> timing
 cd videos/sightops-demo/audio/originals/voiceovers/v1
 bash generate.sh                  # writes audio.mp3 + timing.json
@@ -56,6 +59,22 @@ python3 scripts/build_subtitles.py
 `npm install` runs `scripts/apply-videowright-fix.mjs`, which writes the library
 re-export modules that the published `videowright@0.1.1` tarball omits. Without it the
 render fails with `page.waitForFunction: Timeout 30000ms exceeded`.
+
+`npm run screens` writes one 16:9 viewport shot per screen. Full-page variants are
+opt-in with `SIGHTOPS_CAPTURE_FULLPAGE=1`; they are three to seven times the bytes and
+nothing here uses them, because a frame that is taller than 16:9 would be letterboxed
+in the video anyway.
+
+`npm run assets` renames the captures to the names the scenes import, and fails rather
+than falling back to an older image if a capture is missing.
+
+Before a render, run the layout check as well, because it is the only way to see a panel
+that overflows the frame without waiting half an hour for the video:
+
+```bash
+npx videowright dev --port 5199          # in one shell
+npm run layout                           # in another; exits non-zero on overflow
+```
 
 ## Voice
 

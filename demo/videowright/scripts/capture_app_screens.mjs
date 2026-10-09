@@ -51,8 +51,15 @@ page.on("console", (message) => {
 });
 page.on("pageerror", (error) => console.log("[page exception]", String(error).slice(0, 300)));
 
-/** Screenshot the viewport and a full-page variant, and report what is on screen. */
-async function shot(name, { fullPage = true } = {}) {
+/**
+ * Screenshot the viewport, and report what is on screen.
+ *
+ * Full-page variants are opt-in with ``SIGHTOPS_CAPTURE_FULLPAGE=1``. They are
+ * three to seven times the bytes of the viewport shot, and neither the README nor
+ * the video uses them: the frame is 16:9, so a taller image would be letterboxed
+ * anyway. They are kept available for auditing anything below the fold.
+ */
+async function shot(name, { fullPage = process.env.SIGHTOPS_CAPTURE_FULLPAGE === "1" } = {}) {
   const viewportPath = path.join(OUT, `${name}.png`);
   await page.screenshot({ path: viewportPath });
   state.counts.viewport += 1;

@@ -1,0 +1,103 @@
+# SightOps — container deployment.
+#
+# Two services on one compose network: the OpenCV 5 vision backend, and the
+# nginx-served web client which proxies /api and /health to it. The host needs
+# only Docker — no Python, no Node, no OpenCV, and no cloud service.
+#
+# AWS integration is NOT IMPLEMENTED (docs/architecture/aws.md). Nothing here
+# talks to AWS or any billable service.
+#
+#   docker compose up --build          # then open http://localhost:8080
+#
+# Provider keys come from the host environment. A missing key degrades one
+# feature and the stack still runs: without NEBIUS_API_KEY the agent falls back
+# to the deterministic policy, and without ELEVENLABS_API_KEY voice is
+# unavailable while all written guidance works. `~/.hermes/.env` is never
+# mounted or copied into an image, and no key is stored in this file.
+#
+#   export NEBIUS_API_KEY=... ELEVENLABS_API_KEY=... TAVILY_API_KEY=...
+#   docker compose up --build
+#
+# The `version:` key is omitted deliberately: it is obsolete in Compose v2.
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: sightops-backend:local
+    restart: unless-stopped
+
+    environment:
+      # The single mounted volume, matching `Settings.data_dir`. It holds the
+      # SQLite database and the evidence blob store.
+      SIGHTOPS_DATA_DIR: /data
+      # Pass-through with a default, so `docker compose up` works with no
+      # environment at all. An empty value is treated as "not configured".
+      SIGHTOPS_DEMO_MODE: "${SIGHTOPS_DEMO_MODE:-false}"
+      NEBIUS_API_KEY: "${NEBIUS_API_KEY:-}"
+      ELEVENLABS_API_KEY: "${ELEVENLABS_API_KEY:-}"
+      TAVILY_API_KEY: "${TAVILY_API_KEY:-}"
+      # `SIGHTOPS_ENV_FILE` exists in app/config.py and points at a KEY=value
+      # file to read the same three keys from, defaulting to ~/.hermes/.env.
+      # It is left unset here on purpose: inside the image that path does not
+      # exist, and the keys above are already in the environment.
+
+    volumes:
+      - sightops-data:/data
+
+    # The client reaches the API over the compose network, so the backend is not
+    # published by default. Uncomment to call it directly from the host while
+    # debugging (http://localhost:8000/api/docs).
+    # ports:
+    #   - "8000:8000"
+
+    healthcheck:
+      # /health answers 200 with status "degraded" when the database is
+      # unreachable, so this asserts on the payload rather than the status code.
+      test:
+        - CMD
+        - python
+        - "-c"
+        - 'import json,sys,urllib.request as u; sys.exit(0 if json.loads(u.urlopen("http://127.0.0.1:8000/health", timeout=4).read()).get("status") == "ok" else 1)'
+      interval: 30s
+      timeout: 5s
+      start_period: 30s
+      retries: 3
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: sightops-frontend:local
+    restart: unless-stopped
+
+    # Gated on the backend being healthy rather than merely started, so nginx
+    # resolves the backend's address on its first request.
+    depends_on:
+      backend:
+        condition: service_healthy
+
+    # No environment is passed here: nginx does not substitute environment
+    # variables into its configuration, and the client reads no build-time
+    # variables either (its API calls are relative to its own origin). The
+    # backend address lives in frontend/nginx.conf.
+
+    # 8080 is already in the API's default `cors_origins` list, so the client
+    # works both through this proxy and — if the backend port above is
+    # uncommented — by calling the API directly from the same origin.
+    ports:
+      - "8080:80"
+
+    healthcheck:
+      # busybox wget is present in nginx:alpine.
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1/index.html"]
+      interval: 30s
+      timeout: 5s
+      start_period: 10s
+      retries: 3
+
+volumes:
+  # Named, not a bind mount, so `docker compose down` keeps the inspection
+  # history and `docker compose down -v` is the explicit way to discard it.
+  sightops-data:

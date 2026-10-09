@@ -1,0 +1,50 @@
+# Build context for the backend image (see Dockerfile). The image needs only
+# backend/pyproject.toml, backend/app and backend/scripts; everything else here
+# is either a secret, runtime state that must not be baked in, or a large
+# artefact that would only slow the build down.
+
+# Credentials. The container receives the three provider keys from the host
+# environment at run time; they must never enter an image layer.
+.env
+.env.*
+*.pem
+*.key
+.hermes/
+
+# Runtime state: the SQLite database and the evidence blob store. A rebuild
+# must not capture whichever inspection happened to run last.
+data/
+backend/data/
+
+# Python environments and caches. The image resolves its own pinned stack from
+# backend/pyproject.toml.
+.venv/
+backend/.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# The web client is built from its own context (frontend/Dockerfile), so the
+# root context does not need it. This also keeps frontend/node_modules, which is
+# large, out of the backend build.
+frontend/
+
+# Video project and rendered media: not needed to run SightOps.
+demo/
+node_modules/
+
+# Project documentation and source assets are not part of the runtime image.
+docs/
+.git/
+.gitignore
+.github/
+AGENTS.md
+SIGHTOPS_BUILD.md
+SightOps.png
+SightOps_OpenCV_AI_Competition_2026_Proposal.pdf
+README.md
+docker-compose.yml

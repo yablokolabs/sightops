@@ -186,17 +186,26 @@ jobs:
         run: |
           cd demo/videowright
           npx videowright dev --port 5199 > /tmp/videowright-dev.log 2>&1 &
-          ready=''
+          # The server binds `localhost`, and Node resolves that to whichever family
+          # the host's resolver returns first. On this runner that is IPv6, while a
+          # development machine usually answers on IPv4, and curl uses the first
+          # address it is given rather than trying the other. So both addresses are
+          # probed, and whichever answers is the one the check navigates to.
+          dev_url=''
           for _ in $(seq 1 60); do
-            if curl --silent --fail --output /dev/null http://127.0.0.1:5199/; then ready=yes; break; fi
+            for candidate in "http://127.0.0.1:5199" "http://[::1]:5199"; do
+              if curl --silent --fail --output /dev/null "$candidate/"; then dev_url="$candidate"; break 2; fi
+            done
             sleep 1
           done
-          if [ -z "$ready" ]; then
-            echo '--- the dev server never answered on 127.0.0.1:5199 ---'
+          if [ -z "$dev_url" ]; then
+            echo '--- the dev server answered on neither 127.0.0.1:5199 nor [::1]:5199 ---'
+            ss -ltnp || true
             cat /tmp/videowright-dev.log
             exit 1
           fi
-          node scripts/check_scene_layout.mjs
+          echo "the dev server answered on $dev_url"
+          node scripts/check_scene_layout.mjs --url "$dev_url/video/sightops-demo"
 
   docker:
     name: container build and smoke test

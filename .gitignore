@@ -46,3 +46,6 @@ frontend/.playwright/
 .idea/
 .vscode/
 *.swp
+
+# Local git worktrees
+.worktrees/

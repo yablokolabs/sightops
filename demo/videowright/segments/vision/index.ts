@@ -31,11 +31,10 @@ export default defineScene({
 					<div class="panel">
 						<div class="panel-title">Measured, in the pipeline</div>
 						<div class="facts">
-							${fact("Gauge", "radial scan + shape validation")}
+							${fact("Gauge", "radial scan")}
 							${fact("Lamp", "HSV segmentation")}
 							${fact("Switch", "PCA lever angle")}
 							${fact("Display", "stroke level")}
-							${fact("Provenance", "measured", "ok")}
 						</div>
 					</div>
 					<div class="panel accent" data-beat="1">
@@ -44,7 +43,7 @@ export default defineScene({
 					</div>
 					<div class="alert good" data-beat="2">
 						${checkIcon}
-						<span>OpenCV produces the number. The VLM's answer is labelled inferred and never overwrites it.</span>
+						<span>A VLM answer is labelled inferred. It never overwrites a measured value.</span>
 					</div>
 				</div>
 			</div>

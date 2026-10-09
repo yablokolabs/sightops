@@ -129,11 +129,6 @@
 	align-items: center;
 }
 
-.so-scene .stage.narrow-wide {
-	grid-template-columns: 0.72fr 1.28fr;
-	align-items: center;
-}
-
 .so-scene .stage.wide-narrow {
 	grid-template-columns: 1.3fr 0.7fr;
 	align-items: center;
@@ -433,8 +428,13 @@
 	gap: 16px;
 }
 
-.so-scene .row.spaced {
-	margin-top: 18px;
+.so-scene .row.between {
+	justify-content: space-between;
+	margin-bottom: 10px;
+}
+
+.so-scene .row.between .from {
+	margin-bottom: 0;
 }
 
 /* ---------- title and closing scenes ---------- */
@@ -522,7 +522,9 @@
 	font-size: 190px;
 }
 
+/* The wordmark has a line height of 1, so its descenders reach below its box. */
 .so-scene.centered .lede {
+	margin-top: 18px;
 	font-size: 50px;
 }
 
@@ -597,6 +599,14 @@
 	font-family: var(--font-mono);
 	font-size: 30px;
 	color: var(--color-steel);
+}
+
+/* Fills down the first column, then the second, so the order still reads top to bottom. */
+.so-scene .mono-list.columns {
+	display: grid;
+	grid-template-rows: repeat(4, auto);
+	grid-auto-flow: column;
+	gap: 12px 40px;
 }
 
 /* ---------- state machine strip ---------- */

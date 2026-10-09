@@ -88,7 +88,6 @@ Each factual claim in the narration is traceable to a measurement:
 | wrong-value escape rate under 1% | 0.9% (1 of 112), same document |
 | better than 98% indicator precision and recall | 0.9861 / 0.9853, same document |
 | about 22 ms per frame | the running application's reported per-observation latency (13–34 ms across runs) |
-| AWS integration is not implemented | `GET /api/system/status` → `aws_integration: "NOT IMPLEMENTED"` |
 
 Two claims were deliberately removed during writing because the measurement did not
 support them: that the first frame was too blurred to measure (its blur score is `1.0`

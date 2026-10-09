@@ -1,0 +1,3394 @@
+{
+  "words": [
+    {
+      "word": "SightOps",
+      "start": 0.046,
+      "end": 0.615
+    },
+    {
+      "word": "is",
+      "start": 0.697,
+      "end": 0.824
+    },
+    {
+      "word": "an",
+      "start": 0.871,
+      "end": 0.94
+    },
+    {
+      "word": "agentic",
+      "start": 0.975,
+      "end": 1.591
+    },
+    {
+      "word": "visual",
+      "start": 1.683,
+      "end": 2.101
+    },
+    {
+      "word": "reliability",
+      "start": 2.183,
+      "end": 3.053
+    },
+    {
+      "word": "engineer.",
+      "start": 3.146,
+      "end": 3.889
+    },
+    {
+      "word": "You",
+      "start": 4.214,
+      "end": 4.342
+    },
+    {
+      "word": "give",
+      "start": 4.412,
+      "end": 4.54
+    },
+    {
+      "word": "it",
+      "start": 4.574,
+      "end": 4.644
+    },
+    {
+      "word": "a",
+      "start": 4.679,
+      "end": 4.714
+    },
+    {
+      "word": "photograph",
+      "start": 4.783,
+      "end": 5.364
+    },
+    {
+      "word": "of",
+      "start": 5.41,
+      "end": 5.48
+    },
+    {
+      "word": "a",
+      "start": 5.55,
+      "end": 5.573
+    },
+    {
+      "word": "machine;",
+      "start": 5.642,
+      "end": 6.339
+    },
+    {
+      "word": "it",
+      "start": 6.664,
+      "end": 6.792
+    },
+    {
+      "word": "measures",
+      "start": 6.861,
+      "end": 7.21
+    },
+    {
+      "word": "what",
+      "start": 7.256,
+      "end": 7.384
+    },
+    {
+      "word": "the",
+      "start": 7.419,
+      "end": 7.488
+    },
+    {
+      "word": "image",
+      "start": 7.57,
+      "end": 7.872
+    },
+    {
+      "word": "actually",
+      "start": 7.93,
+      "end": 8.417
+    },
+    {
+      "word": "shows",
+      "start": 8.487,
+      "end": 8.835
+    },
+    {
+      "word": "with",
+      "start": 8.893,
+      "end": 9.033
+    },
+    {
+      "word": "OpenCV,",
+      "start": 9.114,
+      "end": 10.275
+    },
+    {
+      "word": "reasons",
+      "start": 10.553,
+      "end": 10.971
+    },
+    {
+      "word": "about",
+      "start": 11.018,
+      "end": 11.273
+    },
+    {
+      "word": "what",
+      "start": 11.308,
+      "end": 11.459
+    },
+    {
+      "word": "it",
+      "start": 11.517,
+      "end": 11.587
+    },
+    {
+      "word": "can",
+      "start": 11.645,
+      "end": 11.97
+    },
+    {
+      "word": "and",
+      "start": 12.04,
+      "end": 12.179
+    },
+    {
+      "word": "cannot",
+      "start": 12.272,
+      "end": 12.701
+    },
+    {
+      "word": "see,",
+      "start": 12.771,
+      "end": 13.201
+    },
+    {
+      "word": "and",
+      "start": 13.444,
+      "end": 13.63
+    },
+    {
+      "word": "decides",
+      "start": 13.688,
+      "end": 14.106
+    },
+    {
+      "word": "what",
+      "start": 14.153,
+      "end": 14.303
+    },
+    {
+      "word": "still",
+      "start": 14.385,
+      "end": 14.698
+    },
+    {
+      "word": "needs",
+      "start": 14.768,
+      "end": 15.023
+    },
+    {
+      "word": "to",
+      "start": 15.081,
+      "end": 15.151
+    },
+    {
+      "word": "be",
+      "start": 15.221,
+      "end": 15.302
+    },
+    {
+      "word": "inspected.",
+      "start": 15.349,
+      "end": 16.254
+    },
+    {
+      "word": "And",
+      "start": 16.765,
+      "end": 17.032
+    },
+    {
+      "word": "critically,",
+      "start": 17.183,
+      "end": 17.799
+    },
+    {
+      "word": "it",
+      "start": 17.868,
+      "end": 18.042
+    },
+    {
+      "word": "does",
+      "start": 18.124,
+      "end": 18.356
+    },
+    {
+      "word": "not",
+      "start": 18.472,
+      "end": 18.751
+    },
+    {
+      "word": "guess.",
+      "start": 18.832,
+      "end": 19.482
+    },
+    {
+      "word": "The",
+      "start": 20.155,
+      "end": 20.26
+    },
+    {
+      "word": "project",
+      "start": 20.306,
+      "end": 20.689
+    },
+    {
+      "word": "began",
+      "start": 20.736,
+      "end": 21.015
+    },
+    {
+      "word": "with",
+      "start": 21.061,
+      "end": 21.177
+    },
+    {
+      "word": "a",
+      "start": 21.224,
+      "end": 21.247
+    },
+    {
+      "word": "phone",
+      "start": 21.305,
+      "end": 21.56
+    },
+    {
+      "word": "call",
+      "start": 21.607,
+      "end": 21.839
+    },
+    {
+      "word": "about",
+      "start": 21.885,
+      "end": 22.141
+    },
+    {
+      "word": "a",
+      "start": 22.199,
+      "end": 22.222
+    },
+    {
+      "word": "broken",
+      "start": 22.315,
+      "end": 22.779
+    },
+    {
+      "word": "dishwasher.",
+      "start": 22.872,
+      "end": 23.743
+    },
+    {
+      "word": "A",
+      "start": 24.022,
+      "end": 24.103
+    },
+    {
+      "word": "photograph",
+      "start": 24.161,
+      "end": 24.672
+    },
+    {
+      "word": "of",
+      "start": 24.718,
+      "end": 24.776
+    },
+    {
+      "word": "a",
+      "start": 24.834,
+      "end": 24.857
+    },
+    {
+      "word": "control",
+      "start": 24.915,
+      "end": 25.287
+    },
+    {
+      "word": "panel",
+      "start": 25.357,
+      "end": 25.67
+    },
+    {
+      "word": "is",
+      "start": 25.751,
+      "end": 25.868
+    },
+    {
+      "word": "easy",
+      "start": 25.984,
+      "end": 26.32
+    },
+    {
+      "word": "to",
+      "start": 26.378,
+      "end": 26.436
+    },
+    {
+      "word": "take",
+      "start": 26.506,
+      "end": 26.831
+    },
+    {
+      "word": "and",
+      "start": 26.878,
+      "end": 26.97
+    },
+    {
+      "word": "hard",
+      "start": 27.052,
+      "end": 27.261
+    },
+    {
+      "word": "to",
+      "start": 27.296,
+      "end": 27.365
+    },
+    {
+      "word": "read",
+      "start": 27.481,
+      "end": 27.725
+    },
+    {
+      "word": "from",
+      "start": 27.783,
+      "end": 27.922
+    },
+    {
+      "word": "a",
+      "start": 27.957,
+      "end": 27.981
+    },
+    {
+      "word": "distance,",
+      "start": 28.039,
+      "end": 28.666
+    },
+    {
+      "word": "and",
+      "start": 28.944,
+      "end": 29.083
+    },
+    {
+      "word": "the",
+      "start": 29.13,
+      "end": 29.2
+    },
+    {
+      "word": "person",
+      "start": 29.234,
+      "end": 29.571
+    },
+    {
+      "word": "on",
+      "start": 29.618,
+      "end": 29.676
+    },
+    {
+      "word": "the",
+      "start": 29.71,
+      "end": 29.78
+    },
+    {
+      "word": "other",
+      "start": 29.85,
+      "end": 30.059
+    },
+    {
+      "word": "end",
+      "start": 30.128,
+      "end": 30.244
+    },
+    {
+      "word": "of",
+      "start": 30.303,
+      "end": 30.361
+    },
+    {
+      "word": "that",
+      "start": 30.407,
+      "end": 30.558
+    },
+    {
+      "word": "call",
+      "start": 30.628,
+      "end": 30.93
+    },
+    {
+      "word": "could",
+      "start": 31.174,
+      "end": 31.371
+    },
+    {
+      "word": "not",
+      "start": 31.406,
+      "end": 31.522
+    },
+    {
+      "word": "tell",
+      "start": 31.557,
+      "end": 31.777
+    },
+    {
+      "word": "which",
+      "start": 31.835,
+      "end": 32.044
+    },
+    {
+      "word": "light",
+      "start": 32.137,
+      "end": 32.404
+    },
+    {
+      "word": "was",
+      "start": 32.462,
+      "end": 32.578
+    },
+    {
+      "word": "on.",
+      "start": 32.66,
+      "end": 33.043
+    },
+    {
+      "word": "SightOps",
+      "start": 33.554,
+      "end": 34.122
+    },
+    {
+      "word": "turns",
+      "start": 34.169,
+      "end": 34.471
+    },
+    {
+      "word": "that",
+      "start": 34.517,
+      "end": 34.657
+    },
+    {
+      "word": "photograph",
+      "start": 34.715,
+      "end": 35.272
+    },
+    {
+      "word": "into",
+      "start": 35.342,
+      "end": 35.574
+    },
+    {
+      "word": "evidence:",
+      "start": 35.69,
+      "end": 36.468
+    },
+    {
+      "word": "what",
+      "start": 36.793,
+      "end": 36.979
+    },
+    {
+      "word": "is",
+      "start": 37.037,
+      "end": 37.129
+    },
+    {
+      "word": "lit",
+      "start": 37.246,
+      "end": 37.524
+    },
+    {
+      "word": "and",
+      "start": 37.594,
+      "end": 37.675
+    },
+    {
+      "word": "what",
+      "start": 37.722,
+      "end": 37.872
+    },
+    {
+      "word": "is",
+      "start": 37.931,
+      "end": 38.012
+    },
+    {
+      "word": "blank,",
+      "start": 38.081,
+      "end": 38.674
+    },
+    {
+      "word": "where",
+      "start": 38.766,
+      "end": 38.987
+    },
+    {
+      "word": "a",
+      "start": 39.022,
+      "end": 39.045
+    },
+    {
+      "word": "needle",
+      "start": 39.115,
+      "end": 39.417
+    },
+    {
+      "word": "points,",
+      "start": 39.463,
+      "end": 40.009
+    },
+    {
+      "word": "how",
+      "start": 40.078,
+      "end": 40.253
+    },
+    {
+      "word": "sharp",
+      "start": 40.334,
+      "end": 40.682
+    },
+    {
+      "word": "and",
+      "start": 40.74,
+      "end": 40.821
+    },
+    {
+      "word": "how",
+      "start": 40.891,
+      "end": 41.019
+    },
+    {
+      "word": "well",
+      "start": 41.077,
+      "end": 41.216
+    },
+    {
+      "word": "exposed",
+      "start": 41.263,
+      "end": 41.808
+    },
+    {
+      "word": "the",
+      "start": 41.843,
+      "end": 41.924
+    },
+    {
+      "word": "frame",
+      "start": 41.982,
+      "end": 42.261
+    },
+    {
+      "word": "is,",
+      "start": 42.319,
+      "end": 42.83
+    },
+    {
+      "word": "and",
+      "start": 43.074,
+      "end": 43.201
+    },
+    {
+      "word": "how",
+      "start": 43.26,
+      "end": 43.376
+    },
+    {
+      "word": "much",
+      "start": 43.434,
+      "end": 43.619
+    },
+    {
+      "word": "of",
+      "start": 43.677,
+      "end": 43.747
+    },
+    {
+      "word": "all",
+      "start": 43.828,
+      "end": 44.061
+    },
+    {
+      "word": "of",
+      "start": 44.119,
+      "end": 44.177
+    },
+    {
+      "word": "that",
+      "start": 44.235,
+      "end": 44.479
+    },
+    {
+      "word": "you",
+      "start": 44.688,
+      "end": 44.815
+    },
+    {
+      "word": "should",
+      "start": 44.85,
+      "end": 45.047
+    },
+    {
+      "word": "actually",
+      "start": 45.117,
+      "end": 45.593
+    },
+    {
+      "word": "trust.",
+      "start": 45.674,
+      "end": 46.405
+    },
+    {
+      "word": "Every",
+      "start": 47.056,
+      "end": 47.334
+    },
+    {
+      "word": "measurement",
+      "start": 47.404,
+      "end": 47.868
+    },
+    {
+      "word": "is",
+      "start": 47.949,
+      "end": 48.112
+    },
+    {
+      "word": "real",
+      "start": 48.228,
+      "end": 48.495
+    },
+    {
+      "word": "computer",
+      "start": 48.576,
+      "end": 49.11
+    },
+    {
+      "word": "vision,",
+      "start": 49.157,
+      "end": 49.575
+    },
+    {
+      "word": "not",
+      "start": 49.749,
+      "end": 49.923
+    },
+    {
+      "word": "a",
+      "start": 49.981,
+      "end": 50.004
+    },
+    {
+      "word": "language",
+      "start": 50.086,
+      "end": 50.515
+    },
+    {
+      "word": "model's",
+      "start": 50.562,
+      "end": 50.898
+    },
+    {
+      "word": "impression.",
+      "start": 50.945,
+      "end": 51.688
+    },
+    {
+      "word": "Perspective",
+      "start": 52.129,
+      "end": 52.756
+    },
+    {
+      "word": "is",
+      "start": 52.791,
+      "end": 52.872
+    },
+    {
+      "word": "detected",
+      "start": 52.919,
+      "end": 53.487
+    },
+    {
+      "word": "and",
+      "start": 53.557,
+      "end": 53.72
+    },
+    {
+      "word": "corrected,",
+      "start": 53.813,
+      "end": 54.556
+    },
+    {
+      "word": "the",
+      "start": 54.765,
+      "end": 54.869
+    },
+    {
+      "word": "panel",
+      "start": 54.915,
+      "end": 55.206
+    },
+    {
+      "word": "is",
+      "start": 55.264,
+      "end": 55.333
+    },
+    {
+      "word": "located,",
+      "start": 55.403,
+      "end": 56.146
+    },
+    {
+      "word": "blur",
+      "start": 56.32,
+      "end": 56.657
+    },
+    {
+      "word": "and",
+      "start": 56.727,
+      "end": 56.82
+    },
+    {
+      "word": "exposure",
+      "start": 56.889,
+      "end": 57.47
+    },
+    {
+      "word": "are",
+      "start": 57.516,
+      "end": 57.702
+    },
+    {
+      "word": "scored,",
+      "start": 57.737,
+      "end": 58.294
+    },
+    {
+      "word": "and",
+      "start": 58.468,
+      "end": 58.619
+    },
+    {
+      "word": "each",
+      "start": 58.677,
+      "end": 58.851
+    },
+    {
+      "word": "region",
+      "start": 58.933,
+      "end": 59.258
+    },
+    {
+      "word": "of",
+      "start": 59.316,
+      "end": 59.374
+    },
+    {
+      "word": "interest",
+      "start": 59.455,
+      "end": 59.966
+    },
+    {
+      "word": "is",
+      "start": 60.047,
+      "end": 60.21
+    },
+    {
+      "word": "rectified.",
+      "start": 60.361,
+      "end": 61.255
+    },
+    {
+      "word": "A",
+      "start": 61.766,
+      "end": 61.847
+    },
+    {
+      "word": "gauge",
+      "start": 61.928,
+      "end": 62.253
+    },
+    {
+      "word": "reading",
+      "start": 62.312,
+      "end": 62.648
+    },
+    {
+      "word": "comes",
+      "start": 62.718,
+      "end": 62.985
+    },
+    {
+      "word": "from",
+      "start": 63.043,
+      "end": 63.194
+    },
+    {
+      "word": "a",
+      "start": 63.252,
+      "end": 63.275
+    },
+    {
+      "word": "radial",
+      "start": 63.391,
+      "end": 63.832
+    },
+    {
+      "word": "scan",
+      "start": 63.914,
+      "end": 64.239
+    },
+    {
+      "word": "across",
+      "start": 64.308,
+      "end": 64.715
+    },
+    {
+      "word": "the",
+      "start": 64.761,
+      "end": 64.831
+    },
+    {
+      "word": "dial,",
+      "start": 64.889,
+      "end": 65.411
+    },
+    {
+      "word": "with",
+      "start": 65.527,
+      "end": 65.713
+    },
+    {
+      "word": "needle",
+      "start": 65.795,
+      "end": 66.166
+    },
+    {
+      "word": "shape",
+      "start": 66.212,
+      "end": 66.538
+    },
+    {
+      "word": "validation.",
+      "start": 66.584,
+      "end": 67.513
+    },
+    {
+      "word": "A",
+      "start": 67.954,
+      "end": 68.035
+    },
+    {
+      "word": "lamp",
+      "start": 68.128,
+      "end": 68.384
+    },
+    {
+      "word": "is",
+      "start": 68.453,
+      "end": 68.558
+    },
+    {
+      "word": "classified",
+      "start": 68.616,
+      "end": 69.196
+    },
+    {
+      "word": "by",
+      "start": 69.266,
+      "end": 69.405
+    },
+    {
+      "word": "hue",
+      "start": 69.521,
+      "end": 69.765
+    },
+    {
+      "word": "segmentation",
+      "start": 69.8,
+      "end": 70.671
+    },
+    {
+      "word": "and",
+      "start": 70.88,
+      "end": 71.077
+    },
+    {
+      "word": "peak",
+      "start": 71.17,
+      "end": 71.449
+    },
+    {
+      "word": "brightness,",
+      "start": 71.541,
+      "end": 72.366
+    },
+    {
+      "word": "a",
+      "start": 72.644,
+      "end": 72.714
+    },
+    {
+      "word": "switch",
+      "start": 72.795,
+      "end": 73.086
+    },
+    {
+      "word": "from",
+      "start": 73.132,
+      "end": 73.26
+    },
+    {
+      "word": "the",
+      "start": 73.295,
+      "end": 73.364
+    },
+    {
+      "word": "angle",
+      "start": 73.422,
+      "end": 73.678
+    },
+    {
+      "word": "of",
+      "start": 73.701,
+      "end": 73.747
+    },
+    {
+      "word": "its",
+      "start": 73.805,
+      "end": 73.933
+    },
+    {
+      "word": "lever,",
+      "start": 73.991,
+      "end": 74.432
+    },
+    {
+      "word": "and",
+      "start": 74.641,
+      "end": 74.804
+    },
+    {
+      "word": "a",
+      "start": 74.862,
+      "end": 74.885
+    },
+    {
+      "word": "display",
+      "start": 74.943,
+      "end": 75.361
+    },
+    {
+      "word": "from",
+      "start": 75.419,
+      "end": 75.558
+    },
+    {
+      "word": "its",
+      "start": 75.617,
+      "end": 75.744
+    },
+    {
+      "word": "stroke",
+      "start": 75.779,
+      "end": 76.139
+    },
+    {
+      "word": "level.",
+      "start": 76.185,
+      "end": 76.696
+    },
+    {
+      "word": "When",
+      "start": 77.137,
+      "end": 77.323
+    },
+    {
+      "word": "the",
+      "start": 77.358,
+      "end": 77.428
+    },
+    {
+      "word": "vision",
+      "start": 77.497,
+      "end": 77.811
+    },
+    {
+      "word": "model",
+      "start": 77.88,
+      "end": 78.147
+    },
+    {
+      "word": "does",
+      "start": 78.229,
+      "end": 78.449
+    },
+    {
+      "word": "speak,",
+      "start": 78.484,
+      "end": 78.995
+    },
+    {
+      "word": "its",
+      "start": 79.204,
+      "end": 79.424
+    },
+    {
+      "word": "answer",
+      "start": 79.471,
+      "end": 79.796
+    },
+    {
+      "word": "is",
+      "start": 79.854,
+      "end": 79.924
+    },
+    {
+      "word": "labelled",
+      "start": 79.982,
+      "end": 80.33
+    },
+    {
+      "word": "as",
+      "start": 80.365,
+      "end": 80.435
+    },
+    {
+      "word": "inferred",
+      "start": 80.504,
+      "end": 81.12
+    },
+    {
+      "word": "and",
+      "start": 81.189,
+      "end": 81.387
+    },
+    {
+      "word": "never",
+      "start": 81.514,
+      "end": 81.793
+    },
+    {
+      "word": "overwrites",
+      "start": 81.874,
+      "end": 82.582
+    },
+    {
+      "word": "a",
+      "start": 82.675,
+      "end": 82.722
+    },
+    {
+      "word": "measured",
+      "start": 82.873,
+      "end": 83.267
+    },
+    {
+      "word": "value.",
+      "start": 83.337,
+      "end": 83.906
+    },
+    {
+      "word": "Every",
+      "start": 84.73,
+      "end": 84.986
+    },
+    {
+      "word": "measurement",
+      "start": 85.044,
+      "end": 85.473
+    },
+    {
+      "word": "carries",
+      "start": 85.531,
+      "end": 85.868
+    },
+    {
+      "word": "a",
+      "start": 85.903,
+      "end": 85.938
+    },
+    {
+      "word": "confidence,",
+      "start": 86.019,
+      "end": 86.855
+    },
+    {
+      "word": "and",
+      "start": 87.029,
+      "end": 87.168
+    },
+    {
+      "word": "the",
+      "start": 87.215,
+      "end": 87.284
+    },
+    {
+      "word": "agent",
+      "start": 87.354,
+      "end": 87.702
+    },
+    {
+      "word": "is",
+      "start": 87.749,
+      "end": 87.83
+    },
+    {
+      "word": "allowed",
+      "start": 87.865,
+      "end": 88.155
+    },
+    {
+      "word": "to",
+      "start": 88.19,
+      "end": 88.271
+    },
+    {
+      "word": "distrust",
+      "start": 88.387,
+      "end": 88.979
+    },
+    {
+      "word": "one.",
+      "start": 89.049,
+      "end": 89.397
+    },
+    {
+      "word": "On",
+      "start": 89.839,
+      "end": 89.978
+    },
+    {
+      "word": "the",
+      "start": 90.013,
+      "end": 90.082
+    },
+    {
+      "word": "first",
+      "start": 90.14,
+      "end": 90.419
+    },
+    {
+      "word": "photograph",
+      "start": 90.466,
+      "end": 91.034
+    },
+    {
+      "word": "the",
+      "start": 91.093,
+      "end": 91.197
+    },
+    {
+      "word": "gauge",
+      "start": 91.255,
+      "end": 91.557
+    },
+    {
+      "word": "came",
+      "start": 91.592,
+      "end": 91.812
+    },
+    {
+      "word": "back",
+      "start": 91.847,
+      "end": 92.056
+    },
+    {
+      "word": "at",
+      "start": 92.114,
+      "end": 92.219
+    },
+    {
+      "word": "83.7",
+      "start": 92.312,
+      "end": 93.554
+    },
+    {
+      "word": "PSI",
+      "start": 93.67,
+      "end": 94.134
+    },
+    {
+      "word": "with",
+      "start": 94.193,
+      "end": 94.332
+    },
+    {
+      "word": "only",
+      "start": 94.378,
+      "end": 94.576
+    },
+    {
+      "word": "57",
+      "start": 94.669,
+      "end": 95.284
+    },
+    {
+      "word": "percent",
+      "start": 95.365,
+      "end": 95.725
+    },
+    {
+      "word": "confidence,",
+      "start": 95.783,
+      "end": 96.515
+    },
+    {
+      "word": "and",
+      "start": 96.793,
+      "end": 96.991
+    },
+    {
+      "word": "two",
+      "start": 97.049,
+      "end": 97.188
+    },
+    {
+      "word": "of",
+      "start": 97.258,
+      "end": 97.316
+    },
+    {
+      "word": "the",
+      "start": 97.362,
+      "end": 97.432
+    },
+    {
+      "word": "four",
+      "start": 97.501,
+      "end": 97.687
+    },
+    {
+      "word": "components",
+      "start": 97.745,
+      "end": 98.43
+    },
+    {
+      "word": "sat",
+      "start": 98.639,
+      "end": 98.883
+    },
+    {
+      "word": "below",
+      "start": 98.953,
+      "end": 99.347
+    },
+    {
+      "word": "the",
+      "start": 99.429,
+      "end": 99.498
+    },
+    {
+      "word": "floor.",
+      "start": 99.556,
+      "end": 100.114
+    },
+    {
+      "word": "So",
+      "start": 100.555,
+      "end": 100.752
+    },
+    {
+      "word": "SightOps",
+      "start": 100.833,
+      "end": 101.344
+    },
+    {
+      "word": "marked",
+      "start": 101.414,
+      "end": 101.669
+    },
+    {
+      "word": "the",
+      "start": 101.704,
+      "end": 101.774
+    },
+    {
+      "word": "frame",
+      "start": 101.82,
+      "end": 102.122
+    },
+    {
+      "word": "as",
+      "start": 102.18,
+      "end": 102.389
+    },
+    {
+      "word": "needing",
+      "start": 102.482,
+      "end": 102.795
+    },
+    {
+      "word": "a",
+      "start": 102.854,
+      "end": 102.877
+    },
+    {
+      "word": "better",
+      "start": 102.946,
+      "end": 103.225
+    },
+    {
+      "word": "view,",
+      "start": 103.283,
+      "end": 103.689
+    },
+    {
+      "word": "and",
+      "start": 103.864,
+      "end": 104.015
+    },
+    {
+      "word": "wrote",
+      "start": 104.073,
+      "end": 104.282
+    },
+    {
+      "word": "down",
+      "start": 104.316,
+      "end": 104.549
+    },
+    {
+      "word": "why.",
+      "start": 104.641,
+      "end": 105.234
+    },
+    {
+      "word": "A",
+      "start": 105.744,
+      "end": 105.826
+    },
+    {
+      "word": "confident",
+      "start": 105.942,
+      "end": 106.441
+    },
+    {
+      "word": "wrong",
+      "start": 106.487,
+      "end": 106.72
+    },
+    {
+      "word": "pressure",
+      "start": 106.801,
+      "end": 107.161
+    },
+    {
+      "word": "reading",
+      "start": 107.207,
+      "end": 107.544
+    },
+    {
+      "word": "is",
+      "start": 107.66,
+      "end": 107.834
+    },
+    {
+      "word": "far",
+      "start": 107.95,
+      "end": 108.182
+    },
+    {
+      "word": "worse",
+      "start": 108.252,
+      "end": 108.589
+    },
+    {
+      "word": "than",
+      "start": 108.624,
+      "end": 108.775
+    },
+    {
+      "word": "no",
+      "start": 108.856,
+      "end": 109.007
+    },
+    {
+      "word": "reading",
+      "start": 109.123,
+      "end": 109.448
+    },
+    {
+      "word": "at",
+      "start": 109.494,
+      "end": 109.576
+    },
+    {
+      "word": "all.",
+      "start": 109.634,
+      "end": 110.017
+    },
+    {
+      "word": "This",
+      "start": 110.69,
+      "end": 110.922
+    },
+    {
+      "word": "is",
+      "start": 110.992,
+      "end": 111.085
+    },
+    {
+      "word": "the",
+      "start": 111.131,
+      "end": 111.201
+    },
+    {
+      "word": "part",
+      "start": 111.259,
+      "end": 111.491
+    },
+    {
+      "word": "that",
+      "start": 111.538,
+      "end": 111.665
+    },
+    {
+      "word": "matters",
+      "start": 111.735,
+      "end": 112.107
+    },
+    {
+      "word": "most.",
+      "start": 112.223,
+      "end": 112.768
+    },
+    {
+      "word": "The",
+      "start": 113.093,
+      "end": 113.221
+    },
+    {
+      "word": "agent",
+      "start": 113.291,
+      "end": 113.628
+    },
+    {
+      "word": "compares",
+      "start": 113.674,
+      "end": 114.162
+    },
+    {
+      "word": "image",
+      "start": 114.254,
+      "end": 114.626
+    },
+    {
+      "word": "quality",
+      "start": 114.672,
+      "end": 115.23
+    },
+    {
+      "word": "and",
+      "start": 115.311,
+      "end": 115.462
+    },
+    {
+      "word": "measurements",
+      "start": 115.578,
+      "end": 116.124
+    },
+    {
+      "word": "across",
+      "start": 116.193,
+      "end": 116.588
+    },
+    {
+      "word": "observations,",
+      "start": 116.658,
+      "end": 117.726
+    },
+    {
+      "word": "decides",
+      "start": 118.004,
+      "end": 118.457
+    },
+    {
+      "word": "that",
+      "start": 118.504,
+      "end": 118.631
+    },
+    {
+      "word": "the",
+      "start": 118.655,
+      "end": 118.724
+    },
+    {
+      "word": "gauge",
+      "start": 118.794,
+      "end": 119.119
+    },
+    {
+      "word": "cannot",
+      "start": 119.154,
+      "end": 119.433
+    },
+    {
+      "word": "be",
+      "start": 119.479,
+      "end": 119.583
+    },
+    {
+      "word": "trusted",
+      "start": 119.63,
+      "end": 120.129
+    },
+    {
+      "word": "from",
+      "start": 120.199,
+      "end": 120.338
+    },
+    {
+      "word": "this",
+      "start": 120.385,
+      "end": 120.535
+    },
+    {
+      "word": "angle,",
+      "start": 120.605,
+      "end": 121.081
+    },
+    {
+      "word": "and",
+      "start": 121.325,
+      "end": 121.511
+    },
+    {
+      "word": "asks",
+      "start": 121.592,
+      "end": 121.917
+    },
+    {
+      "word": "for",
+      "start": 121.963,
+      "end": 122.091
+    },
+    {
+      "word": "a",
+      "start": 122.138,
+      "end": 122.161
+    },
+    {
+      "word": "better",
+      "start": 122.242,
+      "end": 122.567
+    },
+    {
+      "word": "photograph.",
+      "start": 122.625,
+      "end": 123.484
+    },
+    {
+      "word": "The",
+      "start": 123.925,
+      "end": 124.041
+    },
+    {
+      "word": "inspection",
+      "start": 124.099,
+      "end": 124.715
+    },
+    {
+      "word": "pauses",
+      "start": 124.808,
+      "end": 125.26
+    },
+    {
+      "word": "in",
+      "start": 125.342,
+      "end": 125.446
+    },
+    {
+      "word": "a",
+      "start": 125.504,
+      "end": 125.527
+    },
+    {
+      "word": "waiting",
+      "start": 125.62,
+      "end": 126.061
+    },
+    {
+      "word": "state,",
+      "start": 126.154,
+      "end": 126.735
+    },
+    {
+      "word": "with",
+      "start": 126.886,
+      "end": 127.037
+    },
+    {
+      "word": "a",
+      "start": 127.072,
+      "end": 127.095
+    },
+    {
+      "word": "specific",
+      "start": 127.141,
+      "end": 127.629
+    },
+    {
+      "word": "request",
+      "start": 127.698,
+      "end": 128.314
+    },
+    {
+      "word": "rather",
+      "start": 128.407,
+      "end": 128.732
+    },
+    {
+      "word": "than",
+      "start": 128.778,
+      "end": 128.906
+    },
+    {
+      "word": "a",
+      "start": 128.952,
+      "end": 128.976
+    },
+    {
+      "word": "vague",
+      "start": 129.068,
+      "end": 129.498
+    },
+    {
+      "word": "shrug:",
+      "start": 129.533,
+      "end": 130.183
+    },
+    {
+      "word": "re-image",
+      "start": 130.694,
+      "end": 131.321
+    },
+    {
+      "word": "the",
+      "start": 131.356,
+      "end": 131.437
+    },
+    {
+      "word": "gauge",
+      "start": 131.518,
+      "end": 131.878
+    },
+    {
+      "word": "square-on,",
+      "start": 131.924,
+      "end": 132.749
+    },
+    {
+      "word": "filling",
+      "start": 132.865,
+      "end": 133.178
+    },
+    {
+      "word": "most",
+      "start": 133.248,
+      "end": 133.48
+    },
+    {
+      "word": "of",
+      "start": 133.527,
+      "end": 133.585
+    },
+    {
+      "word": "the",
+      "start": 133.631,
+      "end": 133.701
+    },
+    {
+      "word": "frame,",
+      "start": 133.759,
+      "end": 134.2
+    },
+    {
+      "word": "with",
+      "start": 134.351,
+      "end": 134.525
+    },
+    {
+      "word": "diffuse",
+      "start": 134.572,
+      "end": 135.001
+    },
+    {
+      "word": "light",
+      "start": 135.071,
+      "end": 135.407
+    },
+    {
+      "word": "and",
+      "start": 135.5,
+      "end": 135.686
+    },
+    {
+      "word": "no",
+      "start": 135.767,
+      "end": 135.883
+    },
+    {
+      "word": "specular",
+      "start": 135.953,
+      "end": 136.452
+    },
+    {
+      "word": "reflection",
+      "start": 136.51,
+      "end": 137.033
+    },
+    {
+      "word": "across",
+      "start": 137.079,
+      "end": 137.404
+    },
+    {
+      "word": "the",
+      "start": 137.451,
+      "end": 137.52
+    },
+    {
+      "word": "dial.",
+      "start": 137.579,
+      "end": 138.147
+    },
+    {
+      "word": "A",
+      "start": 138.879,
+      "end": 138.96
+    },
+    {
+      "word": "new",
+      "start": 139.076,
+      "end": 139.239
+    },
+    {
+      "word": "photograph",
+      "start": 139.297,
+      "end": 139.831
+    },
+    {
+      "word": "arrives,",
+      "start": 139.866,
+      "end": 140.4
+    },
+    {
+      "word": "and",
+      "start": 140.516,
+      "end": 140.644
+    },
+    {
+      "word": "this",
+      "start": 140.69,
+      "end": 140.829
+    },
+    {
+      "word": "time",
+      "start": 140.899,
+      "end": 141.201
+    },
+    {
+      "word": "the",
+      "start": 141.247,
+      "end": 141.329
+    },
+    {
+      "word": "view",
+      "start": 141.387,
+      "end": 141.607
+    },
+    {
+      "word": "is",
+      "start": 141.689,
+      "end": 141.828
+    },
+    {
+      "word": "clean.",
+      "start": 141.921,
+      "end": 142.513
+    },
+    {
+      "word": "The",
+      "start": 142.896,
+      "end": 143.001
+    },
+    {
+      "word": "gauge",
+      "start": 143.059,
+      "end": 143.384
+    },
+    {
+      "word": "reads",
+      "start": 143.442,
+      "end": 143.79
+    },
+    {
+      "word": "87.2",
+      "start": 143.964,
+      "end": 145.021
+    },
+    {
+      "word": "PSI,",
+      "start": 145.114,
+      "end": 146.031
+    },
+    {
+      "word": "above",
+      "start": 146.182,
+      "end": 146.518
+    },
+    {
+      "word": "the",
+      "start": 146.553,
+      "end": 146.623
+    },
+    {
+      "word": "75",
+      "start": 146.681,
+      "end": 147.389
+    },
+    {
+      "word": "PSI",
+      "start": 147.482,
+      "end": 147.993
+    },
+    {
+      "word": "warning",
+      "start": 148.062,
+      "end": 148.353
+    },
+    {
+      "word": "threshold,",
+      "start": 148.411,
+      "end": 149.073
+    },
+    {
+      "word": "at",
+      "start": 149.247,
+      "end": 149.386
+    },
+    {
+      "word": "96",
+      "start": 149.456,
+      "end": 150.025
+    },
+    {
+      "word": "percent",
+      "start": 150.117,
+      "end": 150.466
+    },
+    {
+      "word": "confidence.",
+      "start": 150.535,
+      "end": 151.29
+    },
+    {
+      "word": "The",
+      "start": 151.673,
+      "end": 151.836
+    },
+    {
+      "word": "agent",
+      "start": 151.929,
+      "end": 152.323
+    },
+    {
+      "word": "diffs",
+      "start": 152.393,
+      "end": 152.741
+    },
+    {
+      "word": "the",
+      "start": 152.799,
+      "end": 152.869
+    },
+    {
+      "word": "two",
+      "start": 152.915,
+      "end": 153.032
+    },
+    {
+      "word": "observations,",
+      "start": 153.101,
+      "end": 153.995
+    },
+    {
+      "word": "sees",
+      "start": 154.204,
+      "end": 154.471
+    },
+    {
+      "word": "the",
+      "start": 154.518,
+      "end": 154.587
+    },
+    {
+      "word": "frame",
+      "start": 154.634,
+      "end": 154.901
+    },
+    {
+      "word": "stop",
+      "start": 154.936,
+      "end": 155.203
+    },
+    {
+      "word": "asking",
+      "start": 155.284,
+      "end": 155.632
+    },
+    {
+      "word": "for",
+      "start": 155.69,
+      "end": 155.783
+    },
+    {
+      "word": "a",
+      "start": 155.818,
+      "end": 155.853
+    },
+    {
+      "word": "better",
+      "start": 155.899,
+      "end": 156.178
+    },
+    {
+      "word": "view",
+      "start": 156.224,
+      "end": 156.491
+    },
+    {
+      "word": "and",
+      "start": 156.7,
+      "end": 156.99
+    },
+    {
+      "word": "the",
+      "start": 157.025,
+      "end": 157.095
+    },
+    {
+      "word": "confidence",
+      "start": 157.141,
+      "end": 157.663
+    },
+    {
+      "word": "on",
+      "start": 157.698,
+      "end": 157.768
+    },
+    {
+      "word": "the",
+      "start": 157.814,
+      "end": 157.884
+    },
+    {
+      "word": "gauge",
+      "start": 157.931,
+      "end": 158.279
+    },
+    {
+      "word": "climb",
+      "start": 158.325,
+      "end": 158.708
+    },
+    {
+      "word": "from",
+      "start": 158.766,
+      "end": 158.941
+    },
+    {
+      "word": "0.57",
+      "start": 159.022,
+      "end": 160.206
+    },
+    {
+      "word": "to",
+      "start": 160.322,
+      "end": 160.415
+    },
+    {
+      "word": "0.96,",
+      "start": 160.496,
+      "end": 161.82
+    },
+    {
+      "word": "and",
+      "start": 162.029,
+      "end": 162.168
+    },
+    {
+      "word": "replaces",
+      "start": 162.226,
+      "end": 162.725
+    },
+    {
+      "word": "its",
+      "start": 162.783,
+      "end": 162.923
+    },
+    {
+      "word": "earlier",
+      "start": 163.004,
+      "end": 163.399
+    },
+    {
+      "word": "uncertainty",
+      "start": 163.468,
+      "end": 164.142
+    },
+    {
+      "word": "with",
+      "start": 164.235,
+      "end": 164.432
+    },
+    {
+      "word": "a",
+      "start": 164.479,
+      "end": 164.502
+    },
+    {
+      "word": "measurement",
+      "start": 164.618,
+      "end": 165.117
+    },
+    {
+      "word": "it",
+      "start": 165.187,
+      "end": 165.268
+    },
+    {
+      "word": "can",
+      "start": 165.326,
+      "end": 165.593
+    },
+    {
+      "word": "defend.",
+      "start": 165.663,
+      "end": 166.359
+    },
+    {
+      "word": "That",
+      "start": 167.137,
+      "end": 167.335
+    },
+    {
+      "word": "measurement",
+      "start": 167.393,
+      "end": 167.88
+    },
+    {
+      "word": "is",
+      "start": 167.962,
+      "end": 168.124
+    },
+    {
+      "word": "recorded",
+      "start": 168.194,
+      "end": 168.681
+    },
+    {
+      "word": "as",
+      "start": 168.751,
+      "end": 168.925
+    },
+    {
+      "word": "a",
+      "start": 168.983,
+      "end": 169.018
+    },
+    {
+      "word": "diagnosis,",
+      "start": 169.088,
+      "end": 170.144
+    },
+    {
+      "word": "with",
+      "start": 170.318,
+      "end": 170.493
+    },
+    {
+      "word": "its",
+      "start": 170.539,
+      "end": 170.655
+    },
+    {
+      "word": "evidence",
+      "start": 170.713,
+      "end": 171.189
+    },
+    {
+      "word": "attached:",
+      "start": 171.224,
+      "end": 171.886
+    },
+    {
+      "word": "the",
+      "start": 172.164,
+      "end": 172.257
+    },
+    {
+      "word": "region",
+      "start": 172.327,
+      "end": 172.664
+    },
+    {
+      "word": "ids,",
+      "start": 172.745,
+      "end": 173.499
+    },
+    {
+      "word": "the",
+      "start": 173.616,
+      "end": 173.72
+    },
+    {
+      "word": "values,",
+      "start": 173.789,
+      "end": 174.347
+    },
+    {
+      "word": "the",
+      "start": 174.428,
+      "end": 174.544
+    },
+    {
+      "word": "confidences,",
+      "start": 174.614,
+      "end": 175.519
+    },
+    {
+      "word": "and",
+      "start": 175.693,
+      "end": 175.856
+    },
+    {
+      "word": "the",
+      "start": 175.902,
+      "end": 175.984
+    },
+    {
+      "word": "annotated",
+      "start": 176.065,
+      "end": 176.692
+    },
+    {
+      "word": "image",
+      "start": 176.773,
+      "end": 177.203
+    },
+    {
+      "word": "they",
+      "start": 177.249,
+      "end": 177.4
+    },
+    {
+      "word": "came",
+      "start": 177.458,
+      "end": 177.725
+    },
+    {
+      "word": "from.",
+      "start": 177.772,
+      "end": 178.236
+    },
+    {
+      "word": "An",
+      "start": 178.677,
+      "end": 178.828
+    },
+    {
+      "word": "incident",
+      "start": 178.898,
+      "end": 179.339
+    },
+    {
+      "word": "is",
+      "start": 179.397,
+      "end": 179.49
+    },
+    {
+      "word": "raised",
+      "start": 179.606,
+      "end": 180.117
+    },
+    {
+      "word": "and",
+      "start": 180.198,
+      "end": 180.384
+    },
+    {
+      "word": "a",
+      "start": 180.43,
+      "end": 180.465
+    },
+    {
+      "word": "remediation",
+      "start": 180.523,
+      "end": 181.289
+    },
+    {
+      "word": "is",
+      "start": 181.347,
+      "end": 181.429
+    },
+    {
+      "word": "proposed.",
+      "start": 181.498,
+      "end": 182.23
+    },
+    {
+      "word": "Every",
+      "start": 182.671,
+      "end": 182.973
+    },
+    {
+      "word": "claim",
+      "start": 183.042,
+      "end": 183.402
+    },
+    {
+      "word": "in",
+      "start": 183.484,
+      "end": 183.553
+    },
+    {
+      "word": "the",
+      "start": 183.6,
+      "end": 183.669
+    },
+    {
+      "word": "trace",
+      "start": 183.727,
+      "end": 184.134
+    },
+    {
+      "word": "is",
+      "start": 184.18,
+      "end": 184.262
+    },
+    {
+      "word": "traceable",
+      "start": 184.343,
+      "end": 184.947
+    },
+    {
+      "word": "to",
+      "start": 184.993,
+      "end": 185.074
+    },
+    {
+      "word": "a",
+      "start": 185.167,
+      "end": 185.19
+    },
+    {
+      "word": "number",
+      "start": 185.283,
+      "end": 185.573
+    },
+    {
+      "word": "that",
+      "start": 185.62,
+      "end": 185.748
+    },
+    {
+      "word": "OpenCV",
+      "start": 185.829,
+      "end": 186.537
+    },
+    {
+      "word": "produced,",
+      "start": 186.711,
+      "end": 187.385
+    },
+    {
+      "word": "and",
+      "start": 187.628,
+      "end": 187.779
+    },
+    {
+      "word": "to",
+      "start": 187.826,
+      "end": 187.895
+    },
+    {
+      "word": "an",
+      "start": 187.965,
+      "end": 188.023
+    },
+    {
+      "word": "image",
+      "start": 188.093,
+      "end": 188.441
+    },
+    {
+      "word": "that",
+      "start": 188.476,
+      "end": 188.615
+    },
+    {
+      "word": "a",
+      "start": 188.65,
+      "end": 188.685
+    },
+    {
+      "word": "person",
+      "start": 188.743,
+      "end": 189.138
+    },
+    {
+      "word": "can",
+      "start": 189.207,
+      "end": 189.347
+    },
+    {
+      "word": "open",
+      "start": 189.416,
+      "end": 189.776
+    },
+    {
+      "word": "and",
+      "start": 189.857,
+      "end": 189.985
+    },
+    {
+      "word": "check",
+      "start": 190.066,
+      "end": 190.391
+    },
+    {
+      "word": "for",
+      "start": 190.449,
+      "end": 190.554
+    },
+    {
+      "word": "themselves.",
+      "start": 190.6,
+      "end": 191.506
+    },
+    {
+      "word": "Then",
+      "start": 192.202,
+      "end": 192.504
+    },
+    {
+      "word": "SightOps",
+      "start": 192.655,
+      "end": 193.27
+    },
+    {
+      "word": "stops.",
+      "start": 193.317,
+      "end": 194.048
+    },
+    {
+      "word": "Consequential",
+      "start": 194.373,
+      "end": 195.058
+    },
+    {
+      "word": "actions",
+      "start": 195.116,
+      "end": 195.534
+    },
+    {
+      "word": "require",
+      "start": 195.616,
+      "end": 196.045
+    },
+    {
+      "word": "a",
+      "start": 196.103,
+      "end": 196.15
+    },
+    {
+      "word": "person,",
+      "start": 196.266,
+      "end": 197.032
+    },
+    {
+      "word": "so",
+      "start": 197.206,
+      "end": 197.334
+    },
+    {
+      "word": "the",
+      "start": 197.404,
+      "end": 197.485
+    },
+    {
+      "word": "agent",
+      "start": 197.566,
+      "end": 197.949
+    },
+    {
+      "word": "requests",
+      "start": 198.007,
+      "end": 198.448
+    },
+    {
+      "word": "approval",
+      "start": 198.483,
+      "end": 198.971
+    },
+    {
+      "word": "and",
+      "start": 199.064,
+      "end": 199.25
+    },
+    {
+      "word": "waits",
+      "start": 199.366,
+      "end": 199.691
+    },
+    {
+      "word": "for",
+      "start": 199.749,
+      "end": 199.865
+    },
+    {
+      "word": "it.",
+      "start": 199.935,
+      "end": 200.283
+    },
+    {
+      "word": "In",
+      "start": 200.724,
+      "end": 200.887
+    },
+    {
+      "word": "this",
+      "start": 200.945,
+      "end": 201.096
+    },
+    {
+      "word": "demonstration",
+      "start": 201.165,
+      "end": 201.897
+    },
+    {
+      "word": "the",
+      "start": 201.955,
+      "end": 202.024
+    },
+    {
+      "word": "proposed",
+      "start": 202.071,
+      "end": 202.524
+    },
+    {
+      "word": "action",
+      "start": 202.57,
+      "end": 202.883
+    },
+    {
+      "word": "is",
+      "start": 202.942,
+      "end": 203.011
+    },
+    {
+      "word": "simulated,",
+      "start": 203.069,
+      "end": 203.882
+    },
+    {
+      "word": "and",
+      "start": 204.056,
+      "end": 204.219
+    },
+    {
+      "word": "the",
+      "start": 204.265,
+      "end": 204.335
+    },
+    {
+      "word": "interface",
+      "start": 204.404,
+      "end": 204.95
+    },
+    {
+      "word": "says",
+      "start": 204.985,
+      "end": 205.194
+    },
+    {
+      "word": "so",
+      "start": 205.287,
+      "end": 205.531
+    },
+    {
+      "word": "plainly.",
+      "start": 205.647,
+      "end": 206.39
+    },
+    {
+      "word": "Nothing",
+      "start": 206.901,
+      "end": 207.26
+    },
+    {
+      "word": "is",
+      "start": 207.319,
+      "end": 207.411
+    },
+    {
+      "word": "switched,",
+      "start": 207.458,
+      "end": 208.096
+    },
+    {
+      "word": "no",
+      "start": 208.271,
+      "end": 208.421
+    },
+    {
+      "word": "valve",
+      "start": 208.514,
+      "end": 208.863
+    },
+    {
+      "word": "is",
+      "start": 208.897,
+      "end": 208.99
+    },
+    {
+      "word": "turned,",
+      "start": 209.048,
+      "end": 209.582
+    },
+    {
+      "word": "and",
+      "start": 209.791,
+      "end": 209.954
+    },
+    {
+      "word": "no",
+      "start": 210.024,
+      "end": 210.14
+    },
+    {
+      "word": "safety",
+      "start": 210.233,
+      "end": 210.627
+    },
+    {
+      "word": "interlock",
+      "start": 210.674,
+      "end": 211.069
+    },
+    {
+      "word": "is",
+      "start": 211.138,
+      "end": 211.231
+    },
+    {
+      "word": "ever",
+      "start": 211.324,
+      "end": 211.614
+    },
+    {
+      "word": "bypassed,",
+      "start": 211.695,
+      "end": 212.485
+    },
+    {
+      "word": "because",
+      "start": 212.636,
+      "end": 212.926
+    },
+    {
+      "word": "a",
+      "start": 212.949,
+      "end": 212.984
+    },
+    {
+      "word": "troubleshooting",
+      "start": 213.054,
+      "end": 213.832
+    },
+    {
+      "word": "assistant",
+      "start": 213.878,
+      "end": 214.389
+    },
+    {
+      "word": "that",
+      "start": 214.447,
+      "end": 214.598
+    },
+    {
+      "word": "can",
+      "start": 214.633,
+      "end": 214.772
+    },
+    {
+      "word": "reach",
+      "start": 214.853,
+      "end": 215.12
+    },
+    {
+      "word": "out",
+      "start": 215.178,
+      "end": 215.457
+    },
+    {
+      "word": "and",
+      "start": 215.701,
+      "end": 215.98
+    },
+    {
+      "word": "touch",
+      "start": 216.061,
+      "end": 216.339
+    },
+    {
+      "word": "machinery",
+      "start": 216.398,
+      "end": 216.966
+    },
+    {
+      "word": "is",
+      "start": 217.059,
+      "end": 217.222
+    },
+    {
+      "word": "a",
+      "start": 217.28,
+      "end": 217.315
+    },
+    {
+      "word": "hazard,",
+      "start": 217.431,
+      "end": 218.023
+    },
+    {
+      "word": "not",
+      "start": 218.232,
+      "end": 218.418
+    },
+    {
+      "word": "a",
+      "start": 218.464,
+      "end": 218.499
+    },
+    {
+      "word": "product.",
+      "start": 218.592,
+      "end": 219.358
+    },
+    {
+      "word": "A",
+      "start": 219.962,
+      "end": 220.031
+    },
+    {
+      "word": "human",
+      "start": 220.113,
+      "end": 220.415
+    },
+    {
+      "word": "decides",
+      "start": 220.461,
+      "end": 220.925
+    },
+    {
+      "word": "what",
+      "start": 220.972,
+      "end": 221.123
+    },
+    {
+      "word": "happens",
+      "start": 221.181,
+      "end": 221.564
+    },
+    {
+      "word": "next.",
+      "start": 221.68,
+      "end": 222.307
+    },
+    {
+      "word": "The",
+      "start": 223.038,
+      "end": 223.143
+    },
+    {
+      "word": "vision",
+      "start": 223.201,
+      "end": 223.468
+    },
+    {
+      "word": "pipeline",
+      "start": 223.549,
+      "end": 224.13
+    },
+    {
+      "word": "is",
+      "start": 224.188,
+      "end": 224.316
+    },
+    {
+      "word": "measured",
+      "start": 224.408,
+      "end": 224.734
+    },
+    {
+      "word": "on",
+      "start": 224.792,
+      "end": 224.919
+    },
+    {
+      "word": "a",
+      "start": 224.966,
+      "end": 224.989
+    },
+    {
+      "word": "reproducible",
+      "start": 225.105,
+      "end": 226.011
+    },
+    {
+      "word": "fixture",
+      "start": 226.069,
+      "end": 226.672
+    },
+    {
+      "word": "set",
+      "start": 226.847,
+      "end": 227.067
+    },
+    {
+      "word": "with",
+      "start": 227.102,
+      "end": 227.23
+    },
+    {
+      "word": "exact",
+      "start": 227.276,
+      "end": 227.741
+    },
+    {
+      "word": "ground",
+      "start": 227.81,
+      "end": 228.159
+    },
+    {
+      "word": "truth,",
+      "start": 228.217,
+      "end": 228.785
+    },
+    {
+      "word": "across",
+      "start": 228.855,
+      "end": 229.227
+    },
+    {
+      "word": "perspective,",
+      "start": 229.285,
+      "end": 230.121
+    },
+    {
+      "word": "glare,",
+      "start": 230.237,
+      "end": 230.748
+    },
+    {
+      "word": "blur,",
+      "start": 230.864,
+      "end": 231.305
+    },
+    {
+      "word": "noise",
+      "start": 231.386,
+      "end": 231.781
+    },
+    {
+      "word": "and",
+      "start": 231.816,
+      "end": 231.955
+    },
+    {
+      "word": "resolution.",
+      "start": 232.025,
+      "end": 232.861
+    },
+    {
+      "word": "On",
+      "start": 233.371,
+      "end": 233.522
+    },
+    {
+      "word": "the",
+      "start": 233.557,
+      "end": 233.627
+    },
+    {
+      "word": "gauge,",
+      "start": 233.685,
+      "end": 234.277
+    },
+    {
+      "word": "the",
+      "start": 234.428,
+      "end": 234.532
+    },
+    {
+      "word": "mean",
+      "start": 234.614,
+      "end": 234.846
+    },
+    {
+      "word": "absolute",
+      "start": 234.939,
+      "end": 235.508
+    },
+    {
+      "word": "error",
+      "start": 235.554,
+      "end": 235.856
+    },
+    {
+      "word": "is",
+      "start": 235.937,
+      "end": 236.077
+    },
+    {
+      "word": "under",
+      "start": 236.135,
+      "end": 236.332
+    },
+    {
+      "word": "half",
+      "start": 236.413,
+      "end": 236.657
+    },
+    {
+      "word": "a",
+      "start": 236.715,
+      "end": 236.738
+    },
+    {
+      "word": "PSI,",
+      "start": 236.796,
+      "end": 237.597
+    },
+    {
+      "word": "and",
+      "start": 237.922,
+      "end": 238.097
+    },
+    {
+      "word": "fewer",
+      "start": 238.178,
+      "end": 238.422
+    },
+    {
+      "word": "than",
+      "start": 238.468,
+      "end": 238.596
+    },
+    {
+      "word": "one",
+      "start": 238.677,
+      "end": 238.933
+    },
+    {
+      "word": "in",
+      "start": 238.979,
+      "end": 239.107
+    },
+    {
+      "word": "a",
+      "start": 239.153,
+      "end": 239.176
+    },
+    {
+      "word": "hundred",
+      "start": 239.292,
+      "end": 239.676
+    },
+    {
+      "word": "published",
+      "start": 239.734,
+      "end": 240.129
+    },
+    {
+      "word": "readings",
+      "start": 240.175,
+      "end": 240.547
+    },
+    {
+      "word": "is",
+      "start": 240.605,
+      "end": 240.709
+    },
+    {
+      "word": "wrong",
+      "start": 240.779,
+      "end": 241.116
+    },
+    {
+      "word": "by",
+      "start": 241.359,
+      "end": 241.522
+    },
+    {
+      "word": "more",
+      "start": 241.603,
+      "end": 241.812
+    },
+    {
+      "word": "than",
+      "start": 241.859,
+      "end": 241.998
+    },
+    {
+      "word": "a",
+      "start": 242.044,
+      "end": 242.068
+    },
+    {
+      "word": "few",
+      "start": 242.161,
+      "end": 242.439
+    },
+    {
+      "word": "PSI.",
+      "start": 242.52,
+      "end": 243.31
+    },
+    {
+      "word": "Indicators",
+      "start": 243.693,
+      "end": 244.297
+    },
+    {
+      "word": "are",
+      "start": 244.332,
+      "end": 244.413
+    },
+    {
+      "word": "classified",
+      "start": 244.436,
+      "end": 245.005
+    },
+    {
+      "word": "at",
+      "start": 245.051,
+      "end": 245.133
+    },
+    {
+      "word": "better",
+      "start": 245.191,
+      "end": 245.516
+    },
+    {
+      "word": "than",
+      "start": 245.562,
+      "end": 245.702
+    },
+    {
+      "word": "98",
+      "start": 245.818,
+      "end": 246.468
+    },
+    {
+      "word": "percent",
+      "start": 246.526,
+      "end": 246.921
+    },
+    {
+      "word": "precision",
+      "start": 246.979,
+      "end": 247.513
+    },
+    {
+      "word": "and",
+      "start": 247.594,
+      "end": 247.791
+    },
+    {
+      "word": "recall.",
+      "start": 247.907,
+      "end": 248.546
+    },
+    {
+      "word": "A",
+      "start": 249.057,
+      "end": 249.138
+    },
+    {
+      "word": "frame",
+      "start": 249.219,
+      "end": 249.486
+    },
+    {
+      "word": "is",
+      "start": 249.521,
+      "end": 249.614
+    },
+    {
+      "word": "analysed",
+      "start": 249.684,
+      "end": 250.206
+    },
+    {
+      "word": "in",
+      "start": 250.264,
+      "end": 250.334
+    },
+    {
+      "word": "about",
+      "start": 250.38,
+      "end": 250.636
+    },
+    {
+      "word": "22",
+      "start": 250.694,
+      "end": 251.216
+    },
+    {
+      "word": "milliseconds",
+      "start": 251.309,
+      "end": 252.029
+    },
+    {
+      "word": "on",
+      "start": 252.099,
+      "end": 252.18
+    },
+    {
+      "word": "a",
+      "start": 252.226,
+      "end": 252.25
+    },
+    {
+      "word": "CPU,",
+      "start": 252.308,
+      "end": 253.086
+    },
+    {
+      "word": "and",
+      "start": 253.294,
+      "end": 253.434
+    },
+    {
+      "word": "the",
+      "start": 253.48,
+      "end": 253.55
+    },
+    {
+      "word": "agent",
+      "start": 253.631,
+      "end": 253.991
+    },
+    {
+      "word": "completes",
+      "start": 254.049,
+      "end": 254.502
+    },
+    {
+      "word": "every",
+      "start": 254.618,
+      "end": 255.013
+    },
+    {
+      "word": "scripted",
+      "start": 255.071,
+      "end": 255.593
+    },
+    {
+      "word": "task",
+      "start": 255.651,
+      "end": 256.023
+    },
+    {
+      "word": "inside",
+      "start": 256.104,
+      "end": 256.662
+    },
+    {
+      "word": "its",
+      "start": 256.696,
+      "end": 256.847
+    },
+    {
+      "word": "bounds.",
+      "start": 256.917,
+      "end": 257.567
+    },
+    {
+      "word": "SightOps",
+      "start": 258.299,
+      "end": 258.833
+    },
+    {
+      "word": "runs",
+      "start": 258.891,
+      "end": 259.158
+    },
+    {
+      "word": "on",
+      "start": 259.227,
+      "end": 259.355
+    },
+    {
+      "word": "a",
+      "start": 259.402,
+      "end": 259.425
+    },
+    {
+      "word": "single",
+      "start": 259.541,
+      "end": 259.994
+    },
+    {
+      "word": "CPU",
+      "start": 260.052,
+      "end": 260.621
+    },
+    {
+      "word": "machine,",
+      "start": 260.667,
+      "end": 261.097
+    },
+    {
+      "word": "with",
+      "start": 261.143,
+      "end": 261.317
+    },
+    {
+      "word": "a",
+      "start": 261.352,
+      "end": 261.375
+    },
+    {
+      "word": "real",
+      "start": 261.491,
+      "end": 261.793
+    },
+    {
+      "word": "OpenCV",
+      "start": 261.909,
+      "end": 262.525
+    },
+    {
+      "word": "5",
+      "start": 262.768,
+      "end": 263.047
+    },
+    {
+      "word": "pipeline,",
+      "start": 263.14,
+      "end": 263.848
+    },
+    {
+      "word": "a",
+      "start": 263.976,
+      "end": 264.057
+    },
+    {
+      "word": "bounded",
+      "start": 264.173,
+      "end": 264.638
+    },
+    {
+      "word": "agent",
+      "start": 264.707,
+      "end": 265.09
+    },
+    {
+      "word": "loop,",
+      "start": 265.137,
+      "end": 265.497
+    },
+    {
+      "word": "an",
+      "start": 265.555,
+      "end": 265.683
+    },
+    {
+      "word": "approval",
+      "start": 265.717,
+      "end": 266.147
+    },
+    {
+      "word": "gate,",
+      "start": 266.205,
+      "end": 266.635
+    },
+    {
+      "word": "and",
+      "start": 266.762,
+      "end": 266.913
+    },
+    {
+      "word": "a",
+      "start": 266.971,
+      "end": 266.994
+    },
+    {
+      "word": "complete",
+      "start": 267.052,
+      "end": 267.552
+    },
+    {
+      "word": "audit",
+      "start": 267.61,
+      "end": 267.993
+    },
+    {
+      "word": "trail.",
+      "start": 268.016,
+      "end": 268.562
+    },
+    {
+      "word": "It",
+      "start": 269.073,
+      "end": 269.224
+    },
+    {
+      "word": "is",
+      "start": 269.27,
+      "end": 269.351
+    },
+    {
+      "word": "open",
+      "start": 269.409,
+      "end": 269.641
+    },
+    {
+      "word": "source",
+      "start": 269.723,
+      "end": 270.118
+    },
+    {
+      "word": "and",
+      "start": 270.164,
+      "end": 270.315
+    },
+    {
+      "word": "a",
+      "start": 270.373,
+      "end": 270.408
+    },
+    {
+      "word": "working",
+      "start": 270.489,
+      "end": 270.872
+    },
+    {
+      "word": "product",
+      "start": 270.93,
+      "end": 271.36
+    },
+    {
+      "word": "rather",
+      "start": 271.429,
+      "end": 271.731
+    },
+    {
+      "word": "than",
+      "start": 271.778,
+      "end": 271.905
+    },
+    {
+      "word": "a",
+      "start": 271.94,
+      "end": 271.963
+    },
+    {
+      "word": "prototype.",
+      "start": 272.033,
+      "end": 272.95
+    },
+    {
+      "word": "You",
+      "start": 273.392,
+      "end": 273.554
+    },
+    {
+      "word": "take",
+      "start": 273.624,
+      "end": 273.833
+    },
+    {
+      "word": "a",
+      "start": 273.868,
+      "end": 273.903
+    },
+    {
+      "word": "photograph.",
+      "start": 273.961,
+      "end": 274.75
+    },
+    {
+      "word": "It",
+      "start": 274.82,
+      "end": 274.971
+    },
+    {
+      "word": "measures,",
+      "start": 275.052,
+      "end": 275.563
+    },
+    {
+      "word": "it",
+      "start": 275.644,
+      "end": 275.818
+    },
+    {
+      "word": "reasons,",
+      "start": 275.9,
+      "end": 276.492
+    },
+    {
+      "word": "it",
+      "start": 276.561,
+      "end": 276.747
+    },
+    {
+      "word": "asks,",
+      "start": 276.828,
+      "end": 277.328
+    },
+    {
+      "word": "and",
+      "start": 277.363,
+      "end": 277.502
+    },
+    {
+      "word": "it",
+      "start": 277.56,
+      "end": 277.63
+    },
+    {
+      "word": "acts",
+      "start": 277.688,
+      "end": 277.931
+    },
+    {
+      "word": "safely.",
+      "start": 277.978,
+      "end": 278.535
+    },
+    {
+      "word": "See.",
+      "start": 278.651,
+      "end": 279.034
+    },
+    {
+      "word": "Diagnose.",
+      "start": 279.081,
+      "end": 279.917
+    },
+    {
+      "word": "Act.",
+      "start": 280.033,
+      "end": 280.776
+    }
+  ]
+}

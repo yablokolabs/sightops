@@ -1,0 +1,26 @@
+{
+  "name": "sightops-demo-video",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "VideoWright project for the SightOps competition demonstration video.",
+  "scripts": {
+    "postinstall": "node scripts/apply-videowright-fix.mjs",
+    "dev": "npx videowright dev",
+    "render": "npx videowright render",
+    "script": "npx videowright script",
+    "screens": "node scripts/capture_app_screens.mjs",
+    "sync-audio": "python3 scripts/sync_audio.py",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "videowright": "0.1.1"
+  },
+  "devDependencies": {
+    "@fontsource/inter": "5.2.5",
+    "@fontsource/jetbrains-mono": "5.2.5",
+    "@types/node": "22.10.2",
+    "playwright": "1.64.0",
+    "typescript": "5.9.3"
+  }
+}

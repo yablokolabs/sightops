@@ -1,0 +1,299 @@
+1
+00:00:00,000 --> 00:00:04,189
+SightOps is an agentic visual reliability
+engineer.
+
+2
+00:00:04,189 --> 00:00:08,172
+You give it a photograph of a machine; it
+measures what the image
+
+3
+00:00:08,172 --> 00:00:13,930
+actually shows with OpenCV, reasons about
+what it can and cannot see, and
+
+4
+00:00:13,930 --> 00:00:16,554
+decides what still needs to be inspected.
+
+5
+00:00:16,715 --> 00:00:19,782
+And critically, it does not guess.
+
+6
+00:00:20,105 --> 00:00:24,043
+The project began with a phone call about a
+broken dishwasher.
+
+7
+00:00:24,043 --> 00:00:27,665
+A photograph of a control panel is easy to
+take and hard to
+
+8
+00:00:27,665 --> 00:00:30,858
+read from a distance, and the person on the
+other end of that
+
+9
+00:00:30,858 --> 00:00:33,343
+call could not tell which light was on.
+
+10
+00:00:33,504 --> 00:00:38,974
+SightOps turns that photograph into
+evidence: what is lit and what is blank,
+
+11
+00:00:38,974 --> 00:00:43,130
+where a needle points, how sharp and how
+well exposed the frame is,
+
+12
+00:00:43,130 --> 00:00:46,705
+and how much of all of that you should
+actually trust.
+
+13
+00:00:47,006 --> 00:00:51,988
+Every measurement is real computer vision,
+not a language model's impression.
+
+14
+00:00:52,079 --> 00:00:58,002
+Perspective is detected and corrected, the
+panel is located, blur and exposure are
+
+15
+00:00:58,002 --> 00:01:01,555
+scored, and each region of interest is
+rectified.
+
+16
+00:01:01,716 --> 00:01:06,466
+A gauge reading comes from a radial scan
+across the dial, with needle
+
+17
+00:01:06,466 --> 00:01:13,014
+shape validation. A lamp is classified by
+hue segmentation and peak brightness, a
+
+18
+00:01:13,014 --> 00:01:16,439
+switch from the angle of its lever, and a
+display from its stroke
+
+19
+00:01:16,439 --> 00:01:21,420
+level. When the vision model does speak, its
+answer is labelled as inferred
+
+20
+00:01:21,420 --> 00:01:24,206
+and never overwrites a measured value.
+
+21
+00:01:24,680 --> 00:01:29,697
+Every measurement carries a confidence, and
+the agent is allowed to distrust one.
+
+22
+00:01:29,789 --> 00:01:34,876
+On the first photograph the gauge came back
+at 83.7 PSI with only
+
+23
+00:01:34,876 --> 00:01:40,414
+57 percent confidence, and two of the four
+components sat below the floor.
+
+24
+00:01:40,505 --> 00:01:44,849
+So SightOps marked the frame as needing a
+better view, and wrote down
+
+25
+00:01:44,849 --> 00:01:49,876
+why. A confident wrong pressure reading is
+far worse than no reading at
+
+26
+00:01:49,876 --> 00:01:50,317
+all.
+
+27
+00:01:50,640 --> 00:01:53,068
+This is the part that matters most.
+
+28
+00:01:53,068 --> 00:01:59,024
+The agent compares image quality and
+measurements across observations, decides
+that the
+
+29
+00:01:59,024 --> 00:02:03,784
+gauge cannot be trusted from this angle, and
+asks for a better photograph.
+
+30
+00:02:03,875 --> 00:02:09,206
+The inspection pauses in a waiting state,
+with a specific request rather than
+
+31
+00:02:09,206 --> 00:02:14,825
+a vague shrug: re-image the gauge square-on,
+filling most of the frame, with
+
+32
+00:02:14,825 --> 00:02:18,447
+diffuse light and no specular reflection
+across the dial.
+
+33
+00:02:18,829 --> 00:02:22,813
+A new photograph arrives, and this time the
+view is clean.
+
+34
+00:02:22,846 --> 00:02:30,325
+The gauge reads 87.2 PSI, above the 75 PSI
+warning threshold, at 96
+
+35
+00:02:30,325 --> 00:02:35,932
+percent confidence. The agent diffs the two
+observations, sees the frame stop asking
+
+36
+00:02:35,932 --> 00:02:40,506
+for a better view and the confidence on the
+gauge climb from 0.57
+
+37
+00:02:40,506 --> 00:02:46,659
+to 0.96, and replaces its earlier
+uncertainty with a measurement it can
+defend.
+
+38
+00:02:47,087 --> 00:02:52,964
+That measurement is recorded as a diagnosis,
+with its evidence attached: the region
+
+39
+00:02:52,964 --> 00:02:58,536
+ids, the values, the confidences, and the
+annotated image they came from.
+
+40
+00:02:58,627 --> 00:03:02,530
+An incident is raised and a remediation is
+proposed.
+
+41
+00:03:02,621 --> 00:03:07,685
+Every claim in the trace is traceable to a
+number that OpenCV produced,
+
+42
+00:03:07,685 --> 00:03:11,806
+and to an image that a person can open and
+check for themselves.
+
+43
+00:03:12,152 --> 00:03:19,271
+Then SightOps stops. Consequential actions
+require a person, so the agent requests
+approval
+
+44
+00:03:19,271 --> 00:03:24,519
+and waits for it. In this demonstration the
+proposed action is simulated, and
+
+45
+00:03:24,519 --> 00:03:26,690
+the interface says so plainly.
+
+46
+00:03:26,851 --> 00:03:31,914
+Nothing is switched, no valve is turned, and
+no safety interlock is ever
+
+47
+00:03:31,914 --> 00:03:37,522
+bypassed, because a troubleshooting
+assistant that can reach out and touch
+machinery is
+
+48
+00:03:37,522 --> 00:03:39,658
+a hazard, not a product.
+
+49
+00:03:39,912 --> 00:03:42,607
+A human decides what happens next.
+
+50
+00:03:42,988 --> 00:03:48,459
+The vision pipeline is measured on a
+reproducible fixture set with exact ground
+
+51
+00:03:48,459 --> 00:03:53,161
+truth, across perspective, glare, blur,
+noise and resolution.
+
+52
+00:03:53,321 --> 00:03:58,397
+On the gauge, the mean absolute error is
+under half a PSI, and
+
+53
+00:03:58,397 --> 00:04:02,298
+fewer than one in a hundred published
+readings is wrong by more than
+
+54
+00:04:02,298 --> 00:04:08,091
+a few PSI. Indicators are classified at
+better than 98 percent precision and
+
+55
+00:04:08,091 --> 00:04:13,734
+recall. A frame is analysed in about 22
+milliseconds on a CPU, and
+
+56
+00:04:13,734 --> 00:04:17,867
+the agent completes every scripted task
+inside its bounds.
+
+57
+00:04:18,249 --> 00:04:24,148
+SightOps runs on a single CPU machine, with
+a real OpenCV 5 pipeline,
+
+58
+00:04:24,148 --> 00:04:28,862
+a bounded agent loop, an approval gate, and
+a complete audit trail.
+
+59
+00:04:29,023 --> 00:04:33,250
+It is open source and a working product
+rather than a prototype.
+
+60
+00:04:33,342 --> 00:04:38,231
+You take a photograph. It measures, it
+reasons, it asks, and it acts
+
+61
+00:04:38,231 --> 00:04:41,076
+safely. See. Diagnose. Act.
+

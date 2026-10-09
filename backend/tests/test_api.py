@@ -98,9 +98,51 @@ async def test_voice_status_explains_itself_without_leaking_the_key(client):
     assert response.status_code == 200
     body = response.json()
     assert body["provider"] == "elevenlabs"
-    assert body["voice_id"] == "zH7TN9vEZAsEway9xWev"
+    # The default is a *premade* voice, because the library voice the brief
+    # prefers is refused over the API on a free plan. Changing this default is a
+    # product decision, so it is asserted rather than left implicit.
+    assert body["voice_id"] == "Xb7hH8MSUJpSbSDYk0k2"
     assert isinstance(body["configured"], bool)
     assert body["message"]
+
+
+async def test_voice_synthesis_reports_the_voice_that_actually_spoke(client):
+    """A refused voice must be visible as a substitution, not passed off silently."""
+    from app.providers.base import Speech
+
+    used = "Xb7hH8MSUJpSbSDYk0k2"
+    requested = "zH7TN9vEZAsEway9xWev"
+
+    class _Provider:
+        name = "elevenlabs"
+
+        async def is_available(self) -> bool:
+            return True
+
+        async def synthesize(self, text, *, voice_id=None):
+            assert text
+            return Speech(
+                audio=b"\xff\xfb\x00fake-mpeg",
+                content_type="audio/mpeg",
+                voice_id=used,
+                requested_voice_id=voice_id or requested,
+            )
+
+    original = client.context.voice_provider
+    client.context.voice_provider = _Provider()
+    try:
+        response = await client.http.post(
+            "/api/voice/synthesize", json={"text": "Check the machine is switched off."}
+        )
+    finally:
+        client.context.voice_provider = original
+
+    assert response.status_code == 200, response.text
+    assert response.headers["content-type"].startswith("audio/mpeg")
+    assert response.content.startswith(b"\xff\xfb")
+    assert response.headers["X-SightOps-Voice-Id"] == used
+    assert response.headers["X-SightOps-Voice-Requested"] == requested
+    assert response.headers["X-SightOps-Voice-Substituted"] == "true"
 
 
 async def test_request_id_header_is_present(client):

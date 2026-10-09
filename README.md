@@ -205,7 +205,7 @@ cd frontend && npm install && npm run dev   # http://localhost:5173
 ### Tests
 
 ```bash
-cd backend && ../.venv/bin/python -m pytest -q          # 165 tests
+cd backend && ../.venv/bin/python -m pytest -q          # 180 tests
 cd frontend && npm run typecheck && npm run build
 cd backend && ../.venv/bin/python scripts/evaluate.py --out ../docs/evaluation
 cd backend && ../.venv/bin/python scripts/verify_demo_scenarios.py
@@ -252,7 +252,7 @@ backend/            FastAPI service, OpenCV 5 vision engine, agent loop, SQLite 
   app/api/          HTTP surface
   scripts/          evaluate.py, verify_demo_scenarios.py, check_providers.py,
                     calibrate_quality.py, bench_cool.py
-  tests/            165 tests
+  tests/            180 tests
 frontend/           React + TypeScript + Tailwind client (Vite)
 demo/               VideoWright project, captured screenshots, narration, rendered video
 docs/               evaluation, architecture, benchmarks, competition notes, diagrams
@@ -260,7 +260,7 @@ docs/               evaluation, architecture, benchmarks, competition notes, dia
 
 ## Demo video
 
-A 4-minute walkthrough with narration: [`demo/videos/sightops-demo.mp4`](demo/videos/sightops-demo.mp4).
+A 4-minute-41-second walkthrough with narration: [`demo/videos/sightops-demo.mp4`](demo/videos/sightops-demo.mp4).
 It is built from real application recordings by the VideoWright project in
 `demo/videowright/`; see [`demo/README.md`](demo/README.md) for how it is produced,
 which voice was used, and which parts are simulated.
@@ -286,6 +286,13 @@ Stated plainly, because a reliability tool that overstates itself is not useful.
   machines.
 - **Tool-failure recovery could not be measured** by the evaluation harness: no
   scenario in the suite forces a tool to fail.
+- **Voice guidance speaks in a premade voice.** The brief asks for Beth, a young
+  adult British female. Beth is a *library* voice, and the ElevenLabs API answers
+  `HTTP 402 paid_plan_required` for library voices on a free plan, so both the app
+  and the demonstration narration use Alice, whose labels are
+  `british / female / middle_aged`. A voice the plan refuses is substituted and
+  reported in the `X-SightOps-Voice-*` response headers rather than being dropped,
+  and the default is the premade voice, so the button works out of the box.
 - The competition skill set named in the project brief (`ponytail`, `headroom`,
   `diagram-design`, `nori`, `senior-swe`, `full-send`, `adhd`) is not installed in
   this environment. Serena, novgraph, Tavily and Hindsight were used instead.

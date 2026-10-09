@@ -51,6 +51,27 @@ class ProviderError(RuntimeError):
         self.status = status
 
 
+@dataclass
+class Speech:
+    """One synthesized piece of guidance, with the voice that actually spoke it.
+
+    ``voice_id`` is the voice that produced ``audio``, which is not always the
+    voice that was asked for: a plan that refuses a library voice is answered
+    with a premade one rather than with an error. ``substituted`` is true
+    exactly when that happened, so the caller can say so instead of quietly
+    presenting a different voice as the configured one.
+    """
+
+    audio: bytes
+    content_type: str = "audio/mpeg"
+    voice_id: str = ""
+    requested_voice_id: str = ""
+
+    @property
+    def substituted(self) -> bool:
+        return bool(self.requested_voice_id) and self.voice_id != self.requested_voice_id
+
+
 class ProviderUnavailable(ProviderError):
     """Raised when the provider is not configured (for example, no API key)."""
 
@@ -93,5 +114,11 @@ class VoiceProvider(ABC):
     async def is_available(self) -> bool: ...
 
     @abstractmethod
-    async def synthesize(self, text: str, *, voice_id: str | None = None) -> tuple[bytes, str]:
-        """Return ``(audio_bytes, content_type)``."""
+    async def synthesize(self, text: str, *, voice_id: str | None = None) -> Speech:
+        """Return the synthesized audio together with the voice that produced it.
+
+        ``voice_id`` overrides the configured voice for this one call. Providers
+        are expected to substitute a voice they are allowed to use rather than
+        fail, and to report that substitution on the returned
+        :class:`Speech`.
+        """

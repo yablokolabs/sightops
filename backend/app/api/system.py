@@ -102,7 +102,7 @@ async def synthesize(
     payload: VoiceRequest, context: AppContext = Depends(get_context)
 ) -> Response:
     try:
-        audio, content_type = await context.voice_provider.synthesize(
+        speech = await context.voice_provider.synthesize(
             payload.text, voice_id=payload.voice_id
         )
     except ProviderUnavailable as exc:
@@ -115,4 +115,13 @@ async def synthesize(
             status_code=502,
             detail=f"Speech synthesis failed: {exc}. Written guidance is unaffected.",
         ) from exc
-    return Response(content=audio, media_type=content_type)
+
+    # A plan that refuses the configured voice is answered by speaking with a
+    # premade one. The headers say which voice actually spoke, so a substitution
+    # is visible to the client instead of being presented as the configured one.
+    headers = {
+        "X-SightOps-Voice-Id": speech.voice_id,
+        "X-SightOps-Voice-Requested": speech.requested_voice_id,
+        "X-SightOps-Voice-Substituted": "true" if speech.substituted else "false",
+    }
+    return Response(content=speech.audio, media_type=speech.content_type, headers=headers)

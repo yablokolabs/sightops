@@ -28,6 +28,11 @@ DEFAULT_HERMES_ENV = Path.home() / ".hermes" / ".env"
 #: The only variables SightOps reads from the shared Hermes credential store.
 ALLOWED_HERMES_KEYS = ("NEBIUS_API_KEY", "ELEVENLABS_API_KEY", "TAVILY_API_KEY")
 
+#: "Beth" — the brief's preferred young adult British female voice. A library
+#: voice, so it needs a paid plan to be spoken over the API. Kept here because
+#: the choice is a product decision, not an implementation detail.
+LIBRARY_VOICE_ID = "zH7TN9vEZAsEway9xWev"
+
 
 def _read_env_file(path: Path) -> dict[str, str]:
     """Parse a ``KEY=value`` file without mutating ``os.environ``."""
@@ -83,8 +88,15 @@ class Settings(BaseSettings):
     nebius_model: str = "Qwen/Qwen3.5-397B-A17B"
     nebius_vision_model: str = "openbmb/MiniCPM-V-4_5"
     elevenlabs_base_url: str = "https://api.elevenlabs.io/v1"
-    #: "Beth" — young adult British female, natural and professional.
-    elevenlabs_voice_id: str = "zH7TN9vEZAsEway9xWev"
+    #: "Alice" — British female, premade. Premade voices are served to every
+    #: plan, so this default speaks on the account this project actually runs on.
+    #:
+    #: The brief's preferred voice is "Beth" (:data:`LIBRARY_VOICE_ID`), a young
+    #: adult British female. Beth is a *library* voice and the API refuses those
+    #: on the free plan with ``HTTP 402 paid_plan_required``, verified on
+    #: 2026-10-09. Setting it here on an upgraded plan works; the provider falls
+    #: back to Alice rather than failing if the plan still refuses it.
+    elevenlabs_voice_id: str = "Xb7hH8MSUJpSbSDYk0k2"
     elevenlabs_model_id: str = "eleven_turbo_v2_5"
     provider_timeout_seconds: float = 60.0
     provider_max_retries: int = 2

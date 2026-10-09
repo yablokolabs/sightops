@@ -122,13 +122,14 @@ AAC 44.1 kHz mono, 281.42 s, and a clean full-decode under `ffmpeg -f null`.
 
 ## In Progress
 
-- **Continuous integration and delivery** has been added as `.github/workflows/`:
-  `ci.yml` gates every push on a secret scan, the backend suite, the demonstration and
-  calibration scripts, an evaluation-metric gate, the frontend type check and build,
-  browser end-to-end tests, and a container build plus smoke test; `release.yml`
-  publishes both images to GHCR and opens a release on a `v*` tag. The first run of
-  `ci.yml` is what remains to be watched; `release.yml` cannot run until a tag is
-  pushed and is therefore **not yet exercised**.
+- **Continuous integration is green on GitHub.** `.github/workflows/ci.yml` runs on
+  every push in four jobs and the current `main` passes all four: `secret scan` 7 s,
+  `backend, vision and agent` 48 s, `frontend and browser journeys` 1 m 8 s,
+  `container build and smoke test` 59 s.
+- **Continuous delivery is written but not exercised.** `.github/workflows/release.yml`
+  publishes both images to GHCR and opens a release on a `v*` tag, and no tag has been
+  pushed, so nothing in it has ever run. It should be exercised deliberately the first
+  time a release is actually wanted, not assumed to work.
 
 ---
 
@@ -138,7 +139,7 @@ AAC 44.1 kHz mono, 281.42 s, and a clean full-decode under `ffmpeg -f null`.
    commands and the workflow steps identical so a green run means the same thing in
    both places.
 2. Exercise `release.yml` once by pushing a `v*` tag when a release is actually wanted.
-2. Read the published `README.md` and `demo/README.md` once more on GitHub, where the
+3. Read the published `README.md` and `demo/README.md` once more on GitHub, where the
    relative links are what a judge clicks.
 4. If the competition wants the brief's exact voice, a paid ElevenLabs plan makes Beth
    available: `SIGHTOPS_ELEVENLABS_VOICE_ID=zH7TN9vEZAsEway9xWev`. The provider already
@@ -188,6 +189,21 @@ Latest verified runs (2026-10-09):
   **22 checks passed**, including the full industrial demonstration through nginx
   (`WAITING_FOR_USER` → `AWAITING_APPROVAL` → approve → `COMPLETED`), the annotated
   evidence served as `image/png`, and the tool trace inside its documented bound.
+- **GitHub Actions, run 37882519600 on `main`** → **success**. The runner reported
+  `OpenCV 5.0.0`, `183 passed`, `17/17 checks passed`, `2/2 checks passed`, a full
+  `evaluate.py` run whose twelve metric gates held, `3 passed` for the browser
+  journeys, and `PASS: 22 checks passed` from the container smoke test. Nothing in the
+  pipeline needs a provider key, so no job can fail on an expired credential and no
+  job can spend a character budget.
+- **First CI run (37882059770) failed**, and the failure is worth recording because it
+  was environment-specific: the browser journeys timed out waiting for the preview
+  server on the runner while the same three tests passed on the development machine.
+  Vite binds `localhost`, and Node resolves that to whichever family the host's
+  resolver returns first — the runner's `/etc/hosts` lists `::1 localhost` and this
+  machine's does not, so the server was listening on IPv6 while the probe went to
+  `127.0.0.1`. The preview now binds `127.0.0.1` explicitly, and the job prints the
+  listening sockets and both URLs when the tests cannot start a server, so a future
+  failure of this kind is a diagnosis rather than a 120-second silence.
 - **Vision demo scenarios** — `scripts/verify_demo_scenarios.py` → **17/17 PASS**.
 - **Providers** — `scripts/check_providers.py` → **9/9 PASS** (OpenCV 5.0.0, 25 Nebius
   models, a live tool call returning `read_gauge`, 24 ElevenLabs voices).
@@ -281,6 +297,11 @@ video and `demo/docs/narration.md` state the corrected version.
    when a plan refuses the one asked for, reporting the substitution in
    `X-SightOps-Voice-*` headers instead of silently discarding it. Verified live on the
    dev server and through the container.
+10. **The browser journeys could not start their preview server on a CI runner (this
+    session).** See the first-CI-run entry above: an IPv4/IPv6 resolution difference
+    between the runner and the development machine, invisible locally. Fixed by binding
+    the preview server to `127.0.0.1`, and made diagnosable by printing the listening
+    sockets on failure.
 
 ---
 
@@ -336,12 +357,14 @@ video and `demo/docs/narration.md` state the corrected version.
 
 - Repository at `/home/azureuser/sightops`, branch `main`, remote `origin` =
   `https://github.com/yablokolabs/sightops.git` (**public**), pushed.
-- Nine commits, no AI attribution footers on any of them: `00c6f3e` (vision engine and
-  agent loop), `5b800b7` (HTTP surface, web client, diagrams, tests), `8fb46d6` (needle
-  shape validation), `b13d63e` (evaluation, calibration and benchmark harnesses),
+- Thirteen commits, no AI attribution footers on any of them: `00c6f3e` (vision engine
+  and agent loop), `5b800b7` (HTTP surface, web client, diagrams, tests), `8fb46d6`
+  (needle shape validation), `b13d63e` (evaluation, calibration and benchmark harnesses),
   `acbd545` (Docker), `539bbf9` (architecture, evaluation, benchmark and submission
   docs), `c30cf0d` (demo video and its project), `1df9664` (voice fix), `d645556`
-  (screenshot-to-asset sync).
+  (screenshot-to-asset sync), `14cb062` (refreshed captures and re-rendered video),
+  `b2ece08` (approval decision from the route), `aa4a892` (CI gate and tagged release),
+  `dc85b00` (preview server bound to the address the tests probe).
 - The voice fix made `demo/screenshots/12-system-status.png` stale (it shows the voice
   id), so the screenshots were re-captured, the video assets re-synced with
   `npm run assets`, and the video re-rendered: the committed screenshots, the assets and

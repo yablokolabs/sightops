@@ -38,6 +38,9 @@ frontend/playwright-report/
 frontend/blob-report/
 frontend/.playwright/
 
+# Git worktrees checked out inside the repository
+.worktrees/
+
 # Editors / OS
 .DS_Store
 .idea/

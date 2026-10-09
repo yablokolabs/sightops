@@ -227,6 +227,11 @@ cd frontend && npm run typecheck && npm run build
 cd frontend && npx playwright install --with-deps chromium
 cd frontend && npm run test:e2e
 
+# demo video: type check, then measure every scene against the 1920x1080 frame
+# in one shell: npx videowright dev --port 5199
+# in another:   npm run layout    # fails if a scene overflows or two blocks overlap
+cd demo/videowright && npm ci && npm run typecheck
+
 # repository and container
 python3 scripts/scan_secrets.py                 # no credential in any tracked file
 docker compose up -d --wait && scripts/smoke_docker.sh

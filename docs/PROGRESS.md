@@ -235,7 +235,28 @@ Latest verified runs (2026-10-09):
 - **Demo video** — `sync_audio.py` word check passes; video length **4:41** (16,885
   frames at 60 fps, 281.42 s); 61 subtitle cues ending at 04:41.076; full decode clean;
   audio measured at -17.0 dB mean and -1.0 dB peak, so nothing clips. The layout checker
-  reports all ten segments `1920x1080 ok`.
+  reports all ten segments `1920x1080 ok`. That check only looked at the frame edges, and
+  six scenes had blocks that overlapped inside the frame; the checker now tests overlap
+  too, and the scenes were reduced until all ten pass.
+- **Scene-overlap check, before and after the fix** — running the widened checker against
+  `main`'s scenes as they stood (a copy of the new checker driving the old dev server)
+  reported **26 faults across 6 of the 10 segments**, including a 185 px overlap in
+  `remeasure` where the headline lay across a column and a panel, a 137 px one in
+  `active`, and a 169 px stage that was taller than its own row. Against the fixed scenes
+  the same check returns **10 of 10 `ok`, exit 0**. The widened check is what makes this
+  class of defect visible at all: the old one compared elements with the frame edges
+  only, so a grid that stayed inside the frame while lying across its neighbours passed.
+- **The committed MP4 is the render of the fixed scenes, not a stale one.** This was
+  worth proving rather than assuming, because the check above measures the scene sources
+  and a superseded render would satisfy it just as well. Re-rendering the merged sources
+  at 6 fps (`--audio-track none`) and comparing decoded frames against the committed
+  video gives a mean absolute difference of **at most 0.295 luma** at ten sampled
+  timestamps — encoder noise — while the same frames against the previous video differ by
+  up to **24.4 luma**  in the changed scenes (19.8 at 2:15, 24.4 at 2:45, 16.1 at 3:15,
+  18.5 at 4:35), and by the same sub-luma amount in the two scenes that did not change.
+  The shipped MP4 is therefore the render of these sources. The re-render changed the
+  picture only: the audio stream decodes to the **same MD5** as the previous render
+  (`5072c0ff6785e84d42df04de19635d20`), and the subtitle files are unchanged.
 - **Live voice check** — on the running application, the default voice returns 200
   `audio/mpeg` (65,663 bytes, 4.08 s) with no substitution, and requesting the library
   voice returns 200 with the same audio and `X-SightOps-Voice-Substituted: true`.
@@ -302,6 +323,15 @@ video and `demo/docs/narration.md` state the corrected version.
     between the runner and the development machine, invisible locally. Fixed by binding
     the preview server to `127.0.0.1`, and made diagnosable by printing the listening
     sockets on failure.
+11. **Scene blocks overlapped inside the frame in six of the ten scenes (fixed on
+    `fix-demo-video-overlap`, merged as PR #1).** Several scenes held more content than
+    1080 lines can show, so a centred stage grid that still fitted the frame lay across
+    the headline above it and the alert below it — up to **185 px** of real overlap. The
+    layout checker missed it because it only compared elements with the frame edges. The
+    checker now also fails when a stage's content is taller than its row and when two
+    blocks cover the same pixels, and the scenes were reduced until all ten pass. The
+    overlap was measured on the old sources as **26 faults across 6 segments**, so this
+    is a genuine defect the old check could not see, not a cosmetic tidy-up.
 
 ---
 
@@ -320,6 +350,7 @@ video and `demo/docs/narration.md` state the corrected version.
 | 9 | A voice the plan refuses is substituted and reported, not failed. | The person holding the phone is in front of a broken machine; an error about a subscription is the least useful answer available. Reporting the substitution in the response headers keeps it honest. |
 | 10 | CI runs the project's own scripts, not a parallel implementation of them. | A check that only exists in the pipeline cannot be run while debugging, and one that only exists locally will not be run at all. The same commands serve both. |
 | 11 | The decision endpoints take the decision from the route and refuse a contradicting body. | Approval is the safety-critical path, and a request that disagrees with itself must not be resolved by picking a winner. |
+| 12 | The video's "AWS is not implemented" caption was dropped from the outro, and no AWS claim is made anywhere in the video now. | The caption had to go to fit the scene, and honest silence is not an overclaim: the outro's stack chips name only what is shipped (OpenCV 5.0.0, FastAPI, React, Docker, SQLite), no AWS service is shown, and the narration never mentions AWS. The disclaimer stays where a judge looks for it — the README, this document and the app's own `GET /api/system/status`. The safety caption in the approval scene, *"No safety-critical actuation path exists in the system."*, remains in the video. |
 
 ---
 
@@ -357,20 +388,23 @@ video and `demo/docs/narration.md` state the corrected version.
 
 - Repository at `/home/azureuser/sightops`, branch `main`, remote `origin` =
   `https://github.com/yablokolabs/sightops.git` (**public**), pushed.
-- Thirteen commits, no AI attribution footers on any of them: `00c6f3e` (vision engine
-  and agent loop), `5b800b7` (HTTP surface, web client, diagrams, tests), `8fb46d6`
-  (needle shape validation), `b13d63e` (evaluation, calibration and benchmark harnesses),
-  `acbd545` (Docker), `539bbf9` (architecture, evaluation, benchmark and submission
-  docs), `c30cf0d` (demo video and its project), `1df9664` (voice fix), `d645556`
-  (screenshot-to-asset sync), `14cb062` (refreshed captures and re-rendered video),
-  `b2ece08` (approval decision from the route), `aa4a892` (CI gate and tagged release),
-  `dc85b00` (preview server bound to the address the tests probe).
+- Seventeen commits on `main`, no AI attribution footers on any of them: `00c6f3e`
+  (vision engine and agent loop), `5b800b7` (HTTP surface, web client, diagrams, tests),
+  `8fb46d6` (needle shape validation), `b13d63e` (evaluation, calibration and benchmark
+  harnesses), `acbd545` (Docker), `539bbf9` (architecture, evaluation, benchmark and
+  submission docs), `c30cf0d` (demo video and its project), `1df9664` (voice fix),
+  `d645556` (screenshot-to-asset sync), `14cb062` (refreshed captures and re-rendered
+  video), `b2ece08` (approval decision from the route), `aa4a892` (CI gate and tagged
+  release), `dc85b00` (preview server bound to the address the tests probe), `16ac0e6`
+  (this document's CI/CD record), plus the two commits of PR #1 and its merge `ae3174c`
+  (the scene-overlap fix, `fix-demo-video-overlap`).
 - The voice fix made `demo/screenshots/12-system-status.png` stale (it shows the voice
   id), so the screenshots were re-captured, the video assets re-synced with
   `npm run assets`, and the video re-rendered: the committed screenshots, the assets and
-  the MP4 now come from the same run. The re-rendered MP4 was verified with `ffprobe`
-  (H.264 1920×1080 60 fps, 16,885 frames, AAC 44.1 kHz mono, 281.42 s, 17.8 MB) and with
-  a clean full decode.
+  the MP4 now come from the same run. The MP4 was later rendered once more for the
+  scene-overlap fix (H.264 1920×1080 60 fps, 16,885 frames, AAC 44.1 kHz mono, 281.42 s,
+  20.8 MB, unchanged length and frame count) and was verified with `ffprobe` and a clean
+  full decode.
 - Every asset the README references was confirmed to resolve on GitHub after the push:
   the four diagram assets, the screenshots, the MP4, the subtitles and the evaluation
   report all return 200 from `raw.githubusercontent.com`.

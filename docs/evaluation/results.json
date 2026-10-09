@@ -1,0 +1,437 @@
+{
+  "environment": {
+    "opencv_version": "5.0.0",
+    "opencv_claim_verified": true,
+    "python_version": "3.12.3",
+    "platform": "Linux-7.0.0-1014-azure-x86_64-with-glibc2.39",
+    "machine": "x86_64",
+    "processor": "AMD EPYC 9V45 96-Core Processor",
+    "cpu_count": 4,
+    "memory_total_mb": 15983.8,
+    "gpu": null,
+    "gpu_note": "CPU-only execution; no GPU is used or required.",
+    "numpy_version": "2.5.3",
+    "cv2_build": "pip wheel opencv-python (x86_64)",
+    "aws": "NOT IMPLEMENTED \u2014 no AWS resource is used, provisioned or benchmarked",
+    "deployment": "existing Azure virtual machine",
+    "hindsight": "memory service on localhost:8888 (development aid only)",
+    "load_average": [
+      2.153,
+      2.134,
+      2.011
+    ]
+  },
+  "dataset": {
+    "variations": [
+      "clean",
+      "sensor_noise",
+      "mild_blur",
+      "moderate_blur",
+      "strong_blur",
+      "underexposed",
+      "overexposed",
+      "glare",
+      "heavy_glare",
+      "low_resolution",
+      "very_low_resolution",
+      "perspective",
+      "strong_perspective",
+      "rotation",
+      "strong_rotation",
+      "occlusion_40",
+      "occlusion_80"
+    ],
+    "pressures_psi": [
+      0.0,
+      12.5,
+      28.0,
+      43.5,
+      61.0,
+      74.5,
+      88.0,
+      97.0
+    ],
+    "industrial_samples": 136,
+    "dishwasher_samples": 34,
+    "switch_samples": 17,
+    "generator": "app.fixtures.generate_panels (ground truth is exact: the fixture drew the values)"
+  },
+  "gauge": {
+    "attempts": 136,
+    "published": 112,
+    "refused": 24,
+    "refusal_rate": 0.1765,
+    "mean_absolute_error_psi": 0.4724,
+    "median_absolute_error_psi": 0.185,
+    "p95_absolute_error_psi": 1.54,
+    "max_absolute_error_psi": 3.32,
+    "mean_confidence": 0.9133,
+    "report_floor": 0.5,
+    "full_scale_error_percent": 0.4724,
+    "confident_wrong_readings": [
+      {
+        "variation": "perspective",
+        "true_psi": 43.5,
+        "measured_psi": 46.82,
+        "confidence": 0.796,
+        "absolute_error": 3.32
+      }
+    ],
+    "wrong_reading_count": 1,
+    "error_by_pressure_psi": {
+      "0": 0.2285,
+      "12.5": 0.3179,
+      "28": 0.5029,
+      "43.5": 0.5864,
+      "61": 0.5953,
+      "74.5": 0.5379,
+      "88": 0.5264,
+      "97": 0.4579
+    }
+  },
+  "indicators": {
+    "RED": {
+      "support": 34,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 34,
+      "false_positives": 0,
+      "false_negatives": 0
+    },
+    "GREEN": {
+      "support": 170,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 170,
+      "false_positives": 0,
+      "false_negatives": 0
+    },
+    "AMBER": {
+      "support": 34,
+      "precision": 0.9444444444444444,
+      "recall": 1.0,
+      "f1": 0.9714285714285714,
+      "true_positives": 34,
+      "false_positives": 2,
+      "false_negatives": 0
+    },
+    "OFF": {
+      "support": 34,
+      "precision": 1.0,
+      "recall": 0.9411764705882353,
+      "f1": 0.9696969696969697,
+      "true_positives": 32,
+      "false_positives": 0,
+      "false_negatives": 2
+    },
+    "macro_precision": 0.9861,
+    "macro_recall": 0.9853,
+    "confusions": [
+      {
+        "variation": "overexposed",
+        "region": "warning_led_01",
+        "truth": "OFF",
+        "predicted": "AMBER",
+        "confidence": 0.7198
+      },
+      {
+        "variation": "overexposed",
+        "region": "warning_led_01",
+        "truth": "OFF",
+        "predicted": "AMBER",
+        "confidence": 0.7198
+      }
+    ],
+    "confusion_count": 2
+  },
+  "display": {
+    "samples": 34,
+    "correct": 27,
+    "accuracy": 0.7941,
+    "failures": [
+      {
+        "variation": "underexposed",
+        "truth": "LIT",
+        "predicted": "BLANK",
+        "confidence": 0.5864,
+        "details": {
+          "p98_luma": 91.0,
+          "dynamic_range": 82.0,
+          "lit_fraction": 0.01314,
+          "mean_luma": 10.7
+        }
+      },
+      {
+        "variation": "overexposed",
+        "truth": "BLANK",
+        "predicted": "LIT",
+        "confidence": 0.5892,
+        "details": {
+          "p98_luma": 131.0,
+          "dynamic_range": 91.0,
+          "lit_fraction": 0.02723,
+          "mean_luma": 42.48
+        }
+      },
+      {
+        "variation": "glare",
+        "truth": "LIT",
+        "predicted": "BLANK",
+        "confidence": 0.5,
+        "details": {
+          "p98_luma": 255.0,
+          "dynamic_range": 92.0,
+          "lit_fraction": 0.69278,
+          "mean_luma": 132.34
+        }
+      },
+      {
+        "variation": "heavy_glare",
+        "truth": "LIT",
+        "predicted": "BLANK",
+        "confidence": 0.5,
+        "details": {
+          "p98_luma": 255.0,
+          "dynamic_range": 16.0,
+          "lit_fraction": 0.75095,
+          "mean_luma": 188.57
+        }
+      },
+      {
+        "variation": "strong_rotation",
+        "truth": "LIT",
+        "predicted": "BLANK",
+        "confidence": 0.5909,
+        "details": {
+          "p98_luma": 90.0,
+          "dynamic_range": 67.0,
+          "lit_fraction": 0.17716,
+          "mean_luma": 32.56
+        }
+      },
+      {
+        "variation": "occlusion_40",
+        "truth": "LIT",
+        "predicted": "BLANK",
+        "confidence": 0.6591,
+        "details": {
+          "p98_luma": 75.0,
+          "dynamic_range": 52.0,
+          "lit_fraction": 0.02786,
+          "mean_luma": 25.6
+        }
+      },
+      {
+        "variation": "occlusion_80",
+        "truth": "LIT",
+        "predicted": "BLANK",
+        "confidence": 0.6591,
+        "details": {
+          "p98_luma": 75.0,
+          "dynamic_range": 52.0,
+          "lit_fraction": 0.01368,
+          "mean_luma": 25.08
+        }
+      }
+    ],
+    "failure_count": 7,
+    "failures_by_variation": {
+      "glare": 1,
+      "heavy_glare": 1,
+      "occlusion_40": 1,
+      "occlusion_80": 1,
+      "overexposed": 1,
+      "strong_rotation": 1,
+      "underexposed": 1
+    }
+  },
+  "switch": {
+    "samples": 17,
+    "correct": 17,
+    "accuracy": 1.0
+  },
+  "roi": {
+    "samples": 136,
+    "localised": 136,
+    "success_rate": 1.0,
+    "method": "configured profile regions, validated against image bounds"
+  },
+  "quality_gate": {
+    "wrong_value_tolerance_psi": 3.0,
+    "wrong_value_escape_count": 1,
+    "wrong_value_escape_rate": 0.0089,
+    "escape_note": "A published reading whose error exceeds the tolerance is the metric that matters: it is measured against exact ground truth and does not depend on any readability assumption. This is the number a reliability tool must keep at zero.",
+    "unreadable_by_construction": {
+      "definition": "Documented information-content criterion for \"this frame cannot be read\".",
+      "correct_rejections": 24,
+      "missed_rejections": 32,
+      "detection_rate": 0.4286
+    },
+    "readable_by_construction": {
+      "unnecessary_rejections": 1,
+      "accepted": 79,
+      "false_refusal_rate": 0.0125
+    },
+    "refusal_rate_by_variation": {
+      "clean": 0.0,
+      "sensor_noise": 0.0,
+      "mild_blur": 0.0,
+      "moderate_blur": 0.0,
+      "strong_blur": 0.0,
+      "underexposed": 0.0,
+      "overexposed": 0.0,
+      "glare": 0.0,
+      "heavy_glare": 0.0,
+      "low_resolution": 0.0,
+      "very_low_resolution": 0.0,
+      "perspective": 0.0,
+      "strong_perspective": 1.0,
+      "rotation": 0.125,
+      "strong_rotation": 0.875,
+      "occlusion_40": 0.0,
+      "occlusion_80": 1.0
+    },
+    "caveat": "The unreadable set is an analysis assumption stated as a rule in docs/evaluation/methodology.md, not measured ground truth. Several frames it calls unreadable are in fact measurable, which is why the missed-rejection count is high while the wrong-value escape rate is the figure to trust."
+  },
+  "agent": {
+    "scenarios": [
+      {
+        "scenario": "industrial_fault_two_observations",
+        "final_state": "AWAITING_APPROVAL",
+        "requested_reinspection": true,
+        "expected_reinspection": true,
+        "reinspection_correct": true,
+        "incident_created": true,
+        "expected_incident": true,
+        "incident_correct": true,
+        "terminal_state_reached": true,
+        "task_success": true,
+        "observations": 2,
+        "tool_calls": 7,
+        "steps": 7,
+        "timeline_entries": 22,
+        "bounded": true
+      },
+      {
+        "scenario": "industrial_healthy_single_observation",
+        "final_state": "COMPLETED",
+        "requested_reinspection": false,
+        "expected_reinspection": false,
+        "reinspection_correct": true,
+        "incident_created": false,
+        "expected_incident": false,
+        "incident_correct": true,
+        "terminal_state_reached": true,
+        "task_success": true,
+        "observations": 1,
+        "tool_calls": 2,
+        "steps": 2,
+        "timeline_entries": 7,
+        "bounded": true
+      },
+      {
+        "scenario": "industrial_fault_clear_first_try",
+        "final_state": "AWAITING_APPROVAL",
+        "requested_reinspection": false,
+        "expected_reinspection": false,
+        "reinspection_correct": true,
+        "incident_created": true,
+        "expected_incident": true,
+        "incident_correct": true,
+        "terminal_state_reached": true,
+        "task_success": true,
+        "observations": 1,
+        "tool_calls": 4,
+        "steps": 4,
+        "timeline_entries": 13,
+        "bounded": true
+      },
+      {
+        "scenario": "home_unpowered_dishwasher",
+        "final_state": "COMPLETED",
+        "requested_reinspection": false,
+        "expected_reinspection": false,
+        "reinspection_correct": true,
+        "incident_created": false,
+        "expected_incident": false,
+        "incident_correct": true,
+        "terminal_state_reached": true,
+        "task_success": true,
+        "observations": 2,
+        "tool_calls": 5,
+        "steps": 5,
+        "timeline_entries": 16,
+        "bounded": true
+      }
+    ],
+    "tasks": 4,
+    "task_successes": 4,
+    "task_success_rate": 1.0,
+    "all_runs_bounded": true,
+    "active_perception": {
+      "definition": "the agent asked for a new view exactly when the measured evidence was insufficient",
+      "correct_requests": 1,
+      "unnecessary_requests": 0,
+      "missed_requests": 0,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    "observation_selection": {
+      "mean_observations_per_task": 1.5,
+      "observations_per_task": [
+        2,
+        1,
+        1,
+        2
+      ],
+      "tool_calls_per_task": [
+        7,
+        2,
+        4,
+        5
+      ]
+    },
+    "escalation": {
+      "incidents_created": 2,
+      "incidents_expected": 2,
+      "incorrect_escalations": 0,
+      "missed_escalations": 0
+    },
+    "tool_failure_recovery": {
+      "measured": null,
+      "reason": "No scripted scenario produced a tool failure, so recovery was not exercised end to end. Failure paths are covered by backend/tests/test_tools.py and the loop's repeated-failure guard."
+    }
+  },
+  "performance": {
+    "vision_latency_ms": {
+      "samples": 170,
+      "mean": 9.67,
+      "median": 9.96,
+      "p95": 15.97,
+      "max": 23.27
+    },
+    "inspection_end_to_end_ms": {
+      "samples": 4,
+      "mean": 306.74,
+      "max": 462.34
+    },
+    "throughput": {
+      "runs": 30,
+      "wall_seconds": 0.3653,
+      "analyses_per_second": 82.122,
+      "seconds_per_analysis": 0.01218,
+      "cpu_seconds": 0.744,
+      "cpu_utilisation_of_one_core_percent": 203.66,
+      "peak_rss_mb": 163.87,
+      "note": "single-process, single-threaded analysis of a 1280x720 frame with four regions"
+    }
+  },
+  "unavailable": [
+    "tool_failure_recovery: no scenario in this suite forces a tool to fail"
+  ],
+  "notes": [
+    "Gauge reporting floor: a value is withheld below 0.50 confidence. Of 136 attempts, 24 were refused and 112 were published."
+  ]
+}
